@@ -23,7 +23,7 @@ public class TrashController : MonoBehaviour
     void Update()
     {
         MoveObjectLeft();
-        if (CheckIfOutOfScreen())
+        if (IsOutOfScreenLeft())
         {
             DestroyObject();
         }
@@ -60,7 +60,7 @@ public class TrashController : MonoBehaviour
         Destroy (this.gameObject);
     }
 
-    private bool CheckIfOutOfScreen()
+    private bool IsOutOfScreenLeft()
     {
         return transform.position.x < _camCords.x - destroyOffset;
     }
