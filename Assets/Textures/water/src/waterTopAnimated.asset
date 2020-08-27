@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79130aa8a245b5a4fa3990c962cff51f, type: 3}
+  m_Name: waterTopAnimated
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: -1924748738182462618, guid: 03e8e29326a32004e95273e0b343b047, type: 3}
+  - {fileID: -6220688242613670867, guid: 03e8e29326a32004e95273e0b343b047, type: 3}
+  - {fileID: -3891083407728909155, guid: 03e8e29326a32004e95273e0b343b047, type: 3}
+  - {fileID: 4091664978360635663, guid: 03e8e29326a32004e95273e0b343b047, type: 3}
+  - {fileID: -8433242018732339229, guid: 03e8e29326a32004e95273e0b343b047, type: 3}
+  - {fileID: 6953895631726505029, guid: 03e8e29326a32004e95273e0b343b047, type: 3}
+  - {fileID: -4906177638795412567, guid: 03e8e29326a32004e95273e0b343b047, type: 3}
+  - {fileID: 2437950226922849494, guid: 03e8e29326a32004e95273e0b343b047, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 0
+  m_TileColliderType: 0
