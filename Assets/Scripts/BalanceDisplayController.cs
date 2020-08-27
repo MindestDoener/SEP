@@ -6,21 +6,14 @@ using System;
 
 public class BalanceDisplayController : MonoBehaviour
 {
-    Text balanceText;
+    private Text balanceText;
     private string _suffix;
     private decimal _divisor;
     private int _exp;  
 
-    // Start is called before the first frame update
     void Start()
     {
         balanceText = GetComponent<Text>(); 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void DisplayBalance(decimal balance) 

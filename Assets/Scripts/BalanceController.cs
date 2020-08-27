@@ -6,8 +6,8 @@ public class BalanceController : MonoBehaviour
 {
     
     private static decimal _balance;
-    GameObject TextField;
-    BalanceDisplayController bdc;
+    private GameObject TextField;
+    private BalanceDisplayController bdc;
     
     // Start is called before the first frame update
     void Start()
@@ -16,12 +16,7 @@ public class BalanceController : MonoBehaviour
         bdc = (BalanceDisplayController) TextField.GetComponent(typeof(BalanceDisplayController));
 
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    
     public void AddBalance(decimal amount) 
     {
         _balance += amount;
