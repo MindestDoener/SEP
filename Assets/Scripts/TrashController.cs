@@ -9,7 +9,7 @@ public class TrashController : MonoBehaviour
     public float currencyValue;
     public float destroyOffset;
     public Camera cam;
-    public SpriteRenderer SpriteRenderer;
+    public SpriteRenderer spriteRenderer;
     private Vector3 _camCords;
     
     // Start is called before the first frame update
@@ -41,7 +41,7 @@ public class TrashController : MonoBehaviour
 
     public void SetSprite(Sprite sprite)
     {
-        SpriteRenderer.sprite = sprite;
+        spriteRenderer.sprite = sprite;
     }
 
     public float GetCurrencyValue()
