@@ -28,6 +28,12 @@ public class BalanceController : MonoBehaviour
         UpdateBalanceDisplay();
     }
 
+    public void ResetBalance() 
+    {
+        _balance = 0;
+        UpdateBalanceDisplay();
+    }
+
     private void UpdateBalanceDisplay() 
     {
         bdc.DisplayBalance(_balance);

@@ -30,7 +30,6 @@ public class BalanceDisplayController : MonoBehaviour
 
     private string ShortenBalanceDisplay(decimal balance) 
     {
-        _divisor = Convert.ToDecimal(Math.Pow(10, _exp));
 
         if (balance >= Convert.ToDecimal(Math.Pow(10, 3)) && balance < Convert.ToDecimal(Math.Pow(10, 6))) {
             _suffix = " K";
@@ -52,9 +51,10 @@ public class BalanceDisplayController : MonoBehaviour
             _exp = 12;
         }
 
+        _divisor = Convert.ToDecimal(Math.Pow(10, _exp));
+
         return Math.Round(balance/_divisor, 2).ToString() + _suffix;
        
-
 
     }
 }
