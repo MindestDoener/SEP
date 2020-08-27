@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2510761205519548039}
   - component: {fileID: 2510761205519548040}
   m_Layer: 0
-  m_Name: Trash
+  m_Name: TrashPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,6 +48,7 @@ MonoBehaviour:
   currencyValue: 0
   destroyOffset: 1
   cam: {fileID: 0}
+  SpriteRenderer: {fileID: 2510761205519548040}
 --- !u!212 &2510761205519548040
 SpriteRenderer:
   m_ObjectHideFlags: 0
