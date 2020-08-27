@@ -44,6 +44,11 @@ public class TrashController : MonoBehaviour
         SpriteRenderer.sprite = sprite;
     }
 
+    public float GetCurrencyValue()
+    {
+        return currencyValue;
+    }
+
     private void MoveObjectLeft()
     {
         var move = new Vector3(-1 * moveSpeed, 0, 0);
