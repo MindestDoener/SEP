@@ -9,6 +9,7 @@ public class TrashController : MonoBehaviour
     public float currencyValue;
     public float destroyOffset;
     public Camera cam;
+    public SpriteRenderer spriteRenderer;
     private Vector3 _camCords;
     
     // Start is called before the first frame update
@@ -22,7 +23,7 @@ public class TrashController : MonoBehaviour
     void Update()
     {
         MoveObjectLeft();
-        if (CheckIfOutOfScreen())
+        if (IsOutOfScreenLeft())
         {
             DestroyObject();
         }
@@ -37,7 +38,17 @@ public class TrashController : MonoBehaviour
     {
         currencyValue = value;
     }
-    
+
+    public void SetSprite(Sprite sprite)
+    {
+        spriteRenderer.sprite = sprite;
+    }
+
+    public float GetCurrencyValue()
+    {
+        return currencyValue;
+    }
+
     private void MoveObjectLeft()
     {
         var move = new Vector3(-1 * moveSpeed, 0, 0);
@@ -49,7 +60,7 @@ public class TrashController : MonoBehaviour
         Destroy (this.gameObject);
     }
 
-    private bool CheckIfOutOfScreen()
+    private bool IsOutOfScreenLeft()
     {
         return transform.position.x < _camCords.x - destroyOffset;
     }
