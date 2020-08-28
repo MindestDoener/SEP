@@ -1,34 +1,22 @@
 fileFormatVersion: 2
-guid: 756b2be7c6ea9d24ebf52f01da89332e
+guid: b8f6972712aaa50499ddd13b460338a4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7666965273880448802
-    second: ThrashSheet1_0
+      213: -886103203260234665
+    second: TrashCoin_Small
   - first:
-      213: -6940853363312970077
-    second: ThrashSheet1_1
+      213: 8417767991429031491
+    second: TrashCoin_Big
   - first:
-      213: 1677442906467761504
-    second: ThrashSheet1_2
+      213: 660418526042800736
+    second: TrashCoin_2
   - first:
-      213: -6487797955002160959
-    second: ThrashSheet1_3
+      213: -2265091895349630571
+    second: TrashCoin_3
   - first:
-      213: -3159359166093431241
-    second: ThrashSheet1_4
-  - first:
-      213: 7405003769047487975
-    second: ThrashSheet1_5
-  - first:
-      213: 616203188464127220
-    second: ThrashSheet1_6
-  - first:
-      213: -2780157901631429603
-    second: ThrashSheet1_7
-  - first:
-      213: -5770729020036830334
-    second: ThrashSheet1_8
+      213: 6106881722886556563
+    second: TrashCoin_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -128,112 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ThrashSheet1_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ed0b91964b7799590800000000000000
-      internalID: -7666965273880448802
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ThrashSheet1_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3a6b7a9e3a22daf90800000000000000
-      internalID: -6940853363312970077
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ThrashSheet1_2
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 06d720b9f69774710800000000000000
-      internalID: 1677442906467761504
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ThrashSheet1_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 73e6023d393b724d0800000000000000
-      internalID: -3159359166093431241
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ThrashSheet1_5
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7e5118ec1bbd3c660800000000000000
-      internalID: 7405003769047487975
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ThrashSheet1_8
+      name: TrashCoin_Small
       rect:
         serializedVersion: 2
         x: 0
@@ -241,14 +124,35 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28baaa9e7804aefa0800000000000000
-      internalID: -5770729020036830334
+      spriteID: 7548657d4dde3b3f0800000000000000
+      internalID: -886103203260234665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TrashCoin_Big
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 346e7c2936be1d470800000000000000
+      internalID: 8417767991429031491
       vertices: []
       indices: 
       edges: []
