@@ -19,10 +19,16 @@ public class PlayerController : MonoBehaviour
         get => activeCollectionMultiplier;
         set => activeCollectionMultiplier = value;
     }
+
     public float CollectionRadius
     {
         get => collectionRadius;
         set => collectionRadius = value;
+    }
+
+    private void Update()
+    {
+        if (Math.Abs(circleRenderer.Radius - collectionRadius) > 0.1f) circleRenderer.Radius = collectionRadius;
     }
 
     public void UpdateCollectionRadius(float factor)
@@ -30,15 +36,6 @@ public class PlayerController : MonoBehaviour
         collectionRadius *= factor;
     }
 
-    private void Update()
-    {
-        if (Math.Abs(circleRenderer.Radius - collectionRadius) > 0.1f)
-        { 
-            circleRenderer.Radius = collectionRadius; 
-        }
-        
-    }
-    
     public bool IsInReach(Vector2 coordinates)
     {
         var distanceVector = (Vector2) transform.position - coordinates;
