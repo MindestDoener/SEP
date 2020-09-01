@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2510761205519548038}
   - component: {fileID: 2510761205519548039}
   - component: {fileID: 2510761205519548040}
+  - component: {fileID: 6144884121510875206}
   m_Layer: 0
   m_Name: TrashPrefab
   m_TagString: Untagged
@@ -26,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2510761205519548041}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.49468383, z: -0.37980235}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: 0, y: -0.49468383, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -48,7 +49,7 @@ MonoBehaviour:
   currencyValue: 0
   destroyOffset: 1
   cam: {fileID: 0}
-  SpriteRenderer: {fileID: 2510761205519548040}
+  spriteRenderer: {fileID: 2510761205519548040}
 --- !u!212 &2510761205519548040
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -88,7 +89,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -100,3 +101,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!111 &6144884121510875206
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2510761205519548041}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 41c74b127dde03748802ed69843d6fd0, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
