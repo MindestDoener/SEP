@@ -5,6 +5,7 @@ public class CircleRendererController : MonoBehaviour
 {
     private const float CircleDegree = 360f;
     [SerializeField] private int pointCount = 36;
+    [SerializeField] private int orderInLayer = 2;
     [SerializeField] private Material material;
     private float _radius;
 
@@ -53,6 +54,7 @@ public class CircleRendererController : MonoBehaviour
         GetComponent<MeshFilter>().mesh = mesh;
 
         GetComponent<MeshRenderer>().material = material;
+        GetComponent<MeshRenderer>().sortingOrder = orderInLayer;
         Debug.Log("Circle rendered");
     }
 

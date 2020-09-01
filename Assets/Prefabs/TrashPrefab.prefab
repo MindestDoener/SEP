@@ -48,7 +48,6 @@ MonoBehaviour:
   moveSpeed: 2
   currencyValue: 0
   destroyOffset: 1
-  cam: {fileID: 0}
   spriteRenderer: {fileID: 2510761205519548040}
 --- !u!212 &2510761205519548040
 SpriteRenderer:
@@ -89,7 +88,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -110,7 +109,7 @@ Animation:
   m_GameObject: {fileID: 2510761205519548041}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 41c74b127dde03748802ed69843d6fd0, type: 2}
+  m_Animation: {fileID: 0}
   m_Animations: []
   m_WrapMode: 0
   m_PlayAutomatically: 1
