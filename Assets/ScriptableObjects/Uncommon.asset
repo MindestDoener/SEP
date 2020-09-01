@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 587f5bb3128ab804db75b95969c07c6d, type: 3}
   m_Name: Uncommen
   m_EditorClassIdentifier: 
-  Name: Uncommen
+  Name: Uncommon
   Sprite: {fileID: -5962389079421231736, guid: baab9705556a9ca46976528cf074dd4e, type: 3}
   Value: 0
   MoveSpeed: 2
