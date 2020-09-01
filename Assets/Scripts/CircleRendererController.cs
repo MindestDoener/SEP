@@ -4,16 +4,16 @@ using UnityEngine;
 public class CircleRendererController : MonoBehaviour
 {
     private const float CircleDegree = 360f;
-    public int pointCount = 36;
-    public Material material;
-    private float radius;
+    [SerializeField] private int pointCount = 36;
+    [SerializeField] private Material material;
+    private float _radius;
 
     public float Radius
     {
-        get => radius;
+        get => _radius;
         set
         {
-            radius = value;
+            _radius = value;
             RenderCircle();
         }
     }
@@ -27,8 +27,8 @@ public class CircleRendererController : MonoBehaviour
 
         for (var i = 0; i < pointCount; i++)
         {
-            var x = Math.Cos(DegToArc(angle * i)) * radius;
-            var y = Math.Sin(DegToArc(angle * i)) * radius;
+            var x = Math.Cos(DegToArc(angle * i)) * _radius;
+            var y = Math.Sin(DegToArc(angle * i)) * _radius;
             vertices[i] = new Vector3((float) x, (float) y);
         }
 
@@ -56,7 +56,7 @@ public class CircleRendererController : MonoBehaviour
         Debug.Log("Circle rendered");
     }
 
-    private double DegToArc(float angle)
+    private static double DegToArc(float angle)
     {
         return angle * Math.PI / 180;
     }
