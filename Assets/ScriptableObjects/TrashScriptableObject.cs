@@ -8,4 +8,5 @@ public class TrashScriptableObject : ScriptableObject
     public Sprite Sprite;
     public float Value;
     public float MoveSpeed;
+    public Rarity Rarity;
 }

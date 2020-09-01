@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class TrashController : MonoBehaviour
 {
-
-    public float moveSpeed;
-    public float currencyValue;
-    public float destroyOffset;
-    public Camera cam;
-    public SpriteRenderer spriteRenderer;
+    [SerializeField]
+    private float moveSpeed = 0;
+    [SerializeField]
+    private float currencyValue = 0;
+    [SerializeField]
+    private float destroyOffset = 0;
+    private Camera _cam;
+    [SerializeField]
+    private SpriteRenderer spriteRenderer;
     private Vector3 _camCords;
     
     // Start is called before the first frame update
     void Start()
     {
-        cam = Camera.main;
-        _camCords = cam.ScreenToWorldPoint(new Vector3(0, cam.pixelHeight, cam.nearClipPlane));
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        _cam = Camera.main;
+        _camCords = _cam.ScreenToWorldPoint(new Vector3(0, _cam.pixelHeight, _cam.nearClipPlane));
     }
 
     // Update is called once per frame
