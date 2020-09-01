@@ -15,9 +15,9 @@ public class TrashSpawnerController : MonoBehaviour
     private readonly List<TrashScriptableObject> _superRareItems = new List<TrashScriptableObject>();
     private readonly List<TrashScriptableObject> _legendaryItems  = new List<TrashScriptableObject>();
     [SerializeField]
-    private int ySpawnOffset = 0;
+    private float ySpawnOffset = 0;
     [SerializeField]
-    private int xSpawnOffset = 0;
+    private float xSpawnOffset = 0;
     [SerializeField]
     private float minSpawnTime = 0;
     [SerializeField]
@@ -70,7 +70,7 @@ public class TrashSpawnerController : MonoBehaviour
 
     private void InstantiateRandomObjectFromList(List<TrashScriptableObject> items)
     {
-        var random = Random.Range(0, items.Count-1);
+        var random = Random.Range(0, items.Count);
         var item = items.ElementAt(random);
         var randomRotation = Quaternion.Euler(new Vector3(transform.rotation.x, transform.rotation.y, Random.Range(0,360)));
         var instantiatedObject = Instantiate (trashPrefab, 
@@ -85,7 +85,7 @@ public class TrashSpawnerController : MonoBehaviour
 
     private Rarity GetRandomRarity()
     {
-        var rand = Random.Range(0, 100);
+        var rand = Random.Range(0, 100+1);
         if (rand <= (int)Rarity.Legendary) return Rarity.Legendary;
         else if (rand <= (int)Rarity.Legendary + (int)Rarity.SuperRare) return Rarity.SuperRare;
         else if (rand <= (int)Rarity.SuperRare + (int)Rarity.Rare) return Rarity.Rare;
