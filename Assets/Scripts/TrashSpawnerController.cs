@@ -8,21 +8,20 @@ public class TrashSpawnerController : MonoBehaviour
 
     public GameObject trashPrefab;
     [SerializeField]
-    private List<TrashScriptableObject> trashItems;
-    
-    private List<TrashScriptableObject> _commonItems = new List<TrashScriptableObject>();
-    private List<TrashScriptableObject> _uncommonItems = new List<TrashScriptableObject>();
-    private List<TrashScriptableObject> _rareItems = new List<TrashScriptableObject>();
-    private List<TrashScriptableObject> _superRareItems = new List<TrashScriptableObject>();
-    private List<TrashScriptableObject> _legendaryItems  = new List<TrashScriptableObject>();
+    private List<TrashScriptableObject> trashItems = new List<TrashScriptableObject>();
+    private readonly List<TrashScriptableObject> _commonItems = new List<TrashScriptableObject>();
+    private readonly List<TrashScriptableObject> _uncommonItems = new List<TrashScriptableObject>();
+    private readonly List<TrashScriptableObject> _rareItems = new List<TrashScriptableObject>();
+    private readonly List<TrashScriptableObject> _superRareItems = new List<TrashScriptableObject>();
+    private readonly List<TrashScriptableObject> _legendaryItems  = new List<TrashScriptableObject>();
     [SerializeField]
-    private int ySpawnOffset;
+    private int ySpawnOffset = 0;
     [SerializeField]
-    private int xSpawnOffset;
+    private int xSpawnOffset = 0;
     [SerializeField]
-    private float minSpawnTime;
+    private float minSpawnTime = 0;
     [SerializeField]
-    private float maxSpawnTime;
+    private float maxSpawnTime = 0;
     private Camera _cam;
     private Rarity _selectedRarity;
     private Vector3 _rightCorner;
