@@ -35,11 +35,6 @@ public class TrashSpawnerController : MonoBehaviour
         _rightCorner = new Vector3(-camCords.x, camCords.y, camCords.z);
         AssignItemsToArray();
         StartCoroutine(SpawnTrash());
-        // InstantiateRandomObjectFromList(commonItems);
-        // InstantiateRandomObjectFromList(uncommonItems);
-        // InstantiateRandomObjectFromList(rareItems);
-        // InstantiateRandomObjectFromList(superRareItems);
-        // InstantiateRandomObjectFromList(legendaryItems);
     }
     
     IEnumerator SpawnTrash()
