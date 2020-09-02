@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 587f5bb3128ab804db75b95969c07c6d, type: 3}
-  m_Name: OilBarrel
+  m_Name: Shoe
   m_EditorClassIdentifier: 
-  Name: Oil Barrel
-  Sprite: {fileID: -6872683717916842308, guid: 756b2be7c6ea9d24ebf52f01da89332e, type: 3}
+  Name: Shoe
+  Sprite: {fileID: 7405003769047487975, guid: 756b2be7c6ea9d24ebf52f01da89332e, type: 3}
   Value: 0
   MoveSpeed: 2
   Rarity: 5

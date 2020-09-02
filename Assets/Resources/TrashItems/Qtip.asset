@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 587f5bb3128ab804db75b95969c07c6d, type: 3}
-  m_Name: Rare
+  m_Name: Qtip
   m_EditorClassIdentifier: 
-  Name: Rare
-  Sprite: {fileID: 8020143640844766479, guid: baab9705556a9ca46976528cf074dd4e, type: 3}
+  Name: Qtip
+  Sprite: {fileID: -2908562221212924857, guid: 756b2be7c6ea9d24ebf52f01da89332e, type: 3}
   Value: 0
-  MoveSpeed: 4
-  Rarity: 14
+  MoveSpeed: 2
+  Rarity: 30

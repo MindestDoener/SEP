@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 587f5bb3128ab804db75b95969c07c6d, type: 3}
-  m_Name: Uncommon
+  m_Name: BeerBottle
   m_EditorClassIdentifier: 
-  Name: Uncommon
-  Sprite: {fileID: -2908562221212924857, guid: 756b2be7c6ea9d24ebf52f01da89332e, type: 3}
+  Name: Beer Bottle
+  Sprite: {fileID: -5770729020036830334, guid: 756b2be7c6ea9d24ebf52f01da89332e, type: 3}
   Value: 0
-  MoveSpeed: 2
-  Rarity: 30
+  MoveSpeed: 1.5
+  Rarity: 14
