@@ -7,8 +7,6 @@ public class TrashSpawnerController : MonoBehaviour
 {
 
     public GameObject trashPrefab;
-    [SerializeField]
-    private List<TrashScriptableObject> trashItems = new List<TrashScriptableObject>();
     private readonly List<TrashScriptableObject> _commonItems = new List<TrashScriptableObject>();
     private readonly List<TrashScriptableObject> _uncommonItems = new List<TrashScriptableObject>();
     private readonly List<TrashScriptableObject> _rareItems = new List<TrashScriptableObject>();
@@ -96,6 +94,7 @@ public class TrashSpawnerController : MonoBehaviour
 
     private void AssignItemsToArray()
     {
+        var trashItems = Resources.LoadAll<TrashScriptableObject>("TrashItems");
         foreach (var item in trashItems)
         {
             switch (item.Rarity)
