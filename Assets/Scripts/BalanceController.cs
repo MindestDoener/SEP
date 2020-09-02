@@ -5,7 +5,7 @@ using UnityEngine;
 public class BalanceController : MonoBehaviour
 {
     
-    private static decimal _balance;
+    private static decimal _balance = 0;
     private GameObject TextField;
     private BalanceDisplayController bdc;
     
@@ -14,6 +14,7 @@ public class BalanceController : MonoBehaviour
     {
         TextField = GameObject.FindWithTag("Balance");
         bdc = (BalanceDisplayController) TextField.GetComponent(typeof(BalanceDisplayController));
+        bdc.DisplayBalance(_balance);
 
     }
     
