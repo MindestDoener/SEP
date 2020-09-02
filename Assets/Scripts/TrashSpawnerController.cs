@@ -85,11 +85,10 @@ public class TrashSpawnerController : MonoBehaviour
     {
         var rand = Random.Range(0, 100+1);
         if (rand <= (int)Rarity.Legendary) return Rarity.Legendary;
-        else if (rand <= (int)Rarity.Legendary + (int)Rarity.SuperRare) return Rarity.SuperRare;
-        else if (rand <= (int)Rarity.SuperRare + (int)Rarity.Rare) return Rarity.Rare;
-        else if (rand <= (int)Rarity.Rare + (int)Rarity.Uncommon) return Rarity.Uncommon;
-        else if (rand <= (int)Rarity.Uncommon + (int)Rarity.Common) return Rarity.Common;
-        else return Rarity.Common;
+        if (rand <= (int)Rarity.SuperRare) return Rarity.SuperRare;
+        if (rand <= (int)Rarity.Rare) return Rarity.Rare;
+        if (rand <= (int)Rarity.Uncommon) return Rarity.Uncommon;
+        return Rarity.Common;
     }
 
     private void AssignItemsToArray()
