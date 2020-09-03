@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Straw
   Sprite: {fileID: -3159359166093431241, guid: 756b2be7c6ea9d24ebf52f01da89332e, type: 3}
-  Value: 0
+  Value: 20000
   MoveSpeed: 2
   Rarity: 100

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Anchor
   Sprite: {fileID: -1259408508766424310, guid: baab9705556a9ca46976528cf074dd4e, type: 3}
-  Value: 0
+  Value: 20000
   MoveSpeed: 6
   Rarity: 1
