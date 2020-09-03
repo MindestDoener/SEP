@@ -24,30 +24,34 @@ public class BalanceDisplayController : MonoBehaviour
     private string ShortenBalanceDisplay(decimal balance) 
     {
 
-        if (balance >= Convert.ToDecimal(Math.Pow(10, 3)) && balance < Convert.ToDecimal(Math.Pow(10, 6))) {
+        if (balance >= GetPower(10, 3) && balance < GetPower(10, 6)) {
             _suffix = " K";
             _exp = 3;
         }
-        else if (balance >= Convert.ToDecimal(Math.Pow(10, 6)) && balance < Convert.ToDecimal(Math.Pow(10, 9))) 
+        else if (balance >= GetPower(10, 6) && balance < GetPower(10, 9)) 
         {
             _suffix = " M";
             _exp = 6;
         }
-        else if (balance >= Convert.ToDecimal(Math.Pow(10, 9)) && balance < Convert.ToDecimal(Math.Pow(10, 12))) 
+        else if (balance >= GetPower(10, 9) && balance < GetPower(10, 12)) 
         {
             _suffix = " B";
             _exp = 9;
         }
-        else if (balance >= Convert.ToDecimal(Math.Pow(10, 12)) && balance < Convert.ToDecimal(Math.Pow(10, 15))) 
+        else if (balance >= GetPower(10, 12) && balance < GetPower(10, 15)) 
         {
             _suffix = " T";
             _exp = 12;
         }
 
-        _divisor = Convert.ToDecimal(Math.Pow(10, _exp));
+        _divisor = GetPower(10, _exp);
 
-        return Math.Round(balance/_divisor, 2).ToString() + _suffix;
-       
+        return Math.Round(balance/_divisor, 2) + _suffix;
 
+    }
+    
+    private decimal GetPower(int a, int b)
+    {
+        return Convert.ToDecimal(Math.Pow(a, b));
     }
 }
