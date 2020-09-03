@@ -48,6 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   currencyValue: 0
+  sinAmplitude: 1
+  sinDilation: 0.5
   destroyOffset: 1
   spriteRenderer: {fileID: 2510761205519548040}
 --- !u!212 &2510761205519548040

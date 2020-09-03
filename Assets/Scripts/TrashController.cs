@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TrashController : MonoBehaviour
 {
@@ -8,6 +6,10 @@ public class TrashController : MonoBehaviour
     private float moveSpeed = 0;
     [SerializeField]
     private float currencyValue = 0;
+    [SerializeField] 
+    private float sinAmplitude = 1f;
+    [SerializeField] 
+    private float sinDilation= 1f;
     [SerializeField]
     private float destroyOffset = 0;
     private Camera _cam;
@@ -26,7 +28,7 @@ public class TrashController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveObjectLeft();
+        transform.position += MoveObject();
         if (IsOutOfScreenLeft())
         {
             DestroyObject();
@@ -53,10 +55,11 @@ public class TrashController : MonoBehaviour
         return currencyValue;
     }
 
-    private void MoveObjectLeft()
+    private Vector3 MoveObject()
     {
-        var move = new Vector3(-1 * moveSpeed, 0, 0);
-        transform.position += move * Time.deltaTime;
+        var xPosition = transform.position.x;
+        var move = new Vector3(-1 * moveSpeed, Mathf.Sin(xPosition*sinAmplitude)*sinDilation, 0) * Time.deltaTime;
+        return move;
     }
 
     private void DestroyObject()
