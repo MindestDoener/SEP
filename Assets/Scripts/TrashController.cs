@@ -46,6 +46,7 @@ public class TrashController : MonoBehaviour
     public void SetSprite(Sprite sprite)
     {
         spriteRenderer.sprite = sprite;
+        gameObject.AddComponent<PolygonCollider2D>().isTrigger = true;
     }
 
     public float GetCurrencyValue()
