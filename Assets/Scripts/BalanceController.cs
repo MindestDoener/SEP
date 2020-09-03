@@ -5,16 +5,15 @@ using UnityEngine;
 public class BalanceController : MonoBehaviour
 {
     
-    private static decimal _balance;
-    private GameObject TextField;
-    private BalanceDisplayController bdc;
+    private static decimal _balance = 0;
+    [SerializeField]
+    private GameObject _balanceTextField;
+    private BalanceDisplayController _bdc;
     
     // Start is called before the first frame update
     void Start()
     {
-        TextField = GameObject.FindWithTag("Balance");
-        bdc = (BalanceDisplayController) TextField.GetComponent(typeof(BalanceDisplayController));
-
+        _bdc = (BalanceDisplayController) _balanceTextField.GetComponent(typeof(BalanceDisplayController));
     }
     
     public void AddBalance(decimal amount) 
@@ -31,6 +30,6 @@ public class BalanceController : MonoBehaviour
 
     private void UpdateBalanceDisplay() 
     {
-        bdc.DisplayBalance(_balance);
+        _bdc.DisplayBalance(_balance);
     }
 }
