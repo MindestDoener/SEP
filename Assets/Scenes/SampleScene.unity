@@ -141,6 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abfc3308f3c927f43bf9d270b4307852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _balanceTextField: {fileID: 204319836}
 --- !u!1 &204319836
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,7 +213,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 0
 --- !u!222 &204319839
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -391,6 +392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f07c4e0dc10e4144884a11cd1da9700f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 65125284}
 --- !u!1 &520343146
 GameObject:
   m_ObjectHideFlags: 0
