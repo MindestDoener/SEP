@@ -6,16 +6,14 @@ public class BalanceController : MonoBehaviour
 {
     
     private static decimal _balance = 0;
-    private GameObject TextField;
-    private BalanceDisplayController bdc;
+    [SerializeField]
+    private GameObject _balanceTextField;
+    private BalanceDisplayController _bdc;
     
     // Start is called before the first frame update
     void Start()
     {
-        TextField = GameObject.FindWithTag("Balance");
-        bdc = (BalanceDisplayController) TextField.GetComponent(typeof(BalanceDisplayController));
-        bdc.DisplayBalance(_balance);
-
+        _bdc = (BalanceDisplayController) _balanceTextField.GetComponent(typeof(BalanceDisplayController));
     }
     
     public void AddBalance(decimal amount) 
@@ -32,6 +30,6 @@ public class BalanceController : MonoBehaviour
 
     private void UpdateBalanceDisplay() 
     {
-        bdc.DisplayBalance(_balance);
+        _bdc.DisplayBalance(_balance);
     }
 }

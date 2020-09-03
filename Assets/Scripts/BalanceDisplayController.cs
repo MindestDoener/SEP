@@ -6,19 +6,19 @@ using System;
 
 public class BalanceDisplayController : MonoBehaviour
 {
-    private Text balanceText;
+    private Text _balanceText;
     private string _suffix;
     private decimal _divisor;
     private int _exp;  
 
     void Start()
     {
-        balanceText = GetComponent<Text>(); 
+        _balanceText = GetComponent<Text>(); 
     }
 
     public void DisplayBalance(decimal balance) 
     {
-        balanceText.text = ShortenBalanceDisplay(balance);
+        _balanceText.text = ShortenBalanceDisplay(balance);
     }
 
     private string ShortenBalanceDisplay(decimal balance) 

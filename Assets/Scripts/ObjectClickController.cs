@@ -9,11 +9,11 @@ public class ObjectClickController : MonoBehaviour
     private BalanceController _balance;
     private TrashController _trash;
     private GameObject _hitObject;
+    [SerializeField]
     private GameObject _player;
 
     void Start()
     {
-        _player = GameObject.FindWithTag("Player");
         _balance = (BalanceController) _player.GetComponent(typeof(BalanceController));
     }
 
