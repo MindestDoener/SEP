@@ -6,6 +6,7 @@ using System;
 
 public class BalanceDisplayController : MonoBehaviour
 {
+    [SerializeField] private GameObject balancePanel;
     private Text _balanceText;
     private string _suffix;
     private decimal _divisor;
@@ -19,6 +20,7 @@ public class BalanceDisplayController : MonoBehaviour
     public void DisplayBalance(decimal balance) 
     {
         _balanceText.text = ShortenBalanceDisplay(balance);
+        balancePanel.GetComponent<RectTransform>().sizeDelta = new Vector2(30f + 5f * _balanceText.text.Length, 20f);
     }
 
     private string ShortenBalanceDisplay(decimal balance) 
