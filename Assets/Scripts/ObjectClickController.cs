@@ -34,7 +34,7 @@ public class ObjectClickController : MonoBehaviour
                 _hitObject = _hit.collider.gameObject;
                 _trash = _hitObject.GetComponent<TrashController>();
                 AddValue(Convert.ToDecimal(_trash.GetCurrencyValue()));
-                DestroyObject();
+                StartCoroutine(DestroyObject(_hitObject));;
             }  
         }
         
@@ -45,8 +45,11 @@ public class ObjectClickController : MonoBehaviour
         _balance.AddBalance(value);
     }
 
-    private void DestroyObject()
+    IEnumerator DestroyObject(GameObject objectToDestroy)
     {
-       Destroy(_hitObject);
+        objectToDestroy.GetComponentInChildren<ParticleSystem>().Play();
+        objectToDestroy.GetComponent<Animation>().Play();
+        yield return new WaitForSeconds(1f);
+        Destroy(objectToDestroy);
     }
 }
