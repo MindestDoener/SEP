@@ -45,10 +45,23 @@ public class BalanceDisplayController : MonoBehaviour
             _suffix = " T";
             _exp = 12;
         }
+        else
+        {
+            _suffix = "";
+            _exp = 0;
+        }
 
         _divisor = GetPower(10, _exp);
 
-        return Math.Round(balance/_divisor, 2) + _suffix;
+        if (_exp > 0)
+        {
+            return Math.Round(balance/_divisor, 2) + _suffix;
+        }
+        else
+        {
+            return Math.Round(balance / _divisor) + _suffix;
+        }
+
 
     }
     
