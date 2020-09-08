@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Oil Barrel
   Sprite: {fileID: -6872683717916842308, guid: 756b2be7c6ea9d24ebf52f01da89332e, type: 3}
-  Value: 0
+  Value: 500
   MoveSpeed: 2
   Rarity: 6

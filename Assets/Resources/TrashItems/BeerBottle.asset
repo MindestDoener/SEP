@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Beer Bottle
   Sprite: {fileID: -5770729020036830334, guid: 756b2be7c6ea9d24ebf52f01da89332e, type: 3}
-  Value: 0
+  Value: 20
   MoveSpeed: 1.5
   Rarity: 20
