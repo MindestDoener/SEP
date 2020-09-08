@@ -11,6 +11,7 @@ public class ObjectClickController : MonoBehaviour
     private GameObject _hitObject;
     [SerializeField]
     private GameObject _player;
+    private float _multiplier = 1;
 
     void Start()
     {
@@ -33,8 +34,8 @@ public class ObjectClickController : MonoBehaviour
             {
                 _hitObject = _hit.collider.gameObject;
                 _trash = _hitObject.GetComponent<TrashController>();
-                AddValue(Convert.ToDecimal(_trash.GetCurrencyValue()));
-                StartCoroutine(DestroyObject(_hitObject));;
+                AddValue(Convert.ToDecimal(_trash.GetCurrencyValue() * _multiplier));
+                StartCoroutine(DestroyObject(_hitObject));
             }  
         }
         
@@ -52,4 +53,15 @@ public class ObjectClickController : MonoBehaviour
         yield return new WaitForSeconds(1f);
         Destroy(objectToDestroy);
     }
+
+    public void IncreaseMultiplier(float value)
+    {
+        _multiplier = value;
+    }
+
+    public float GetMultiplier()
+    {
+        return _multiplier;
+    }
+    
 }

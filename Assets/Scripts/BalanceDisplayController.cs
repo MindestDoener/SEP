@@ -10,7 +10,7 @@ public class BalanceDisplayController : MonoBehaviour
     private Text _balanceText;
     private string _suffix;
     private decimal _divisor;
-    private int _exp;  
+    private int _exp;
 
     void Start()
     {
@@ -23,7 +23,7 @@ public class BalanceDisplayController : MonoBehaviour
         balancePanel.GetComponent<RectTransform>().sizeDelta = new Vector2(30f + 5f * _balanceText.text.Length, 20f);
     }
 
-    private string ShortenBalanceDisplay(decimal balance) 
+    public string ShortenBalanceDisplay(decimal balance) 
     {
 
         if (balance >= GetPower(10, 3) && balance < GetPower(10, 6)) {
