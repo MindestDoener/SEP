@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Milk Canister
   Sprite: {fileID: -8038561463241250496, guid: 756b2be7c6ea9d24ebf52f01da89332e, type: 3}
-  Value: 20000
+  Value: 10
   MoveSpeed: 2
   Rarity: 50
