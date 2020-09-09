@@ -23,6 +23,7 @@ public class TrashController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         _cam = Camera.main;
         _camCords = _cam.ScreenToWorldPoint(new Vector3(0, _cam.pixelHeight, _cam.nearClipPlane));
+        gameObject.tag = "Trash";
     }
 
     // Update is called once per frame
@@ -50,7 +51,6 @@ public class TrashController : MonoBehaviour
         spriteRenderer.sprite = sprite;
         gameObject.AddComponent<PolygonCollider2D>().isTrigger = true;
     }
-
     public float GetCurrencyValue()
     {
         return currencyValue;

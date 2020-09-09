@@ -25,12 +25,10 @@ public class PlayerController : MonoBehaviour
         get => collectionRadius;
         set => collectionRadius = value;
     }
-
     private void Update()
     {
         if (Math.Abs(circleRenderer.Radius - collectionRadius) > 0.1f) circleRenderer.Radius = collectionRadius;
     }
-
     public void UpdateCollectionRadius(float factor)
     {
         collectionRadius *= factor;
@@ -42,4 +40,6 @@ public class PlayerController : MonoBehaviour
 
         return distanceVector.magnitude <= collectionRadius;
     }
+
+ 
 }

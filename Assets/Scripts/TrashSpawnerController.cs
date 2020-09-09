@@ -72,7 +72,7 @@ public class TrashSpawnerController : MonoBehaviour
         var item = items.ElementAt(random);
         var randomRotation = Quaternion.Euler(new Vector3(transform.rotation.x, transform.rotation.y, Random.Range(0,360)));
         var instantiatedObject = Instantiate (trashPrefab, 
-            new Vector3(_rightCorner.x + xSpawnOffset, -(_rightCorner.y / 2) + Random.Range(-ySpawnOffset, ySpawnOffset), _rightCorner.z), 
+            new Vector3(_rightCorner.x + xSpawnOffset, -(_rightCorner.y / 2) + Random.Range(-ySpawnOffset, ySpawnOffset), 0), 
             randomRotation);
         var trashController = instantiatedObject.GetComponent<TrashController>();
         trashController.SetSprite(item.Sprite);

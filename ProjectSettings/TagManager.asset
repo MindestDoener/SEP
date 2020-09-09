@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Balance
+  - Trash
   layers:
   - Default
   - TransparentFX
