@@ -30,7 +30,7 @@ public class ShopController : MonoBehaviour
 
     private string[] _upgradeTexts =
     {
-        "Click Upgrade: "
+        "Click Upgrade: {0}c (lvl. {1}) [+{2}x]"
     };
 
     private int _upgradeButtonNumber;
@@ -79,10 +79,7 @@ public class ShopController : MonoBehaviour
 
     private void UpdateUpgradeDisplay(int value)
     {
-        upgradeButtonText.text = _upgradeTexts[value] 
-                                 + _bdc.ShortenBalanceDisplay(_upgradeCosts[value]) 
-                                 + " (lvl. " + _upgradeClickLevel[value] + ")" 
-                                 + " +" + _multiplierIncrement[value] + "x" ;
+        upgradeButtonText.text = String.Format(_upgradeTexts[value], _upgradeCosts[value], _upgradeClickLevel[value], _multiplierIncrement[value]);
     }
 
     public void GetButtonText(Text buttonText)

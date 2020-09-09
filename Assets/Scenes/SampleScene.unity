@@ -193,7 +193,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Upgrade Click: 1000 (0)'
+  m_Text: 'Click Upgrade: 1000c (lvl. 0) [+0,5x] '
 --- !u!222 &60105261
 CanvasRenderer:
   m_ObjectHideFlags: 0
