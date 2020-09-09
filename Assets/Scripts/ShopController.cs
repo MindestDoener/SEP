@@ -86,5 +86,15 @@ public class ShopController : MonoBehaviour
     {
         upgradeButtonText = buttonText;
     }
-    
+
+    public decimal[] GetUpgradeCosts()
+    {
+        return _upgradeCosts;
+    }
+
+    public decimal GetBalance()
+    {
+        return _bc.GetBalance();
+    }
+
 }
