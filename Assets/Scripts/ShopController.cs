@@ -20,16 +20,18 @@ public class ShopController : MonoBehaviour
     private ObjectClickController _occ;
     private MultiplierDisplayController _mdc;
 
-    private int[] _upgradeClickLevel = {0};
+    private int[] _upgradeClickLevel = {0, 0, 0};
 
     private float _activeMultiplier;
     
-    private readonly float[] _multiplierIncrement = {0.5f};
-    private decimal[] _upgradeCosts =  {1000m};
-    private int[] _costIncrements = {2};
+    private readonly float[] _multiplierIncrement = {0.5f, 2f, 5f};
+    private decimal[] _upgradeCosts =  {1000m, 5000m, 10000m};
+    private decimal[] _costIncrements = {1.5m, 2m, 2.5m};
 
     private string[] _upgradeTexts =
     {
+        "Click Upgrade: {0}c (lvl. {1}) [+{2}x]",
+        "Click Upgrade: {0}c (lvl. {1}) [+{2}x]",
         "Click Upgrade: {0}c (lvl. {1}) [+{2}x]"
     };
 
@@ -74,12 +76,12 @@ public class ShopController : MonoBehaviour
 
     private void ModifyUpgradeCost(int value)
     {
-        _upgradeCosts[value] = _upgradeCosts[value] * _costIncrements[value];
+        _upgradeCosts[value] = Math.Round(_upgradeCosts[value] * _costIncrements[value]);
     }
 
     private void UpdateUpgradeDisplay(int value)
     {
-        upgradeButtonText.text = String.Format(_upgradeTexts[value], _upgradeCosts[value], _upgradeClickLevel[value], _multiplierIncrement[value]);
+        upgradeButtonText.text = String.Format(_upgradeTexts[value], _bdc.ShortenBalanceDisplay(_upgradeCosts[value]), _upgradeClickLevel[value], _multiplierIncrement[value]);
     }
 
     public void GetButtonText(Text buttonText)
