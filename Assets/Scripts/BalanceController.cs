@@ -32,4 +32,9 @@ public class BalanceController : MonoBehaviour
     {
         _bdc.DisplayBalance(_balance);
     }
+
+    public decimal GetBalance()
+    {
+        return _balance;
+    }
 }
