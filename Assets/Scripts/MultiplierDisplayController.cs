@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class MultiplierDisplayController : MonoBehaviour
 {
-    [SerializeField] 
     private Camera _cam;
 
     private ObjectClickController _occ;
@@ -14,6 +13,7 @@ public class MultiplierDisplayController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _cam = Camera.main;
         _multiplierDisplay = GetComponent<Text>();
         _occ = _cam.GetComponent<ObjectClickController>();
     }
