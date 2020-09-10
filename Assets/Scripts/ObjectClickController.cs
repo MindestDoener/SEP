@@ -46,7 +46,7 @@ public class ObjectClickController : MonoBehaviour
         _balance.AddBalance(value);
     }
 
-    IEnumerator DestroyObject(GameObject objectToDestroy)
+    public static IEnumerator DestroyObject(GameObject objectToDestroy)
     {
         objectToDestroy.GetComponentInChildren<ParticleSystem>().Play();
         objectToDestroy.GetComponent<Animation>().Play();

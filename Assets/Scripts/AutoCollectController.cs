@@ -31,7 +31,7 @@ public class AutoCollectController : MonoBehaviour
         }
         if (Mathf.Sqrt(closestDirection) < this.GetComponent<PlayerController>().CollectionRadius)
         {
-            Destroy(closestTrash);
+            StartCoroutine(ObjectClickController.DestroyObject(closestTrash));
             AddValue(Convert.ToDecimal(closestTrash.GetComponent<TrashController>().GetCurrencyValue()));
         }
     }
