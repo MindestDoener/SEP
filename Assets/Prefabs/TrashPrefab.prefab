@@ -975,7 +975,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 40
+        scalar: 10
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -1419,15 +1419,15 @@ ParticleSystem:
         m_NumAlphaKeys: 2
   UVModule:
     serializedVersion: 2
-    enabled: 0
-    mode: 0
+    enabled: 1
+    mode: 1
     timeMode: 0
     fps: 30
     frameOverTime:
       serializedVersion: 2
-      minMaxState: 1
+      minMaxState: 3
       scalar: 0.9999
-      minScalar: 0.9999
+      minScalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1538,7 +1538,10 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 0}
+    - sprite: {fileID: -7938878928584171511, guid: 72c5969fef2cf664d913624ffd535e7e,
+        type: 3}
+    - sprite: {fileID: 4078796110908485188, guid: 72c5969fef2cf664d913624ffd535e7e,
+        type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
