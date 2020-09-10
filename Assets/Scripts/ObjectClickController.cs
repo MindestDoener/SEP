@@ -1,25 +1,24 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectClickController : MonoBehaviour
 {
-    private RaycastHit2D _hit;
-    private BalanceController _balance;
-    private TrashController _trash;
-    private GameObject _hitObject;
-    [SerializeField]
-    private GameObject _player;
-    private float _multiplier = 1;
+    [SerializeField] private GameObject player;
 
-    void Start()
+    private BalanceController _balance;
+    private RaycastHit2D _hit;
+    private GameObject _hitObject;
+    private float _multiplier = 1;
+    private TrashController _trash;
+
+    private void Start()
     {
-        _balance = (BalanceController) _player.GetComponent(typeof(BalanceController));
+        _balance = (BalanceController) player.GetComponent(typeof(BalanceController));
     }
 
 
-    void Update()
+    private void Update()
     {
         GetClickedObject();
     }
@@ -29,16 +28,15 @@ public class ObjectClickController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             _hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-      
+
             if (_hit.collider != null)
             {
                 _hitObject = _hit.collider.gameObject;
                 _trash = _hitObject.GetComponent<TrashController>();
                 AddValue(Convert.ToDecimal(_trash.GetCurrencyValue() * _multiplier));
                 StartCoroutine(DestroyObject(_hitObject));
-            }  
+            }
         }
-        
     }
 
     private void AddValue(decimal value)
@@ -63,5 +61,4 @@ public class ObjectClickController : MonoBehaviour
     {
         return _multiplier;
     }
-    
 }
