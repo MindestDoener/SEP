@@ -9,9 +9,9 @@ public class ShopController : MonoBehaviour
 {
     private Text upgradeButtonText;
 
-    [SerializeField] private GameObject _player;
+    private GameObject _player;
 
-    [SerializeField] private GameObject _mpDispay;
+    private GameObject _mpDispay;
 
     private Camera _cam;
 
@@ -41,6 +41,8 @@ public class ShopController : MonoBehaviour
     
     void Start()
     {
+        _player = GameObject.FindWithTag("Player");
+        _mpDispay = GameObject.FindWithTag("MultiplierText");
         _cam = Camera.main;
         _bdc = GetComponent<BalanceDisplayController>();
         _bc = _player.GetComponent<BalanceController>();

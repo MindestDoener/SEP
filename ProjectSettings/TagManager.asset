@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Balance
   - Trash
+  - ShopPanel
+  - BalancePanel
+  - MultiplierText
   layers:
   - Default
   - TransparentFX

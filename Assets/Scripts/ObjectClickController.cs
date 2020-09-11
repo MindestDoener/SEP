@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectClickController : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
+    private GameObject _player;
 
     private BalanceController _balance;
     private RaycastHit2D _hit;
@@ -14,7 +14,8 @@ public class ObjectClickController : MonoBehaviour
 
     private void Start()
     {
-        _balance = (BalanceController) player.GetComponent(typeof(BalanceController));
+        _player = GameObject.FindWithTag("Player");
+        _balance = (BalanceController) _player.GetComponent(typeof(BalanceController));
     }
 
 

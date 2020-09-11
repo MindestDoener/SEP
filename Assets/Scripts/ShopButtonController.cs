@@ -6,22 +6,18 @@ using UnityEngine.UI;
 
 public class ShopButtonController : MonoBehaviour
 {
-    [SerializeField]
-    private Button _button;
-
-    [SerializeField] 
     private GameObject _shopPanel;
 
     private bool _isActive;
 
     void Start()
     {
+        _shopPanel = GameObject.FindWithTag("ShopPanel");
         _shopPanel.SetActive(false);
         _isActive = false;
-        _button.onClick.AddListener(OnClick);
     }
 
-    private void OnClick()
+    public void TogglePanel()
     {
         if (_isActive)
         {
