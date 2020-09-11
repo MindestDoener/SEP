@@ -265,7 +265,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8369c659378a28f49be8c5987b695468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  balancePanel: {fileID: 1929660544}
 --- !u!1 &227146364
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,7 +392,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 314677934}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 314677936}
+        m_TargetAssemblyTypeName: ShopButtonController, Assembly-CSharp
+        m_MethodName: TogglePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &314677934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,8 +455,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96c0f915bdb710c4493f515c0d5f212c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _button: {fileID: 314677933}
-  _shopPanel: {fileID: 2111212401}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,7 +568,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f07c4e0dc10e4144884a11cd1da9700f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 65125284}
 --- !u!1 &520343146
 GameObject:
   m_ObjectHideFlags: 0
@@ -9470,6 +9478,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UpgradeClickButton(2)
       objectReference: {fileID: 0}
+    - target: {fileID: 626181971136535377, guid: 430ab593ccf65384aac03e8f14f9cf82,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 626181971136535382, guid: 430ab593ccf65384aac03e8f14f9cf82,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9728,7 +9741,7 @@ GameObject:
   - component: {fileID: 1166900329}
   m_Layer: 5
   m_Name: ActiveMultiplierText
-  m_TagString: Untagged
+  m_TagString: MultiplierText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14108,7 +14121,7 @@ GameObject:
   - component: {fileID: 1929660546}
   m_Layer: 5
   m_Name: PanelImg
-  m_TagString: Untagged
+  m_TagString: BalancePanel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14287,7 +14300,7 @@ GameObject:
   - component: {fileID: 2111212407}
   m_Layer: 5
   m_Name: ShopPanel
-  m_TagString: Untagged
+  m_TagString: ShopPanel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14363,8 +14376,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0329d0f33cf342419bd26c4c9311d4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 65125284}
-  _mpDispay: {fileID: 1166900327}
+  _buttonPrefab: {fileID: 626181971136535377, guid: 430ab593ccf65384aac03e8f14f9cf82,
+    type: 3}
+  _shopItems: []
 --- !u!114 &2111212406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14377,7 +14391,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8369c659378a28f49be8c5987b695468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  balancePanel: {fileID: 0}
 --- !u!114 &2111212407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14485,6 +14498,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UpgradeClickButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 626181971136535377, guid: 430ab593ccf65384aac03e8f14f9cf82,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 626181971136535382, guid: 430ab593ccf65384aac03e8f14f9cf82,
         type: 3}
