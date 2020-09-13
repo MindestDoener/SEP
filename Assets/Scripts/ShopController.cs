@@ -119,8 +119,7 @@ public class ShopController : MonoBehaviour
             var instantiatedObject = Instantiate(_buttonPrefab);
             var instanceDirections = instantiatedObject.GetComponent<RectTransform>();
             _buttons.Add(instantiatedObject.GetComponent<Button>());
-            instantiatedObject.transform.SetParent(gameObject.transform);
-            instanceDirections.localPosition = new Vector3(-46f, 26f - 22f * index , 0);
+            instantiatedObject.transform.SetParent(GameObject.FindWithTag("ButtonContainer").transform);
             instanceDirections.localScale = new Vector3(1f, 1f, 1f);
             _buttons[index].GetComponentInChildren<Text>().text = String.Format(item.ButtonText, 
                                                                                             _bdc.ShortenBalanceDisplay(item.UpgradeCosts), 

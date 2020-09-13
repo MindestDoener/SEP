@@ -9,6 +9,7 @@ TagManager:
   - ShopPanel
   - BalancePanel
   - MultiplierText
+  - ButtonContainer
   layers:
   - Default
   - TransparentFX
