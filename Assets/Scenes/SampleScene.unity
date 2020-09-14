@@ -164,8 +164,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 83944666}
-  - component: {fileID: 83944667}
   - component: {fileID: 83944668}
+  - component: {fileID: 83944667}
   m_Layer: 5
   m_Name: ClickUpgradeButtonContainer
   m_TagString: ButtonContainer
@@ -187,10 +187,10 @@ RectTransform:
   m_Father: {fileID: 1219784827}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 284, y: 0}
+  m_SizeDelta: {x: 152, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &83944667
 MonoBehaviour:
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 83944665}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
@@ -209,13 +209,15 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
-  m_StartCorner: 0
-  m_StartAxis: 0
-  m_CellSize: {x: 80, y: 30}
-  m_Spacing: {x: 10, y: 10}
-  m_Constraint: 0
-  m_ConstraintCount: 2
+  m_ChildAlignment: 1
+  m_Spacing: 5
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!114 &83944668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -582,11 +584,11 @@ RectTransform:
   m_Father: {fileID: 1219784827}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 125.95, y: 0.00020885}
-  m_SizeDelta: {x: 2.9431162, y: 76.88429}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -1.628418, y: 0}
+  m_SizeDelta: {x: 2.9431152, y: 76.88429}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &329574928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9908,8 +9910,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 12.501404, y: -0.42807007}
-  m_SizeDelta: {x: -24.997225, y: -9.143887}
+  m_AnchoredPosition: {x: 0, y: -0}
+  m_SizeDelta: {x: 0, y: -10.00383}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1219784828
 MonoBehaviour:

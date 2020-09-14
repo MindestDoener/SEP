@@ -23,6 +23,7 @@ public class ShopController : MonoBehaviour
     private BalanceController _bc;
     private ObjectClickController _occ;
     private MultiplierDisplayController _mdc;
+    private Transform _buttonParent;
     
     private float _activeMultiplier;
     
@@ -39,6 +40,7 @@ public class ShopController : MonoBehaviour
 
     void Start()
     {
+        _buttonParent = GameObject.FindWithTag("ButtonContainer").transform;
         _player = GameObject.FindWithTag("Player");
         _mpDispay = GameObject.FindWithTag("MultiplierText");
         _cam = Camera.main;
@@ -119,13 +121,14 @@ public class ShopController : MonoBehaviour
             var instantiatedObject = Instantiate(_buttonPrefab);
             var instanceDirections = instantiatedObject.GetComponent<RectTransform>();
             _buttons.Add(instantiatedObject.GetComponent<Button>());
-            instantiatedObject.transform.SetParent(GameObject.FindWithTag("ButtonContainer").transform);
+            instantiatedObject.transform.SetParent(_buttonParent);
             instanceDirections.localScale = new Vector3(1f, 1f, 1f);
             _buttons[index].GetComponentInChildren<Text>().text = String.Format(item.ButtonText, 
                                                                                             _bdc.ShortenBalanceDisplay(item.UpgradeCosts), 
                                                                                             item.UpgradeLevel, 
                                                                                             item.MultiplierIncrement);
             InstantiateValues(item);
+            SetButtonsItemImage(item, _buttons[index]);
             index++;
         }
         AddingListeners();
@@ -149,6 +152,12 @@ public class ShopController : MonoBehaviour
             _buttons[i].onClick.AddListener(delegate { Upgrade(tempInt); });  
         }
             
+    }
+
+    private void SetButtonsItemImage(ShopItemScriptableObject item, Button button)
+    {
+        GameObject ItemImage = button.transform.GetChild(1).gameObject;
+        ItemImage.GetComponent<Image>().sprite = item.ItemImage;
     }
 
 }

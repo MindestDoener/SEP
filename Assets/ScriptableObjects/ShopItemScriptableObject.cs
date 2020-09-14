@@ -12,4 +12,5 @@ public class ShopItemScriptableObject : ScriptableObject
     public String ButtonText;
     public UpgradeType Type;
     public int ButtonNumber;
+    public Sprite ItemImage;
 }
