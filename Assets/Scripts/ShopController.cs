@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class ShopController : MonoBehaviour
 {
-    private Text upgradeButtonText;
+    [SerializeField]
+    private GameObject _buttonPrefab;
 
     private GameObject _player;
+
+    private List<Button> _buttons = new List<Button>();
 
     private GameObject _mpDispay;
 
@@ -19,28 +23,24 @@ public class ShopController : MonoBehaviour
     private BalanceController _bc;
     private ObjectClickController _occ;
     private MultiplierDisplayController _mdc;
-
-    private int[] _upgradeClickLevel = {0, 0, 0};
-
+    private Transform _buttonParent;
+    
     private float _activeMultiplier;
     
-    private readonly float[] _multiplierIncrement = {0.5f, 2f, 5f};
-    private decimal[] _upgradeCosts =  {1000m, 5000m, 10000m};
-    private decimal[] _costIncrements = {1.5m, 2m, 2.5m};
+    private List<int> _upgradeClickLevel = new List<int>();
+    private List<float> _multiplierIncrement = new List<float>();
+    private List<decimal> _upgradeCosts = new List<decimal>();
+    private List<decimal> _costIncrements = new List<decimal>();
+    private List<UpgradeType> _upgradeTypes = new List<UpgradeType>();
 
-    private string[] _upgradeTexts =
-    {
-        "Click Upgrade: {0}c (lvl. {1}) [+{2}x]",
-        "Click Upgrade: {0}c (lvl. {1}) [+{2}x]",
-        "Click Upgrade: {0}c (lvl. {1}) [+{2}x]"
-    };
+    [SerializeField]
+    private ShopItemScriptableObject[] _shopItems;
 
-    private int _upgradeButtonNumber;
 
-    
-    
+
     void Start()
     {
+        _buttonParent = GameObject.FindWithTag("ButtonContainer").transform;
         _player = GameObject.FindWithTag("Player");
         _mpDispay = GameObject.FindWithTag("MultiplierText");
         _cam = Camera.main;
@@ -49,23 +49,25 @@ public class ShopController : MonoBehaviour
         _occ = _cam.GetComponent<ObjectClickController>();
         _mdc = _mpDispay.GetComponent<MultiplierDisplayController>();
         _activeMultiplier = _occ.GetMultiplier();
+        _shopItems = AssignItemsToArray();
+        InstantiateButtons();
     }
 
-    public void Upgrade(int upgradeNumber)
+    public void Upgrade(int value)
     {
-        if (_bc.GetBalance() >= _upgradeCosts[upgradeNumber])
+        if (GetBalance() >= _upgradeCosts[value] && _upgradeTypes[value] == UpgradeType.ClickUpgrade)
         {
-            DoUpgrade(upgradeNumber);
+            DoClickUpgrade(value);
         }
     }
 
-    private void DoUpgrade(int upgradeNumber)
+    private void DoClickUpgrade(int value)
     {
-        _upgradeClickLevel[upgradeNumber] += 1;
-        _bc.AddBalance(-_upgradeCosts[upgradeNumber]);
-        ModifyUpgradeCost(upgradeNumber);
-        ModifyCurrentMultiplier(upgradeNumber);
-        UpdateUpgradeDisplay(upgradeNumber);
+        _upgradeClickLevel[value] += 1;
+        _bc.AddBalance(-_upgradeCosts[value]);
+        ModifyUpgradeCost(value);
+        ModifyCurrentMultiplier(value);
+        UpdateUpgradeDisplay(value);
         _mdc.UpdateDisplay();
     }
 
@@ -83,22 +85,79 @@ public class ShopController : MonoBehaviour
 
     private void UpdateUpgradeDisplay(int value)
     {
-        upgradeButtonText.text = String.Format(_upgradeTexts[value], _bdc.ShortenBalanceDisplay(_upgradeCosts[value]), _upgradeClickLevel[value], _multiplierIncrement[value]);
+        _buttons[value].GetComponentInChildren<Text>().text = String.Format(_shopItems[value].ButtonText, 
+                                                                            _bdc.ShortenBalanceDisplay(_upgradeCosts[value]), 
+                                                                            _upgradeClickLevel[value], 
+                                                                            _multiplierIncrement[value]);;
     }
 
-    public void GetButtonText(Text buttonText)
-    {
-        upgradeButtonText = buttonText;
-    }
-
-    public decimal[] GetUpgradeCosts()
+    public List<decimal> GetUpgradeCosts()
     {
         return _upgradeCosts;
-    }
+    } 
 
     public decimal GetBalance()
     {
         return _bc.GetBalance();
+    }
+
+    public List<Button> GetButtons()
+    {
+        return _buttons;
+    }
+
+    private ShopItemScriptableObject[] AssignItemsToArray()
+    {
+        var ObjectList = Resources.LoadAll<ShopItemScriptableObject>("ShopItems");
+        Array.Sort(ObjectList, (item1, item2) => item1.ButtonNumber.CompareTo(item2.ButtonNumber));
+        return ObjectList;
+    }
+
+    private void InstantiateButtons()
+    {
+        int index = 0;
+        foreach (var item in _shopItems)
+        {
+            var instantiatedObject = Instantiate(_buttonPrefab);
+            var instanceDirections = instantiatedObject.GetComponent<RectTransform>();
+            _buttons.Add(instantiatedObject.GetComponent<Button>());
+            instantiatedObject.transform.SetParent(_buttonParent);
+            instanceDirections.localScale = new Vector3(1f, 1f, 1f);
+            _buttons[index].GetComponentInChildren<Text>().text = String.Format(item.ButtonText, 
+                                                                                            _bdc.ShortenBalanceDisplay(item.UpgradeCosts), 
+                                                                                            item.UpgradeLevel, 
+                                                                                            item.MultiplierIncrement);
+            InstantiateValues(item);
+            SetButtonsItemImage(item, _buttons[index]);
+            index++;
+        }
+        AddingListeners();
+
+    }
+
+    private void InstantiateValues(ShopItemScriptableObject item)
+    {
+        _upgradeClickLevel.Add(item.UpgradeLevel);
+        _multiplierIncrement.Add(item.MultiplierIncrement);
+        _upgradeCosts.Add(Convert.ToDecimal(item.UpgradeCosts));
+        _costIncrements.Add(Convert.ToDecimal(item.CostIncrements));
+        _upgradeTypes.Add(item.Type);
+    }
+
+    private void AddingListeners()
+    {
+        for (int i = 0; i < _buttons.Count; i++)
+        {
+            int tempInt = i;
+            _buttons[i].onClick.AddListener(delegate { Upgrade(tempInt); });  
+        }
+            
+    }
+
+    private void SetButtonsItemImage(ShopItemScriptableObject item, Button button)
+    {
+        GameObject ItemImage = button.transform.GetChild(1).gameObject;
+        ItemImage.GetComponent<Image>().sprite = item.ItemImage;
     }
 
 }

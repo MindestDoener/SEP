@@ -11,3 +11,9 @@ public enum Rarity
     SuperRare = 6,
     Legendary = 1,
 }
+
+public enum UpgradeType
+{
+    ClickUpgrade = 0,
+    AutocollectUpgrade = 1
+}
