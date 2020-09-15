@@ -25,10 +25,10 @@ public class ShopController : MonoBehaviour
     private MultiplierDisplayController _mdc;
     private Transform _buttonParent;
     
-    private float _activeMultiplier;
+    private decimal _activeMultiplier;
     
     private List<int> _upgradeClickLevel = new List<int>();
-    private List<float> _multiplierIncrement = new List<float>();
+    private List<decimal> _multiplierIncrement = new List<decimal>();
     private List<decimal> _upgradeCosts = new List<decimal>();
     private List<decimal> _costIncrements = new List<decimal>();
     private List<UpgradeType> _upgradeTypes = new List<UpgradeType>();
@@ -138,7 +138,7 @@ public class ShopController : MonoBehaviour
     private void InstantiateValues(ShopItemScriptableObject item)
     {
         _upgradeClickLevel.Add(item.UpgradeLevel);
-        _multiplierIncrement.Add(item.MultiplierIncrement);
+        _multiplierIncrement.Add(Convert.ToDecimal(item.MultiplierIncrement));
         _upgradeCosts.Add(Convert.ToDecimal(item.UpgradeCosts));
         _costIncrements.Add(Convert.ToDecimal(item.CostIncrements));
         _upgradeTypes.Add(item.Type);

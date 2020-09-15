@@ -9,7 +9,7 @@ public class ObjectClickController : MonoBehaviour
     private BalanceController _balance;
     private RaycastHit2D _hit;
     private GameObject _hitObject;
-    private float _multiplier = 1;
+    private decimal _multiplier = 1;
     private TrashController _trash;
 
     private void Start()
@@ -34,7 +34,7 @@ public class ObjectClickController : MonoBehaviour
             {
                 _hitObject = _hit.collider.gameObject;
                 _trash = _hitObject.GetComponent<TrashController>();
-                AddValue(Convert.ToDecimal(_trash.GetCurrencyValue() * _multiplier));
+                AddValue(Convert.ToDecimal(_trash.GetCurrencyValue()) * _multiplier);
                 StartCoroutine(DestroyObject(_hitObject));
             }
         }
@@ -53,12 +53,12 @@ public class ObjectClickController : MonoBehaviour
         Destroy(objectToDestroy);
     }
 
-    public void IncreaseMultiplier(float value)
+    public void IncreaseMultiplier(decimal value)
     {
         _multiplier = value;
     }
 
-    public float GetMultiplier()
+    public decimal GetMultiplier()
     {
         return _multiplier;
     }
