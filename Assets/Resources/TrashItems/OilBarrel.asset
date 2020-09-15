@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: OilBarrel
   m_EditorClassIdentifier: 
   Name: Oil Barrel
-  Sprite: {fileID: -6872683717916842308, guid: 756b2be7c6ea9d24ebf52f01da89332e, type: 3}
+  Sprite: {fileID: 8924923488420828039, guid: baab9705556a9ca46976528cf074dd4e, type: 3}
   Value: 500
   MoveSpeed: 2
   Rarity: 6

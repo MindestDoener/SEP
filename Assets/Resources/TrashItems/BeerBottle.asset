@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BeerBottle
   m_EditorClassIdentifier: 
   Name: Beer Bottle
-  Sprite: {fileID: -5770729020036830334, guid: 756b2be7c6ea9d24ebf52f01da89332e, type: 3}
+  Sprite: {fileID: 141881922290515673, guid: baab9705556a9ca46976528cf074dd4e, type: 3}
   Value: 20
   MoveSpeed: 1.5
   Rarity: 20
