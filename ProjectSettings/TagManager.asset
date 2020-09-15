@@ -11,6 +11,8 @@ TagManager:
   - MultiplierText
   - ButtonContainer
   - RightUI
+  - PauseMenu
+  - BalanceObject
   layers:
   - Default
   - TransparentFX
