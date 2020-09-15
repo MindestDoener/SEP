@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: NuclearWaste
   m_EditorClassIdentifier: 
   Name: Nuclear Waste
-  Sprite: {fileID: 1677442906467761504, guid: 756b2be7c6ea9d24ebf52f01da89332e, type: 3}
+  Sprite: {fileID: 5109842565386223912, guid: baab9705556a9ca46976528cf074dd4e, type: 3}
   Value: 1000
   MoveSpeed: 2
   Rarity: 1

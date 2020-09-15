@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Anchor
   m_EditorClassIdentifier: 
   Name: Anchor
-  Sprite: {fileID: -1259408508766424310, guid: baab9705556a9ca46976528cf074dd4e, type: 3}
+  Sprite: {fileID: 3582081121052105185, guid: baab9705556a9ca46976528cf074dd4e, type: 3}
   Value: 500
   MoveSpeed: 6
   Rarity: 1

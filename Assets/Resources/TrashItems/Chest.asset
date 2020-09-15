@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 587f5bb3128ab804db75b95969c07c6d, type: 3}
-  m_Name: Qtip
+  m_Name: Chest
   m_EditorClassIdentifier: 
-  Name: Qtip
-  Sprite: {fileID: -8265612137282592464, guid: baab9705556a9ca46976528cf074dd4e, type: 3}
-  Value: 15
+  Name: Chest
+  Sprite: {fileID: 5609607861021586584, guid: baab9705556a9ca46976528cf074dd4e, type: 3}
+  Value: 0
   MoveSpeed: 2
   Rarity: 20

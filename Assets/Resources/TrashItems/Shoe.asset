@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Shoe
   m_EditorClassIdentifier: 
   Name: Shoe
-  Sprite: {fileID: 7405003769047487975, guid: 756b2be7c6ea9d24ebf52f01da89332e, type: 3}
+  Sprite: {fileID: -1153513107017928491, guid: baab9705556a9ca46976528cf074dd4e, type: 3}
   Value: 10
   MoveSpeed: 2
   Rarity: 20

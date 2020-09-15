@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 587f5bb3128ab804db75b95969c07c6d, type: 3}
   m_Name: PlasticBottle
   m_EditorClassIdentifier: 
-  Name: Platic Bottle
-  Sprite: {fileID: -6251682230944352461, guid: baab9705556a9ca46976528cf074dd4e, type: 3}
+  Name: Plastic Bottle
+  Sprite: {fileID: -915376639789153546, guid: baab9705556a9ca46976528cf074dd4e, type: 3}
   Value: 5
   MoveSpeed: 2
   Rarity: 100
