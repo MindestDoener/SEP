@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PauseMenuController : MonoBehaviour
 {
-
-    public static bool GameIsPaused = false;
+    private readonly GameObject[] _otherUI = new GameObject[2];
     private GameObject _pauseMenu;
-    private GameObject[] _otherUI = new GameObject[2];
+
+    public static bool GameIsPaused { get; private set; }
 
     private void Start()
     {
@@ -21,23 +18,16 @@ public class PauseMenuController : MonoBehaviour
     public void Pause()
     {
         _pauseMenu.SetActive(true);
-        foreach (var ui in _otherUI)
-        {
-            ui.SetActive(false);
-        }
+        foreach (var ui in _otherUI) ui.SetActive(false);
         Time.timeScale = 0;
         GameIsPaused = true;
     }
-    
+
     public void Resume()
     {
         _pauseMenu.SetActive(false);
-        foreach (var ui in _otherUI)
-        {
-            ui.SetActive(true);
-        }
+        foreach (var ui in _otherUI) ui.SetActive(true);
         Time.timeScale = 1;
         GameIsPaused = false;
     }
-
 }
