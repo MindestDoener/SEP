@@ -21,7 +21,7 @@ public class ObjectClickController : MonoBehaviour
 
     private void Update()
     {
-        if (!PauseMenuController.GameIsPaused)
+        if (!PauseMenuController.GetGameIsPaused())
         {
             GetClickedObject(); 
         }
