@@ -5853,8 +5853,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 750066663}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.593, y: -0.144, z: 0}
+  m_LocalScale: {x: 0.96703726, y: 0.98795784, z: 1}
   m_Children: []
   m_Father: {fileID: 227146366}
   m_RootOrder: 1
@@ -9693,6 +9693,7 @@ GameObject:
   - component: {fileID: 1032341761}
   - component: {fileID: 1032341760}
   - component: {fileID: 1032341759}
+  - component: {fileID: 1032341763}
   m_Layer: 5
   m_Name: UICanvas
   m_TagString: Untagged
@@ -9781,6 +9782,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1032341763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032341758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e324097a0ffe74f46812c748ebe2d326, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  font: {fileID: 12800000, guid: 1c10051538e484e849e45b324b9b334b, type: 2}
+  material: {fileID: 2100000, guid: df856cdb9110140419b5d535c1a57636, type: 2}
 --- !u!1 &1162780813
 GameObject:
   m_ObjectHideFlags: 0
