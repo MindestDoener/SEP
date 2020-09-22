@@ -4,10 +4,12 @@ using UnityEngine;
 public class AutoCollectController : MonoBehaviour
 {
     [SerializeField] private float autoCollectRate = 4;
+    private Canvas _mainCanvas;
 
     public void Start()
     {
         InvokeRepeating(nameof(DestroyClosestTrashInRadius), 5, autoCollectRate);
+        _mainCanvas = GameObject.Find("UICanvas").GetComponent<Canvas>();
     }
 
     public void DestroyClosestTrashInRadius()
@@ -31,6 +33,7 @@ public class AutoCollectController : MonoBehaviour
         {
             StartCoroutine(ObjectClickController.DestroyObject(closestTrash));
             AddValue(Convert.ToDecimal(closestTrash.GetComponent<TrashController>().GetCurrencyValue()));
+            AddValueText(closestTrash.GetComponent<TrashController>());
         }
     }
 
@@ -38,5 +41,10 @@ public class AutoCollectController : MonoBehaviour
     {
         var balance = (BalanceController) GetComponent(typeof(BalanceController));
         balance.AddBalance(value);
+    }
+
+    public void AddValueText(TrashController trash)
+    {
+        _mainCanvas.GetComponent<ValueDisplayer>().CreateText(trash);
     }
 }
