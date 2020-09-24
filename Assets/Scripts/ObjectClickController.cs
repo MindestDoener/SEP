@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObjectClickController : MonoBehaviour
 {
     private GameObject _player;
-
+    private Canvas _mainCanvas;
     private BalanceController _balance;
     private RaycastHit2D _hit;
     private GameObject _hitObject;
@@ -14,6 +14,7 @@ public class ObjectClickController : MonoBehaviour
 
     private void Start()
     {
+        _mainCanvas = GameObject.Find("UICanvas").GetComponent<Canvas>();
         _player = GameObject.FindWithTag("Player");
         _balance = (BalanceController) _player.GetComponent(typeof(BalanceController));
     }
@@ -38,6 +39,7 @@ public class ObjectClickController : MonoBehaviour
                 _hitObject = _hit.collider.gameObject;
                 _trash = _hitObject.GetComponent<TrashController>();
                 AddValue(Convert.ToDecimal(_trash.GetCurrencyValue()) * _multiplier);
+                AddValueText(_trash);
                 StartCoroutine(DestroyObject(_hitObject));
             }
         }
@@ -54,6 +56,11 @@ public class ObjectClickController : MonoBehaviour
         objectToDestroy.GetComponent<Animation>().Play();
         yield return new WaitForSeconds(1f);
         Destroy(objectToDestroy);
+    }
+
+    public void AddValueText(TrashController trash)
+    {
+        _mainCanvas.GetComponent<ValueDisplayer>().CreateText(trash);
     }
 
     public void IncreaseMultiplier(decimal value)
