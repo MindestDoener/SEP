@@ -16,7 +16,8 @@ public class TrashController : MonoBehaviour
     [SerializeField]
     private SpriteRenderer spriteRenderer;
     private Vector3 _camCords;
-    
+    private Rarity _rarity;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +46,17 @@ public class TrashController : MonoBehaviour
     {
         currencyValue = value;
     }
+    
+    public Rarity GetRarity()
+    {
+        return _rarity;
+    }
 
+    public void SetRarity(Rarity rarity)
+    {
+        _rarity = rarity;
+    }
+    
     public void SetSprite(Sprite sprite)
     {
         spriteRenderer.sprite = sprite;

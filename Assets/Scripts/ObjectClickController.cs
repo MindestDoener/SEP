@@ -54,6 +54,7 @@ public class ObjectClickController : MonoBehaviour
     {
         objectToDestroy.GetComponentInChildren<ParticleSystem>().Play();
         objectToDestroy.GetComponent<Animation>().Play();
+        TrashManager.IncreaseCount(objectToDestroy.name, objectToDestroy.GetComponent<TrashController>().GetRarity());
         yield return new WaitForSeconds(1f);
         Destroy(objectToDestroy);
     }

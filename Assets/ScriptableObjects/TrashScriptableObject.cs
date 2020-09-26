@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 [CreateAssetMenu]
 public class TrashScriptableObject : ScriptableObject
 {
@@ -9,4 +7,7 @@ public class TrashScriptableObject : ScriptableObject
     public float Value;
     public float MoveSpeed;
     public Rarity Rarity;
+    public decimal Count = 0;
+    public bool IsUnlocked = false;
+    public GameObject CollectionObject;
 }
