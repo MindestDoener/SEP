@@ -1,7 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class TrashSpawnerController : MonoBehaviour
 {
@@ -12,11 +15,7 @@ public class TrashSpawnerController : MonoBehaviour
     [SerializeField] private float minSpawnTime;
     [SerializeField] private float maxSpawnTime;
 
-    private readonly List<TrashScriptableObject> _commonItems = new List<TrashScriptableObject>();
-    private readonly List<TrashScriptableObject> _legendaryItems = new List<TrashScriptableObject>();
-    private readonly List<TrashScriptableObject> _rareItems = new List<TrashScriptableObject>();
-    private readonly List<TrashScriptableObject> _superRareItems = new List<TrashScriptableObject>();
-    private readonly List<TrashScriptableObject> _uncommonItems = new List<TrashScriptableObject>();
+    private Dictionary<Rarity, List<TrashScriptableObject>> _trashItems;
     private Camera _cam;
     private Vector3 _rightCorner;
     private Rarity _selectedRarity;
@@ -27,7 +26,8 @@ public class TrashSpawnerController : MonoBehaviour
         _cam = Camera.main;
         var camCords = _cam.ScreenToWorldPoint(new Vector3(0, _cam.pixelHeight, _cam.nearClipPlane));
         _rightCorner = new Vector3(-camCords.x, camCords.y, camCords.z);
-        AssignItemsToArray();
+        TrashManager.AssignItemsToDictionary();
+        _trashItems = TrashManager.GetAllTrashItems();
         StartCoroutine(SpawnTrash());
     }
 
@@ -36,29 +36,7 @@ public class TrashSpawnerController : MonoBehaviour
         while (true)
         {
             _selectedRarity = GetRandomRarity();
-            List<TrashScriptableObject> type;
-            switch (_selectedRarity)
-            {
-                case Rarity.Common:
-                    type = _commonItems;
-                    break;
-                case Rarity.Uncommon:
-                    type = _uncommonItems;
-                    break;
-                case Rarity.Rare:
-                    type = _rareItems;
-                    break;
-                case Rarity.SuperRare:
-                    type = _superRareItems;
-                    break;
-                case Rarity.Legendary:
-                    type = _legendaryItems;
-                    break;
-                default:
-                    type = _commonItems;
-                    break;
-            }
-
+            List<TrashScriptableObject> type = _trashItems[_selectedRarity];
             InstantiateRandomObjectFromList(type);
             yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawnTime));
         }
@@ -74,6 +52,7 @@ public class TrashSpawnerController : MonoBehaviour
         var trashController = instantiatedObject.GetComponent<TrashController>();
         trashController.SetSprite(item.Sprite);
         trashController.SetCurrencyValue(item.Value);
+        trashController.SetRarity(item.Rarity);
         trashController.SetMoveSpeed(item.MoveSpeed);
         trashController.name = item.Name;
     }
@@ -88,30 +67,4 @@ public class TrashSpawnerController : MonoBehaviour
         return Rarity.Common;
     }
 
-    private void AssignItemsToArray()
-    {
-        var trashItems = Resources.LoadAll<TrashScriptableObject>("TrashItems");
-        foreach (var item in trashItems)
-            switch (item.Rarity)
-            {
-                case Rarity.Common:
-                    _commonItems.Add(item);
-                    break;
-                case Rarity.Uncommon:
-                    _uncommonItems.Add(item);
-                    break;
-                case Rarity.Rare:
-                    _rareItems.Add(item);
-                    break;
-                case Rarity.SuperRare:
-                    _superRareItems.Add(item);
-                    break;
-                case Rarity.Legendary:
-                    _legendaryItems.Add(item);
-                    break;
-                default:
-                    Debug.LogWarning("No Rarity Found");
-                    break;
-            }
-    }
 }
