@@ -9,7 +9,7 @@ public class ObjectClickController : MonoBehaviour
     private BalanceController _balance;
     private RaycastHit2D _hit;
     private GameObject _hitObject;
-    private decimal _multiplier = 1;
+    private static decimal _multiplier = 1;
     private TrashController _trash;
 
     private void Start()
@@ -59,17 +59,17 @@ public class ObjectClickController : MonoBehaviour
         Destroy(objectToDestroy);
     }
 
-    public void AddValueText(TrashController trash)
+    private void AddValueText(TrashController trash)
     {
         _mainCanvas.GetComponent<ValueDisplayer>().CreateText(trash);
     }
 
-    public void IncreaseMultiplier(decimal value)
+    public static void IncreaseMultiplier(decimal value)
     {
         _multiplier = value;
     }
 
-    public decimal GetMultiplier()
+    public static decimal GetMultiplier()
     {
         return _multiplier;
     }
