@@ -15,6 +15,7 @@ TagManager:
   - BalanceObject
   - CollectionContainer
   - CollectionMenu
+  - DetailView
   layers:
   - Default
   - TransparentFX

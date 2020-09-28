@@ -10,4 +10,5 @@ public class TrashScriptableObject : ScriptableObject
     public decimal Count = 0;
     public bool IsUnlocked = false;
     public GameObject CollectionObject;
+    public string Description = "(description missing)";
 }
