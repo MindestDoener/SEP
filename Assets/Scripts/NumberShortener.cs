@@ -35,9 +35,7 @@ public static class NumberShortener
 
         var divisor = GetPower(10, exp);
 
-        if (exp > 0)
-            return Math.Round(number / divisor, 2) + " " + suffix;
-        return Math.Round(number / divisor) + " " + suffix;
+        return Math.Round(number / divisor, 2) + " " + suffix;
     }
 
     private static decimal GetPower(int a, int b)
