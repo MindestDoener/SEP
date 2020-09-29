@@ -37,6 +37,7 @@ public class ObjectClickController : MonoBehaviour
             if (_hit.collider != null)
             {
                 _hitObject = _hit.collider.gameObject;
+                if (_hitObject.GetComponent<Animation>().isPlaying) return;
                 _trash = _hitObject.GetComponent<TrashController>();
                 AddValue(Convert.ToDecimal(_trash.GetCurrencyValue()) * _multiplier);
                 AddValueText(_trash);
