@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 587f5bb3128ab804db75b95969c07c6d, type: 3}
-  m_Name: PlasticBottle
+  m_Name: FishingLine
   m_EditorClassIdentifier: 
-  Name: Plastic Bottle
-  Sprite: {fileID: -915376639789153546, guid: baab9705556a9ca46976528cf074dd4e, type: 3}
-  Value: 5
-  MoveSpeed: 2
-  Rarity: 100
+  Name: 
+  Sprite: {fileID: 0}
+  Value: 0
+  MoveSpeed: 0
+  Rarity: 0
   IsUnlocked: 0
   CollectionObject: {fileID: 0}
-  Description: Plastic bottles take 450 years to to decompose in the Ocean.
+  Description: (description missing)
