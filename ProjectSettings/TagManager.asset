@@ -16,6 +16,7 @@ TagManager:
   - CollectionContainer
   - CollectionMenu
   - DetailView
+  - CharCustomizer
   layers:
   - Default
   - TransparentFX
