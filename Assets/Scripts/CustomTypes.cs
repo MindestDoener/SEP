@@ -12,6 +12,15 @@ public enum Rarity
     Legendary = 1
 }
 
+public enum WearableItem
+{
+    Bodys,
+    Faces,
+    Hats, 
+    Pants,
+    Shoes
+}
+
 public enum UpgradeType
 {
     ClickUpgrade = 0,
