@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4339286bae5bbb6438242f2e1a4906f5, type: 3}
   m_Name: BrownShoes
   m_EditorClassIdentifier: 
-  Name: BrownShoes
+  Name: 
   ItemImage: {fileID: 21300000, guid: 840d6b30d0adda94f9f8d803e4c01405, type: 3}
   IsUnlocked: 1
   ItemType: 4

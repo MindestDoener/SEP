@@ -40,7 +40,7 @@ namespace Assets.Scripts
                 GameObject.Destroy(child.gameObject);
             }
 
-            int xKoord = 240;
+            int xKoord = 230;
             int yKoord = 390;
             int maxItems = 12;
 
@@ -54,16 +54,34 @@ namespace Assets.Scripts
                 if (i % 3 == 0)
                 {
                     yKoord -= 70;
-                    xKoord = 240;
+                    xKoord = 230;
                 }
                 CurrentItem = Instantiate(ItemPrefab, new Vector3(xKoord, yKoord, 0), Quaternion.identity);
                 CurrentItem.transform.SetParent(ItemContainer.transform);
-                CurrentItem.transform.localScale = new Vector2(0.9f, 0.9f);
+                CurrentItem.transform.localScale = new Vector2(GetScale(ItemType), GetScale(ItemType));
                 CurrentItem.transform.GetChild(0).GetComponent<Image>().sprite = WearableItems[i + FirstItemIndex].ItemImage;
                 CurrentItem.transform.GetChild(1).GetComponent<Text>().text = WearableItems[i + FirstItemIndex].Name;
                 CurrentItem.GetComponent<WearableItemController>().ItemType = ItemType;
                 xKoord += 90;
             }
+        }
+
+        public float GetScale(WearableItem ItemType)
+        {
+            switch (ItemType)
+            {
+                case WearableItem.Bodys:
+                    return 1f;
+                case WearableItem.Shoes:
+                    return 2f;
+                case WearableItem.Pants:
+                    return 1.5f;
+                case WearableItem.Hats:
+                    return 1.2f;
+                case WearableItem.Faces:
+                    return 1.2f;
+            }
+            return 1f;
         }
 
         public void RightButtonClick()
@@ -86,6 +104,8 @@ namespace Assets.Scripts
         }
         private GameObject CurrentTab()
         {
+            try
+            {
             var itemType = GameObject.FindWithTag("ItemContainer").transform.GetChild(0).GetComponent<WearableItemController>().ItemType;
             var tabBar = GameObject.FindWithTag("TabBar").transform;
 
@@ -96,7 +116,11 @@ namespace Assets.Scripts
                     return tabBar.GetChild(i).gameObject;
                 }
             }
-
+            }
+            catch(UnityException)
+            {
+                return null;
+            }
             return null;
         }
     }

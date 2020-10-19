@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4339286bae5bbb6438242f2e1a4906f5, type: 3}
   m_Name: Body
   m_EditorClassIdentifier: Assembly-CSharp::WearableItemScribtableObject
-  Name: Blue Pullover
+  Name: 
   ItemImage: {fileID: 21300000, guid: e5e551d826057d744bb4e4f463145bf2, type: 3}
   IsUnlocked: 1
   ItemType: 0
