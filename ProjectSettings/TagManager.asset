@@ -19,6 +19,7 @@ TagManager:
   - CharCustomizer
   - ItemContainer
   - PlayerCustomizerModel
+  - TabBar
   layers:
   - Default
   - TransparentFX

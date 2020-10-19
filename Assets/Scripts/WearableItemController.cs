@@ -36,7 +36,6 @@ public class WearableItemController : MonoBehaviour
                 _player.transform.GetChild(4).GetComponent<SpriteRenderer>().sprite = ClickedItem;
                 _playerCustomizerModel.transform.GetChild(4).GetComponent<Image>().sprite = ClickedItem;
                 break;
-
         }
     }
 }
