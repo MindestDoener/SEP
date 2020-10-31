@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,8 +41,9 @@ namespace Assets.Scripts
                 GameObject.Destroy(child.gameObject);
             }
 
-            int xKoord = 230;
-            int yKoord = 390;
+            float width = ItemContainer.GetComponent<RectTransform>().rect.width;
+            float xKoord = ItemContainer.transform.position.x - width;
+            float yKoord = ItemContainer.GetComponent<RectTransform>().rect.height * 3.5f; 
             int maxItems = 12;
 
             if(WearableItems.Length - (FirstItemIndex + 1) < 12)
@@ -54,7 +56,7 @@ namespace Assets.Scripts
                 if (i % 3 == 0)
                 {
                     yKoord -= 70;
-                    xKoord = 230;
+                    xKoord = ItemContainer.transform.position.x - width;
                 }
                 CurrentItem = Instantiate(ItemPrefab, new Vector3(xKoord, yKoord, 0), Quaternion.identity);
                 CurrentItem.transform.SetParent(ItemContainer.transform);
@@ -62,7 +64,7 @@ namespace Assets.Scripts
                 CurrentItem.transform.GetChild(0).GetComponent<Image>().sprite = WearableItems[i + FirstItemIndex].ItemImage;
                 CurrentItem.transform.GetChild(1).GetComponent<Text>().text = WearableItems[i + FirstItemIndex].Name;
                 CurrentItem.GetComponent<WearableItemController>().ItemType = ItemType;
-                xKoord += 90;
+                xKoord += width;
             }
         }
 

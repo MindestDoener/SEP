@@ -39,7 +39,7 @@ public class ObjectClickController : MonoBehaviour
                 _hitObject = _hit.collider.gameObject;
                 if(_hitObject == _player)
                 {
-                    GameObject.FindWithTag("CharCustomizer").GetComponent<LeftUIButtonController>().OpenCharCustomizer();
+                    
                 }
                 else
                 {
