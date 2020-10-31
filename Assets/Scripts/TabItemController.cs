@@ -58,14 +58,12 @@ namespace Assets.Scripts
                     yKoord -= 70;
                     xKoord = ItemContainer.transform.position.x - width;
                 }
-                CurrentItem = Instantiate(ItemPrefab, ItemContainer.transform);
-                CurrentItem.transform.position = new Vector2(xKoord, yKoord);
+                CurrentItem = Instantiate(ItemPrefab, new Vector3(xKoord, yKoord, 0), Quaternion.identity);
                 CurrentItem.transform.SetParent(ItemContainer.transform);
                 CurrentItem.transform.localScale = new Vector2(GetScale(ItemType), GetScale(ItemType));
                 CurrentItem.transform.GetChild(0).GetComponent<Image>().sprite = WearableItems[i + FirstItemIndex].ItemImage;
                 CurrentItem.transform.GetChild(1).GetComponent<Text>().text = WearableItems[i + FirstItemIndex].Name;
                 CurrentItem.GetComponent<WearableItemController>().ItemType = ItemType;
-
                 xKoord += width;
             }
         }
