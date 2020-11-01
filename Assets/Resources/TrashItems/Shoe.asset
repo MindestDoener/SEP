@@ -17,3 +17,6 @@ MonoBehaviour:
   Value: 10
   MoveSpeed: 2
   Rarity: 20
+  IsUnlocked: 0
+  CollectionObject: {fileID: 0}
+  Description: A lonly shoe
