@@ -17,3 +17,6 @@ MonoBehaviour:
   Value: 0
   MoveSpeed: 3
   Rarity: 6
+  IsUnlocked: 0
+  CollectionObject: {fileID: 0}
+  Description: A Key to a Chest
