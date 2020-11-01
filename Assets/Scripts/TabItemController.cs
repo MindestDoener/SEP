@@ -1,70 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
-    class TabItemController : MonoBehaviour
+    internal class TabItemController : MonoBehaviour
     {
-        [SerializeField]
-        private GameObject ItemPrefab;
+        [SerializeField] private GameObject ItemPrefab;
+        [SerializeField] private WearableItem ItemType; //muss einem Ordner aus Resources/WearableItems gleichen
         private GameObject CurrentItem;
-        [SerializeField]
-        private WearableItem ItemType; //muss einem Ordner aus Resources/WearableItems gleichen
-        private int FirstItemIndex = 0;
-        
+        private readonly int firstItemIndex = 0;
+
         public void LoadItems(int NavButtonInput)
         {
             var WearableItems = Resources.LoadAll<WearableItemScriptableObject>("WearableItems\\" + ItemType);
-            GameObject ItemContainer = GameObject.FindWithTag("ItemContainer");
-            FirstItemIndex += NavButtonInput;
+            var ItemContainer = GameObject.FindWithTag("ItemContainer");
 
-            if(FirstItemIndex < 0)
-            {
-                FirstItemIndex = 0;
-            }
-            else
-            {
-                if(FirstItemIndex > WearableItems.Length - 1)
-                {
-                    FirstItemIndex -= 3;
-                }
-            }
+            foreach (Transform child in ItemContainer.transform) Destroy(child.gameObject);
 
-            foreach (Transform child in ItemContainer.transform)
+            for (var i = 0; i < WearableItems.Length; i++)
             {
-                GameObject.Destroy(child.gameObject);
-            }
-
-            float width = ItemContainer.GetComponent<RectTransform>().rect.width;
-            float xKoord = ItemContainer.transform.position.x - width;
-            float yKoord = ItemContainer.GetComponent<RectTransform>().rect.height * 3.5f; 
-            int maxItems = 12;
-
-            if(WearableItems.Length - (FirstItemIndex + 1) < 12)
-            {
-                maxItems = WearableItems.Length - FirstItemIndex;
-            }
-
-            for (int i = 0; i < maxItems; i++)
-            {
-                if (i % 3 == 0)
-                {
-                    yKoord -= 70;
-                    xKoord = ItemContainer.transform.position.x - width;
-                }
-                CurrentItem = Instantiate(ItemPrefab, new Vector3(xKoord, yKoord, 0), Quaternion.identity);
-                CurrentItem.transform.SetParent(ItemContainer.transform);
-                CurrentItem.transform.localScale = new Vector2(GetScale(ItemType), GetScale(ItemType));
-                CurrentItem.transform.GetChild(0).GetComponent<Image>().sprite = WearableItems[i + FirstItemIndex].ItemImage;
-                CurrentItem.transform.GetChild(1).GetComponent<Text>().text = WearableItems[i + FirstItemIndex].Name;
+                CurrentItem = Instantiate(ItemPrefab, ItemContainer.transform);
+                CurrentItem.transform.GetChild(0).GetComponent<Image>().sprite = WearableItems[i].ItemImage;
+                CurrentItem.transform.GetChild(1).GetComponent<Text>().text = WearableItems[i].Name;
                 CurrentItem.GetComponent<WearableItemController>().ItemType = ItemType;
-                xKoord += width;
             }
         }
 
@@ -83,46 +41,27 @@ namespace Assets.Scripts
                 case WearableItem.Faces:
                     return 1.2f;
             }
+
             return 1f;
         }
 
-        public void RightButtonClick()
-        {
-            GameObject currentTab = CurrentTab();
-
-            if (currentTab != null)
-            {
-                currentTab.GetComponent<TabItemController>().LoadItems(3);
-            }
-        }
-        public void LeftButtonClick()
-        {
-            GameObject currentTab = CurrentTab();
-
-            if(currentTab != null)
-            {
-                currentTab.GetComponent<TabItemController>().LoadItems(-3);
-            }
-        }
         private GameObject CurrentTab()
         {
             try
             {
-            var itemType = GameObject.FindWithTag("ItemContainer").transform.GetChild(0).GetComponent<WearableItemController>().ItemType;
-            var tabBar = GameObject.FindWithTag("TabBar").transform;
+                var itemType = GameObject.FindWithTag("ItemContainer").transform.GetChild(0)
+                    .GetComponent<WearableItemController>().ItemType;
+                var tabBar = GameObject.FindWithTag("TabBar").transform;
 
-            for (int i = 0; i < 5; i++)
-            {
-                if (tabBar.GetChild(i).GetComponent<TabItemController>().ItemType == itemType)
-                {
-                    return tabBar.GetChild(i).gameObject;
-                }
+                for (var i = 0; i < 5; i++)
+                    if (tabBar.GetChild(i).GetComponent<TabItemController>().ItemType == itemType)
+                        return tabBar.GetChild(i).gameObject;
             }
-            }
-            catch(UnityException)
+            catch (UnityException)
             {
                 return null;
             }
+
             return null;
         }
     }
