@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: FishingLine
   m_EditorClassIdentifier: 
   Name: Fishing Line
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 4764333495157730719, guid: baab9705556a9ca46976528cf074dd4e, type: 3}
   Value: 20
   MoveSpeed: 3
   Rarity: 20
   IsUnlocked: 0
   CollectionObject: {fileID: 0}
-  Description: (description missing)
+  Description: A line for fishing

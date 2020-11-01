@@ -17,3 +17,6 @@ MonoBehaviour:
   Value: 500
   MoveSpeed: 6
   Rarity: 1
+  IsUnlocked: 0
+  CollectionObject: {fileID: 0}
+  Description: a heavy object attached to a cable or chain

@@ -17,3 +17,6 @@ MonoBehaviour:
   Value: 1000
   MoveSpeed: 2
   Rarity: 1
+  IsUnlocked: 0
+  CollectionObject: {fileID: 0}
+  Description: dont touch
