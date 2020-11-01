@@ -19,3 +19,4 @@ MonoBehaviour:
   Rarity: 100
   IsUnlocked: 0
   CollectionObject: {fileID: 0}
+  Description: Plastic bottles take 450 years to to decompose in the Ocean.

@@ -17,3 +17,6 @@ MonoBehaviour:
   Value: 200
   MoveSpeed: 2
   Rarity: 6
+  IsUnlocked: 0
+  CollectionObject: {fileID: 0}
+  Description: A net for fishing

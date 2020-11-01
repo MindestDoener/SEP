@@ -17,3 +17,6 @@ MonoBehaviour:
   Value: 20
   MoveSpeed: 1.5
   Rarity: 20
+  IsUnlocked: 0
+  CollectionObject: {fileID: 0}
+  Description: Contained Beer once
