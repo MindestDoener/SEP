@@ -16,6 +16,10 @@ TagManager:
   - CollectionContainer
   - CollectionMenu
   - DetailView
+  - CharCustomizer
+  - ItemContainer
+  - PlayerCustomizerModel
+  - TabBar
   layers:
   - Default
   - TransparentFX
