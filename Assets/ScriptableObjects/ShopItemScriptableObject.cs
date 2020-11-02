@@ -13,4 +13,5 @@ public class ShopItemScriptableObject : ScriptableObject
     public UpgradeType Type;
     public int ButtonNumber;
     public Sprite ItemImage;
+    public Color Color;
 }

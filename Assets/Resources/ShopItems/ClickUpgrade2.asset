@@ -16,6 +16,9 @@ MonoBehaviour:
   MultiplierIncrement: 2
   UpgradeCosts: 5000
   CostIncrements: 2
-  ButtonText: 'Click Upgrade: {0} c (lvl. {1}) [{2}x]'
+  ButtonText: 'Cooler Click Upgrade: {0} TC (lvl. {1}) [{2}x]'
   Type: 0
   ButtonNumber: 1
+  ItemImage: {fileID: -403645065039037920, guid: 95305c12a6bcd5247bce39eaafc8bf14,
+    type: 3}
+  Color: {r: 0.41037738, g: 0.6893915, b: 1, a: 1}
