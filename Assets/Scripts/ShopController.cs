@@ -142,5 +142,6 @@ public class ShopController : MonoBehaviour
     {
         var itemImage = button.transform.GetChild(1).gameObject;
         itemImage.GetComponent<Image>().sprite = item.ItemImage;
+        itemImage.GetComponent<Image>().color = item.Color;
     }
 }

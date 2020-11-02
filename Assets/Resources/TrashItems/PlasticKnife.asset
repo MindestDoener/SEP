@@ -17,6 +17,6 @@ MonoBehaviour:
   Value: 20
   MoveSpeed: 2.5
   Rarity: 100
-  IsUnlocked: 0
+  IsUnlocked: 1
   CollectionObject: {fileID: 0}
-  Description: Plastic knifes take 450 years to to decompose in the Ocean.
+  Description: Plastic knifes take 450 years to decompose in the Ocean.
