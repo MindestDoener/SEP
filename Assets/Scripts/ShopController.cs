@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ShopController : MonoBehaviour
@@ -143,5 +144,14 @@ public class ShopController : MonoBehaviour
         var itemImage = button.transform.GetChild(1).gameObject;
         itemImage.GetComponent<Image>().sprite = item.ItemImage;
         itemImage.GetComponent<Image>().color = item.Color;
+    }
+
+    public static bool IsPointerOverUI()
+    {
+        PointerEventData curPos = new PointerEventData(EventSystem.current);
+        curPos.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(curPos, results);
+        return results.Count > 0;
     }
 }

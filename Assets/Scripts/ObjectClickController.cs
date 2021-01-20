@@ -22,7 +22,7 @@ public class ObjectClickController : MonoBehaviour
 
     private void Update()
     {
-        if (!PauseMenuController.GetGameIsPaused())
+        if (!PauseMenuController.GetGameIsPaused() && !ShopController.IsPointerOverUI())
         {
             GetClickedObject(); 
         }
