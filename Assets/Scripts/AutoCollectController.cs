@@ -29,7 +29,7 @@ public class AutoCollectController : MonoBehaviour
             }
         }
 
-        if (Mathf.Sqrt(closestDirection) < GetComponent<PlayerController>().CollectionRadius && !closestTrash.GetComponent<Animation>().isPlaying)
+        if (Mathf.Sqrt(closestDirection) < GetComponent<PlayerController>().CollectionRadius && !closestTrash.GetComponent<TrashController>().IsBeeingDestroyed)
         {
             StartCoroutine(ObjectClickController.DestroyObject(closestTrash));
             AddValue(Convert.ToDecimal(closestTrash.GetComponent<TrashController>().GetCurrencyValue()));

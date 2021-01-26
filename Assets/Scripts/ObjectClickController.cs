@@ -24,7 +24,7 @@ public class ObjectClickController : MonoBehaviour
     {
         if (!PauseMenuController.GetGameIsPaused() && !ShopController.IsPointerOverUI())
         {
-            GetClickedObject(); 
+            GetClickedObject();
         }
     }
 
@@ -37,13 +37,12 @@ public class ObjectClickController : MonoBehaviour
             if (_hit.collider != null)
             {
                 _hitObject = _hit.collider.gameObject;
-                if(_hitObject == _player)
+                if (_hitObject == _player)
                 {
-                    
                 }
                 else
                 {
-                    if (_hitObject.GetComponent<Animation>().isPlaying) return;
+                    if (_hitObject.GetComponent<TrashController>().IsBeeingDestroyed) return;
                     _trash = _hitObject.GetComponent<TrashController>();
                     AddValue(Convert.ToDecimal(_trash.GetCurrencyValue()) * _multiplier);
                     AddValueText(_trash);
@@ -60,6 +59,7 @@ public class ObjectClickController : MonoBehaviour
 
     public static IEnumerator DestroyObject(GameObject objectToDestroy)
     {
+        objectToDestroy.GetComponent<TrashController>().IsBeeingDestroyed = true;
         objectToDestroy.GetComponentInChildren<ParticleSystem>().Play();
         objectToDestroy.GetComponent<Animation>().Play();
         TrashManager.IncreaseCount(objectToDestroy.name, objectToDestroy.GetComponent<TrashController>().GetRarity());

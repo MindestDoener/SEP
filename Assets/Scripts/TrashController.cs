@@ -2,21 +2,22 @@
 
 public class TrashController : MonoBehaviour
 {
-    [SerializeField]
-    private float moveSpeed = 0;
-    [SerializeField]
-    private float currencyValue = 0;
-    [SerializeField] 
-    private float sinAmplitude = 1f;
-    [SerializeField] 
-    private float sinDilation= 1f;
-    [SerializeField]
-    private float destroyOffset = 0;
+    [SerializeField] private float moveSpeed = 0;
+    [SerializeField] private float currencyValue = 0;
+    [SerializeField] private float sinAmplitude = 1f;
+    [SerializeField] private float sinDilation = 1f;
+    [SerializeField] private float destroyOffset = 0;
     private Camera _cam;
-    [SerializeField]
-    private SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     private Vector3 _camCords;
     private Rarity _rarity;
+    private bool _isBeeingDestroyed = false;
+
+    public bool IsBeeingDestroyed
+    {
+        get => _isBeeingDestroyed;
+        set => _isBeeingDestroyed = value;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +47,7 @@ public class TrashController : MonoBehaviour
     {
         currencyValue = value;
     }
-    
+
     public Rarity GetRarity()
     {
         return _rarity;
@@ -56,12 +57,13 @@ public class TrashController : MonoBehaviour
     {
         _rarity = rarity;
     }
-    
+
     public void SetSprite(Sprite sprite)
     {
         spriteRenderer.sprite = sprite;
         gameObject.AddComponent<PolygonCollider2D>().isTrigger = true;
     }
+
     public float GetCurrencyValue()
     {
         return currencyValue;
@@ -70,13 +72,13 @@ public class TrashController : MonoBehaviour
     private Vector3 MoveObject()
     {
         var xPosition = transform.position.x;
-        var move = new Vector3(-1 * moveSpeed, Mathf.Sin(xPosition*sinAmplitude)*sinDilation, 0) * Time.deltaTime;
+        var move = new Vector3(-1 * moveSpeed, Mathf.Sin(xPosition * sinAmplitude) * sinDilation, 0) * Time.deltaTime;
         return move;
     }
 
     private void DestroyObject()
     {
-        Destroy (this.gameObject);
+        Destroy(this.gameObject);
     }
 
     private bool IsOutOfScreenLeft()
