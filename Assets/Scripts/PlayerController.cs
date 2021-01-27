@@ -5,20 +5,6 @@ public class PlayerController : MonoBehaviour
 {
     public CircleRendererController circleRenderer;
     [SerializeField] private float collectionRadius = 1f;
-    [SerializeField] private float passiveCollectionMultiplier;
-    [SerializeField] private float activeCollectionMultiplier;
-
-    public float PassiveCollectionMultiplier
-    {
-        get => passiveCollectionMultiplier;
-        set => passiveCollectionMultiplier = value;
-    }
-
-    public float ActiveCollectionMultiplier
-    {
-        get => activeCollectionMultiplier;
-        set => activeCollectionMultiplier = value;
-    }
 
     public float CollectionRadius
     {
