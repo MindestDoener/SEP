@@ -20,8 +20,10 @@ public class SaveScript : MonoBehaviour
         {
             savBalance = GameData.Balance,
             savMultiplier = GameData.Multiplier,
-            savTrashCollectCount = GameData.TrashCollectCount
+            savTrashCollectCount = GameData.TrashCollectCount,
+            savCustomCharacter = GameData.CustomCharacter
         };
+        Debug.Log(GameData.CustomCharacter.ToString());
         var binaryFormatter = new BinaryFormatter();
         using (var fileStream = File.Create(savePath))
         {
@@ -46,6 +48,7 @@ public class SaveScript : MonoBehaviour
             GameData.Balance = save.savBalance;
             GameData.Multiplier = save.savMultiplier;
             GameData.TrashCollectCount = save.savTrashCollectCount;
+            GameData.CustomCharacter = save.savCustomCharacter;
 
             Debug.Log("Data Loaded");
             return true;

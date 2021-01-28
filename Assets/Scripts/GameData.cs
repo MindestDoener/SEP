@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,20 +7,34 @@ public class GameData : MonoBehaviour
 {
     public static decimal Balance = 0;
     public static decimal Multiplier = 1;
+    public float autoSaveCycleTime = 10f;
 
     public static Dictionary<Rarity, Dictionary<string, decimal>> TrashCollectCount;
+
+    public static Dictionary<WearableItem, string> CustomCharacter = new Dictionary<WearableItem, string>()
+    {
+        {WearableItem.Bodys, "Body"},
+        {WearableItem.Faces, "Face"},
+        {WearableItem.Hats, "HatBlack"},
+        {WearableItem.Pants, "Pants"},
+        {WearableItem.Shoes, "Boots"}
+    };
 
     private SaveScript saveScript;
 
     private void Start()
     {
-        print(Application.persistentDataPath);
         saveScript = GetComponent<SaveScript>();
         if (saveScript.LoadData())
         {
             GameObject.FindWithTag("Balance").GetComponent<BalanceDisplayController>().DisplayBalance(Balance);
             TrashManager.UpdateTrashItems(TrashCollectCount);
+            foreach (var pair in CustomCharacter)
+            {
+                WearableController.SetWearable(WearableController.GetSpriteByName(pair.Value, pair.Key), pair.Key);
+            }
         }
+
         StartCoroutine(AutoSave());
     }
 
@@ -29,7 +42,7 @@ public class GameData : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(autoSaveCycleTime);
             UpdateTrashCollectCount();
             saveScript.SaveData();
         }

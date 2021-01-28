@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-        if (Math.Abs(circleRenderer.Radius - collectionRadius) > 0.1f) circleRenderer.Radius = collectionRadius;
+        // if (Math.Abs(circleRenderer.Radius - collectionRadius) > 0.1f) circleRenderer.Radius = collectionRadius;
     }
     public void UpdateCollectionRadius(float factor)
     {

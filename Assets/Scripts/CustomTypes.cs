@@ -10,11 +10,11 @@ public enum Rarity
 
 public enum WearableItem
 {
-    Bodys,
-    Faces,
-    Hats, 
-    Pants,
-    Shoes
+    Bodys= 0,
+    Faces=4,
+    Hats=3, 
+    Pants=2,
+    Shoes=1
 }
 
 public enum UpgradeType

@@ -15,4 +15,4 @@ MonoBehaviour:
   Name: 
   ItemImage: {fileID: 21300000, guid: 26a93b9bda6114b49b894244065445b6, type: 3}
   IsUnlocked: 1
-  ItemType: 3
+  ItemType: 2

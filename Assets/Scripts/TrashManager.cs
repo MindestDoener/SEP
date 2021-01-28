@@ -66,6 +66,5 @@ public class TrashManager : MonoBehaviour
         var itemToBeIncreased = TrashItems[rarity].Find(item => item.Name == itemName);
         itemToBeIncreased.Count++;
         if (itemToBeIncreased.Count == decimal.One) CollectionController.RequestRefresh();
-        Debug.Log(itemToBeIncreased.Name + ": amount collected = " + itemToBeIncreased.Count);
     }
 }

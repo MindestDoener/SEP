@@ -10,5 +10,7 @@ public class Save
 
     public Dictionary<Rarity, Dictionary<string, decimal>> savTrashCollectCount;
     
+    public Dictionary<WearableItem, string> savCustomCharacter;
+    
     //TODO   
 }
