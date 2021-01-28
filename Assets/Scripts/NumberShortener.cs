@@ -35,6 +35,11 @@ public static class NumberShortener
 
         var divisor = GetPower(10, exp);
 
+        if (exp == 0)
+        {
+            return Convert.ToString(Math.Truncate(number / divisor));
+        }
+        
         return Math.Round(number / divisor, 2) + " " + suffix;
     }
 

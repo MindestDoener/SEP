@@ -12,7 +12,7 @@ public class ValueDisplayer : MonoBehaviour
 
         var textMesh = trashValue.AddComponent<TextMesh>();
         trashValue.AddComponent<ValueTextAnimationController>();
-        textMesh.text = "+" + Convert.ToDecimal(trash.GetCurrencyValue()) * ObjectClickController.GetMultiplier();
+        textMesh.text = "+" + NumberShortener.ShortenNumber(Convert.ToDecimal(trash.GetCurrencyValue()) * ObjectClickController.GetMultiplier());
         textMesh.transform.position = trash.gameObject.transform.position;
         textMesh.font = font;
         trashValue.GetComponent<MeshRenderer>().material = material;
