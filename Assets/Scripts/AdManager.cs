@@ -43,7 +43,6 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
 
     public void OnUnityAdsDidError(string message)
     {
-        throw new System.NotImplementedException();
     }
 
     public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
@@ -63,7 +62,6 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
 
     public void OnUnityAdsDidStart(string placementId)
     {
-        throw new System.NotImplementedException();
     }
 
     private decimal shuffleReward()
