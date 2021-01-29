@@ -7,7 +7,7 @@ public class ShopItemScriptableObject : ScriptableObject
 {
     public int UpgradeLevel;
     public float MultiplierIncrement;
-    public int UpgradeCosts;
+    public float UpgradeCosts;
     public float CostIncrements;
     public String ButtonText;
     public UpgradeType Type;

@@ -2,7 +2,7 @@
 
 public static class NumberShortener
 {
-    public static string ShortenNumber(decimal number)
+    public static string ShortenNumber(float number)
     {
         string suffix;
         int exp;
@@ -43,8 +43,8 @@ public static class NumberShortener
         return Math.Round(number / divisor, 2) + " " + suffix;
     }
 
-    private static decimal GetPower(int a, int b)
+    private static float GetPower(int a, int b)
     {
-        return Convert.ToDecimal(Math.Pow(a, b));
+        return (float) Math.Pow(a, b);
     }
 }

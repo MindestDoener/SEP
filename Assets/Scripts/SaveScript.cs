@@ -23,14 +23,11 @@ public class SaveScript : MonoBehaviour
             savTrashCollectCount = GameData.TrashCollectCount,
             savCustomCharacter = GameData.CustomCharacter
         };
-        Debug.Log(GameData.CustomCharacter.ToString());
         var binaryFormatter = new BinaryFormatter();
         using (var fileStream = File.Create(savePath))
         {
             binaryFormatter.Serialize(fileStream, save);
         }
-
-        // Debug.Log("Data Saved");
     }
 
     public bool LoadData()

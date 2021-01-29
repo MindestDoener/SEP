@@ -32,12 +32,12 @@ public class AutoCollectController : MonoBehaviour
         if (Mathf.Sqrt(closestDirection) < GetComponent<PlayerController>().CollectionRadius && !closestTrash.GetComponent<TrashController>().IsBeeingDestroyed)
         {
             StartCoroutine(ObjectClickController.DestroyObject(closestTrash));
-            AddValue(Convert.ToDecimal(closestTrash.GetComponent<TrashController>().GetCurrencyValue()));
+            AddValue(closestTrash.GetComponent<TrashController>().GetCurrencyValue());
             AddValueText(closestTrash.GetComponent<TrashController>());
         }
     }
 
-    private void AddValue(decimal value)
+    private void AddValue(float value)
     {
         var balance = (BalanceController) GetComponent(typeof(BalanceController));
         balance.AddBalance(value);

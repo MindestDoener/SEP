@@ -33,10 +33,9 @@ public class CollectionItemController : MonoBehaviour
         _detailView.transform.GetChild((int) DetailViewComponents.DescriptionText).GetComponent<Text>().text = _trashObject.Description;
         _detailView.transform.GetChild((int) DetailViewComponents.CountNumberText).GetComponent<Text>().text = NumberShortener.ShortenNumber(_trashObject.Count);
         _detailView.transform.GetChild((int) DetailViewComponents.BaseValueNumberText).GetComponent<Text>().text =
-            NumberShortener.ShortenNumber(Convert.ToDecimal(_trashObject.Value));
+            NumberShortener.ShortenNumber(_trashObject.Value);
         _detailView.transform.GetChild((int) DetailViewComponents.CurrentValueNumberText).GetComponent<Text>().text =
-            NumberShortener.ShortenNumber(Convert.ToDecimal(_trashObject.Value) *
-                                          ObjectClickController.GetMultiplier());
+            NumberShortener.ShortenNumber(_trashObject.Value * ObjectClickController.GetMultiplier());
         transform.parent.gameObject.SetActive(false);
     }
 }

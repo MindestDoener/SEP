@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: ClickUpgrade 5
   m_EditorClassIdentifier: 
   UpgradeLevel: 0
-  MultiplierIncrement: 25
-  UpgradeCosts: 500000
-  CostIncrements: 3.5
+  MultiplierIncrement: 2
+  UpgradeCosts: 10000
+  CostIncrements: 1.5
   ButtonText: 'Epic Click Upgrade: {0} TC (lvl. {1}) [{2}x]'
   Type: 0
   ButtonNumber: 4

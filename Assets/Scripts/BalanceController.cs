@@ -13,7 +13,7 @@ public class BalanceController : MonoBehaviour
         _bdc = (BalanceDisplayController) _balanceTextField.GetComponent(typeof(BalanceDisplayController));
     }
     
-    public void AddBalance(decimal amount) 
+    public void AddBalance(float amount) 
     {
         GameData.Balance += amount;
         UpdateBalanceDisplay();
@@ -30,7 +30,7 @@ public class BalanceController : MonoBehaviour
         _bdc.DisplayBalance(GameData.Balance);
     }
 
-    public decimal GetBalance()
+    public float GetBalance()
     {
         return GameData.Balance;
     }

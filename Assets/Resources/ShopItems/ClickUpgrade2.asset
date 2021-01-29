@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: ClickUpgrade2
   m_EditorClassIdentifier: 
   UpgradeLevel: 0
-  MultiplierIncrement: 2
+  MultiplierIncrement: 1
   UpgradeCosts: 5000
-  CostIncrements: 2
+  CostIncrements: 1.5
   ButtonText: 'Cooler Click Upgrade: {0} TC (lvl. {1}) [{2}x]'
   Type: 0
   ButtonNumber: 1

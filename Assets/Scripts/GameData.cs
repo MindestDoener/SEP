@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class GameData : MonoBehaviour
 {
-    public static decimal Balance = 0;
-    public static decimal Multiplier = 1;
+    public static float Balance = 0;
+    public static float Multiplier = 1;
     public float autoSaveCycleTime = 10f;
 
-    public static Dictionary<Rarity, Dictionary<string, decimal>> TrashCollectCount;
+    public static Dictionary<Rarity, Dictionary<string, float>> TrashCollectCount;
 
     public static Dictionary<WearableItem, string> CustomCharacter = new Dictionary<WearableItem, string>()
     {

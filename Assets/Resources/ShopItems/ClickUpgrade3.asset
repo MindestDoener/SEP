@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: ClickUpgrade3
   m_EditorClassIdentifier: 
   UpgradeLevel: 0
-  MultiplierIncrement: 5
-  UpgradeCosts: 10000
-  CostIncrements: 2.5
+  MultiplierIncrement: 10
+  UpgradeCosts: 100000
+  CostIncrements: 1.5
   ButtonText: 'Golden Click Upgrade: {0} TC (lvl. {1}) [{2}x]'
   Type: 0
   ButtonNumber: 2

@@ -7,7 +7,7 @@ public class TrashScriptableObject : ScriptableObject
     public float Value;
     public float MoveSpeed;
     public Rarity Rarity;
-    public decimal Count = 0;
+    public float Count = 0;
     public bool IsUnlocked = false;
     public GameObject CollectionObject;
     public string Description = "(description missing)";

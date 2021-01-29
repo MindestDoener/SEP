@@ -12,7 +12,7 @@ public class BalanceDisplayController : MonoBehaviour
         _balancePanel = GameObject.FindWithTag("BalancePanel");
     }
 
-    public void DisplayBalance(decimal balance)
+    public void DisplayBalance(float balance)
     {
         _balanceText.text = NumberShortener.ShortenNumber(balance);
         _balancePanel.GetComponent<RectTransform>().sizeDelta = new Vector2(30f + 5f * _balanceText.text.Length, 20f);

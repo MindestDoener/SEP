@@ -43,7 +43,7 @@ public class ObjectClickController : MonoBehaviour
                 {
                     if (_hitObject.GetComponent<TrashController>().IsBeeingDestroyed) return;
                     _trash = _hitObject.GetComponent<TrashController>();
-                    AddValue(Convert.ToDecimal(_trash.GetCurrencyValue()) * GameData.Multiplier);
+                    AddValue(_trash.GetCurrencyValue() * GameData.Multiplier);
                     AddValueText(_trash);
                     StartCoroutine(DestroyObject(_hitObject));
                 }
@@ -51,7 +51,7 @@ public class ObjectClickController : MonoBehaviour
         }
     }
 
-    private void AddValue(decimal value)
+    private void AddValue(float value)
     {
         _balance.AddBalance(value);
     }
@@ -71,12 +71,12 @@ public class ObjectClickController : MonoBehaviour
         _mainCanvas.GetComponent<ValueDisplayer>().CreateText(trash);
     }
 
-    public static void IncreaseMultiplier(decimal value)
+    public static void IncreaseMultiplier(float value)
     {
         GameData.Multiplier = value;
     }
 
-    public static decimal GetMultiplier()
+    public static float GetMultiplier()
     {
         return GameData.Multiplier;
     }
