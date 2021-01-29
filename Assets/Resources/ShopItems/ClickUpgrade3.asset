@@ -18,7 +18,7 @@ MonoBehaviour:
   CostIncrements: 1.5
   ButtonText: 'Golden Click Upgrade: {0} TC (lvl. {1}) [{2}x]'
   Type: 0
-  ButtonNumber: 2
+  ButtonNumber: 4
   ItemImage: {fileID: -403645065039037920, guid: 95305c12a6bcd5247bce39eaafc8bf14,
     type: 3}
   Color: {r: 1, g: 0.9575515, b: 0.3254717, a: 1}

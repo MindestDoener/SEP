@@ -10,6 +10,8 @@ public class GameData : MonoBehaviour
     public float autoSaveCycleTime = 10f;
 
     public static Dictionary<Rarity, Dictionary<string, float>> TrashCollectCount;
+    
+    public static List<ShopItemScriptableObject> ShopItems;
 
     public static Dictionary<WearableItem, string> CustomCharacter = new Dictionary<WearableItem, string>()
     {

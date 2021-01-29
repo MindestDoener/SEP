@@ -9,7 +9,7 @@ public class ShopController : MonoBehaviour
 {
     [SerializeField] private GameObject buttonPrefab;
 
-    [SerializeField] private List<ShopItemScriptableObject> shopItems;
+    private List<ShopItemScriptableObject> shopItems;
 
     private readonly List<Button> _buttons = new List<Button>();
 
@@ -32,7 +32,11 @@ public class ShopController : MonoBehaviour
         _bc = _player.GetComponent<BalanceController>();
         _mdc = _mpDispay.GetComponent<MultiplierDisplayController>();
         _activeMultiplier = ObjectClickController.GetMultiplier();
-        shopItems = AssignItemsToArray();
+        if (GameData.ShopItems is null)
+        {
+            GameData.ShopItems = AssignItemsToArray();
+        }
+        shopItems = GameData.ShopItems;
         InstantiateButtons();
     }
 
@@ -88,11 +92,11 @@ public class ShopController : MonoBehaviour
         return _buttons;
     }
 
-    private List<ShopItemScriptableObject> AssignItemsToArray()
+    public static List<ShopItemScriptableObject> AssignItemsToArray()
     {
         var objectList = Resources.LoadAll<ShopItemScriptableObject>("ShopItems");
         Array.Sort(objectList, (item1, item2) => item1.ButtonNumber.CompareTo(item2.ButtonNumber));
-        return objectList.ToList();
+        return objectList.ToList().ConvertAll(Instantiate);
     }
 
     private void InstantiateButtons()
