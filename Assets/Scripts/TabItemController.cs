@@ -14,12 +14,21 @@ internal class TabItemController : MonoBehaviour
 
         foreach (Transform child in itemContainer.transform) Destroy(child.gameObject);
 
-        foreach (var item in wearableItems)
-        {
-            _currentItem = Instantiate(ItemPrefab, itemContainer.transform);
-            _currentItem.transform.GetChild(0).GetComponent<Image>().sprite = item.ItemImage;
-            _currentItem.transform.GetChild(1).GetComponent<Text>().text = item.Name;
-            _currentItem.GetComponent<WearableItemController>().ItemType = ItemType;
+            for (var i = 0; i < WearableItems.Length; i++)
+            {
+                _currentItem = Instantiate(ItemPrefab, ItemContainer.transform);
+                _currentItem.transform.GetChild(0).GetComponent<Image>().sprite = WearableItems[i].ItemImage;
+                if (!WearableItems[i].IsUnlocked)
+                {
+                    _currentItem.transform.GetChild(1).GetComponent<Text>().text = WearableItems[i].Price.ToString();
+                    _currentItem.GetComponent<Image>().color = new Color(0, 0, 0, 128);
+                }
+                else
+                {
+                    _currentItem.transform.GetChild(1).GetComponent<Text>().text = "";
+                }
+                _currentItem.GetComponent<WearableItemController>().ItemType = ItemType;
+            }
         }
     }
 
