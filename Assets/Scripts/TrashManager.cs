@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions.Comparers;
 
 public class TrashManager : MonoBehaviour
 {
@@ -49,16 +50,23 @@ public class TrashManager : MonoBehaviour
         return TrashItems;
     }
 
-    public static void UpdateList(KeyValuePair<Rarity, List<TrashScriptableObject>> rarityListPair)
+    public static void UpdateTrashItems(Dictionary<Rarity, Dictionary<string, float>> trashCollectCount)
     {
-        TrashItems[rarityListPair.Key] = rarityListPair.Value;
+        foreach (var pair in trashCollectCount)
+        {
+            foreach (var subPair in pair.Value)
+            {
+                TrashItems[pair.Key].Find(item => item.Name == subPair.Key).Count = subPair.Value;
+            }
+        }
+
+        CollectionController.RequestRefresh();
     }
 
     public static void IncreaseCount(string itemName, Rarity rarity)
     {
         var itemToBeIncreased = TrashItems[rarity].Find(item => item.Name == itemName);
         itemToBeIncreased.Count++;
-        if (itemToBeIncreased.Count == decimal.One) CollectionController.RequestRefresh();
-        Debug.Log(itemToBeIncreased.Name + ": amount collected = " + itemToBeIncreased.Count);
+        if (FloatComparer.AreEqual(1f, itemToBeIncreased.Count, 0.01f)) CollectionController.RequestRefresh();
     }
 }

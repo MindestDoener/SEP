@@ -9,7 +9,6 @@ public class ObjectClickController : MonoBehaviour
     private BalanceController _balance;
     private RaycastHit2D _hit;
     private GameObject _hitObject;
-    private static decimal _multiplier = 1;
     private TrashController _trash;
 
     private void Start()
@@ -34,7 +33,7 @@ public class ObjectClickController : MonoBehaviour
         {
             _hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
-            if (_hit.collider != null)
+            if (!(_hit.collider is null))
             {
                 _hitObject = _hit.collider.gameObject;
                 if (_hitObject == _player)
@@ -44,7 +43,7 @@ public class ObjectClickController : MonoBehaviour
                 {
                     if (_hitObject.GetComponent<TrashController>().IsBeeingDestroyed) return;
                     _trash = _hitObject.GetComponent<TrashController>();
-                    AddValue(Convert.ToDecimal(_trash.GetCurrencyValue()) * _multiplier);
+                    AddValue(_trash.GetCurrencyValue() * GameData.Multiplier);
                     AddValueText(_trash);
                     StartCoroutine(DestroyObject(_hitObject));
                 }
@@ -52,7 +51,7 @@ public class ObjectClickController : MonoBehaviour
         }
     }
 
-    private void AddValue(decimal value)
+    private void AddValue(float value)
     {
         _balance.AddBalance(value);
     }
@@ -72,13 +71,13 @@ public class ObjectClickController : MonoBehaviour
         _mainCanvas.GetComponent<ValueDisplayer>().CreateText(trash);
     }
 
-    public static void IncreaseMultiplier(decimal value)
+    public static void IncreaseMultiplier(float value)
     {
-        _multiplier = value;
+        GameData.Multiplier = value;
     }
 
-    public static decimal GetMultiplier()
+    public static float GetMultiplier()
     {
-        return _multiplier;
+        return GameData.Multiplier;
     }
 }

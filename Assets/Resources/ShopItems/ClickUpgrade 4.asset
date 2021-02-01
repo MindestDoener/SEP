@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: ClickUpgrade 4
   m_EditorClassIdentifier: 
   UpgradeLevel: 0
-  MultiplierIncrement: 10
-  UpgradeCosts: 100000
-  CostIncrements: 3
+  MultiplierIncrement: 5
+  UpgradeCosts: 50000
+  CostIncrements: 1.5
   ButtonText: 'Red Hot Click Upgrade: {0} TC (lvl. {1}) [{2}x]'
   Type: 0
   ButtonNumber: 3

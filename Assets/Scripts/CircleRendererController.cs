@@ -55,7 +55,6 @@ public class CircleRendererController : MonoBehaviour
 
         GetComponent<MeshRenderer>().material = material;
         GetComponent<MeshRenderer>().sortingOrder = orderInLayer;
-        Debug.Log("Circle rendered");
     }
 
     private static double DegToArc(float angle)

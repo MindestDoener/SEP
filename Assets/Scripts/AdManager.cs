@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Advertisements;
 using UnityEngine.UI;
@@ -9,30 +6,21 @@ using Random = UnityEngine.Random;
 
 public class AdManager : MonoBehaviour, IUnityAdsListener
 {
-    private GameObject _player;
     private Button rewardAdButton;
-    private BalanceController _balance;
     private GameObject _rewardText;
-    
+
     public string myPlacementId = "rewardedVideo";
-    
+
     void Start()
     {
         _rewardText = GameObject.FindWithTag("RewardAd");
-        _player = GameObject.FindWithTag("Player");
-        _balance = (BalanceController) _player.GetComponent(typeof(BalanceController));
         rewardAdButton = gameObject.GetComponent<Button>();
         rewardAdButton.interactable = Advertisement.IsReady("rewardedVideo");
         if (rewardAdButton) rewardAdButton.onClick.AddListener(DisplayAd);
-        
+
         Advertisement.AddListener(this);
         Advertisement.Initialize("3826605", true);
         _rewardText.SetActive(false);
-
-    }
-    
-    void Update()
-    {
     }
 
     public void DisplayAd()
@@ -55,7 +43,8 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
 
     public void OnUnityAdsReady(string placementId)
     {
-        if (placementId == myPlacementId) {        
+        if (placementId == myPlacementId)
+        {
             rewardAdButton.interactable = true;
         }
     }
@@ -64,28 +53,27 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
     {
     }
 
-    private decimal shuffleReward()
+    private float shuffleReward()
     {
-       return Convert.ToDecimal(Random.Range(1.0f, 10.0f));
+        return Random.Range(1.0f, 10.0f);
     }
 
     private void getReward()
     {
-        var reward = 0m;
-        if (_balance.GetBalance() <= 1000m)
+        var reward = 0f;
+        if (GameData.Balance <= 1000)
         {
-            reward = 10000m;
+            reward = 10000;
         }
         else
         {
-            reward = shuffleReward() * _balance.GetBalance();
+            reward = shuffleReward() * GameData.Balance;
         }
-        _balance.AddBalance(reward);
+
+        GameData.Balance += reward;
         _rewardText.SetActive(true);
         _rewardText.GetComponent<Text>().text = "+" + NumberShortener.ShortenNumber(reward) + " c";
         StartCoroutine(cooldown());
-        
-
     }
 
     IEnumerator cooldown()

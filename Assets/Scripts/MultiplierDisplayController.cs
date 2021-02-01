@@ -9,6 +9,7 @@ public class MultiplierDisplayController : MonoBehaviour
     private void Start()
     {
         _multiplierDisplay = GetComponent<Text>();
+        UpdateDisplay();
     }
 
     public void UpdateDisplay()

@@ -19,4 +19,4 @@ MonoBehaviour:
   Rarity: 20
   IsUnlocked: 0
   CollectionObject: {fileID: 0}
-  Description: Contained Beer once
+  Description: Glass container for beer
