@@ -21,7 +21,15 @@ namespace Assets.Scripts
             {
                 CurrentItem = Instantiate(ItemPrefab, ItemContainer.transform);
                 CurrentItem.transform.GetChild(0).GetComponent<Image>().sprite = WearableItems[i].ItemImage;
-                CurrentItem.transform.GetChild(1).GetComponent<Text>().text = WearableItems[i].Name;
+                if (!WearableItems[i].IsUnlocked)
+                {
+                    CurrentItem.transform.GetChild(1).GetComponent<Text>().text = WearableItems[i].Price.ToString();
+                    CurrentItem.GetComponent<Image>().color = new Color(0, 0, 0, 128);
+                }
+                else
+                {
+                    CurrentItem.transform.GetChild(1).GetComponent<Text>().text = "";
+                }
                 CurrentItem.GetComponent<WearableItemController>().ItemType = ItemType;
             }
         }
