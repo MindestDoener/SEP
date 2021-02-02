@@ -1,12 +1,12 @@
 ﻿using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
 
 [RequireComponent(typeof(GameData))]
 public class SaveScript : MonoBehaviour
 {
     private string savePath;
+    private Save latestSave;
 
     private void Start()
     {
@@ -23,10 +23,14 @@ public class SaveScript : MonoBehaviour
             savCustomCharacter = GameData.CustomCharacter,
             savUpgradeDatas = GameData.ShopItems.ConvertAll(item => new UpgradeData(item))
         };
-        var binaryFormatter = new BinaryFormatter();
-        using (var fileStream = File.Create(savePath))
+        if (!save.Equals(latestSave))
         {
-            binaryFormatter.Serialize(fileStream, save);
+            latestSave = save;
+            var binaryFormatter = new BinaryFormatter();
+            using (var fileStream = File.Create(savePath))
+            {
+                binaryFormatter.Serialize(fileStream, save);
+            }
         }
     }
 
@@ -61,7 +65,8 @@ public class SaveScript : MonoBehaviour
                 else
                 {
                     Debug.LogError("Upgrade Data does not align!");
-                    throw new InvalidDataException("loaded upgrades do not align: itemNum: " + item.ButtonNumber + "; loadedItemNum: " + loadedItem.ButtonNumber);
+                    throw new InvalidDataException("loaded upgrades do not align: itemNum: " + item.ButtonNumber +
+                                                   "; loadedItemNum: " + loadedItem.ButtonNumber);
                 }
             }
 

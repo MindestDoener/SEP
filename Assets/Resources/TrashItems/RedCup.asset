@@ -17,6 +17,7 @@ MonoBehaviour:
   Value: 20
   MoveSpeed: 2.5
   Rarity: 100
+  Count: 0
   IsUnlocked: 0
   CollectionObject: {fileID: 0}
   Description: This Cup is mainly used for beerpong. This means it can bring great

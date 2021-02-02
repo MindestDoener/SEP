@@ -17,6 +17,7 @@ MonoBehaviour:
   Value: 20
   MoveSpeed: 2.5
   Rarity: 100
-  IsUnlocked: 1
+  Count: 0
+  IsUnlocked: 0
   CollectionObject: {fileID: 0}
   Description: Plastic forks take 450 years to decompose in the Ocean.

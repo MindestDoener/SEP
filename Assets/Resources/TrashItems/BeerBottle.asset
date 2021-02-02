@@ -17,6 +17,7 @@ MonoBehaviour:
   Value: 20
   MoveSpeed: 1.5
   Rarity: 20
+  Count: 0
   IsUnlocked: 0
   CollectionObject: {fileID: 0}
   Description: Glass container for beer

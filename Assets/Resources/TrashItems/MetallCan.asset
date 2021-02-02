@@ -17,3 +17,7 @@ MonoBehaviour:
   Value: 20
   MoveSpeed: 2
   Rarity: 50
+  Count: 0
+  IsUnlocked: 0
+  CollectionObject: {fileID: 0}
+  Description: (description missing)

@@ -42,7 +42,7 @@ public class TrashManager : MonoBehaviour
     public static void AssignItemsToDictionary()
     {
         var trashItems = Resources.LoadAll<TrashScriptableObject>("TrashItems");
-        foreach (var item in trashItems) TrashItems[item.Rarity].Add(item);
+        foreach (var item in trashItems) TrashItems[item.Rarity].Add(Instantiate(item));
     }
 
     public static Dictionary<Rarity, List<TrashScriptableObject>> GetAllTrashItems()

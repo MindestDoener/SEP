@@ -44,8 +44,12 @@ public class GameData : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(autoSaveCycleTime);
+            yield return new WaitForSeconds(5f);//autoSaveCycleTime);
             UpdateTrashCollectCount();
+            if (ShopItems is null)
+            {
+                ShopItems = ShopController.AssignItemsToArray();
+            }
             saveScript.SaveData();
         }
     }
