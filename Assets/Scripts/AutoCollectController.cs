@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AutoCollectController : MonoBehaviour
 {
@@ -21,15 +20,16 @@ public class AutoCollectController : MonoBehaviour
         foreach (var trash in trashList)
         {
             var directionToTrash = trash.transform.position - transform.position;
-            var trashdistance = directionToTrash.sqrMagnitude;
-            if (trashdistance < closestDirection)
+            var trashDistance = directionToTrash.sqrMagnitude;
+            if (trashDistance < closestDirection)
             {
-                closestDirection = trashdistance;
+                closestDirection = trashDistance;
                 closestTrash = trash;
             }
         }
 
-        if (Mathf.Sqrt(closestDirection) < GetComponent<PlayerController>().CollectionRadius && !closestTrash.GetComponent<TrashController>().IsBeeingDestroyed)
+        if (Mathf.Sqrt(closestDirection) < GetComponent<PlayerController>().CollectionRadius &&
+            !closestTrash.GetComponent<TrashController>().IsBeeingDestroyed)
         {
             StartCoroutine(ObjectClickController.DestroyObject(closestTrash));
             AddValue(closestTrash.GetComponent<TrashController>().GetCurrencyValue());
@@ -40,11 +40,11 @@ public class AutoCollectController : MonoBehaviour
     private void AddValue(float value)
     {
         var balance = (BalanceController) GetComponent(typeof(BalanceController));
-        balance.AddBalance(value);
+        balance.AddBalance(value * GameData.AutoMultiplier);
     }
 
-    public void AddValueText(TrashController trash)
+    private void AddValueText(TrashController trash)
     {
-        _mainCanvas.GetComponent<ValueDisplayer>().CreateText(trash);
+        _mainCanvas.GetComponent<ValueDisplayer>().CreateText(trash, false);
     }
 }

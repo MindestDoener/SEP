@@ -6,14 +6,14 @@ using UnityEngine;
 public class GameData : MonoBehaviour
 {
     public static float Balance = 0;
-    public static float Multiplier = 1;
-    public float autoSaveCycleTime = 10f;
+    public static float ClickMultiplier = 1;
+    public static float AutoMultiplier = 1;
 
     public static Dictionary<Rarity, Dictionary<string, float>> TrashCollectCount;
-    
+
     public static List<ShopItemScriptableObject> ShopItems;
 
-    public static Dictionary<WearableItem, string> CustomCharacter = new Dictionary<WearableItem, string>()
+    public static Dictionary<WearableItem, string> CustomCharacter = new Dictionary<WearableItem, string>
     {
         {WearableItem.Bodys, "Body"},
         {WearableItem.Faces, "Face"},
@@ -21,6 +21,8 @@ public class GameData : MonoBehaviour
         {WearableItem.Pants, "Pants"},
         {WearableItem.Shoes, "Boots"}
     };
+
+    public float autoSaveCycleTime = 5f;
 
     private SaveScript saveScript;
 
@@ -32,9 +34,7 @@ public class GameData : MonoBehaviour
             GameObject.FindWithTag("Balance").GetComponent<BalanceDisplayController>().DisplayBalance(Balance);
             TrashManager.UpdateTrashItems(TrashCollectCount);
             foreach (var pair in CustomCharacter)
-            {
                 WearableController.SetWearable(WearableController.GetSpriteByName(pair.Value, pair.Key), pair.Key);
-            }
         }
 
         StartCoroutine(AutoSave());
@@ -44,12 +44,9 @@ public class GameData : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(5f);//autoSaveCycleTime);
+            yield return new WaitForSeconds(autoSaveCycleTime);
             UpdateTrashCollectCount();
-            if (ShopItems is null)
-            {
-                ShopItems = ShopController.AssignItemsToArray();
-            }
+            if (ShopItems is null) ShopItems = ShopController.AssignItemsToArray();
             saveScript.SaveData();
         }
     }

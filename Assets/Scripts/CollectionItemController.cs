@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class CollectionItemController : MonoBehaviour
@@ -35,7 +34,7 @@ public class CollectionItemController : MonoBehaviour
         _detailView.transform.GetChild((int) DetailViewComponents.BaseValueNumberText).GetComponent<Text>().text =
             NumberShortener.ShortenNumber(_trashObject.Value);
         _detailView.transform.GetChild((int) DetailViewComponents.CurrentValueNumberText).GetComponent<Text>().text =
-            NumberShortener.ShortenNumber(_trashObject.Value * ObjectClickController.GetMultiplier());
+            NumberShortener.ShortenNumber(_trashObject.Value * GameData.ClickMultiplier);
         transform.parent.gameObject.SetActive(false);
     }
 }
