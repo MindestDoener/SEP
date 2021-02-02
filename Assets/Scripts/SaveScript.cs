@@ -59,19 +59,19 @@ public class SaveScript : MonoBehaviour
             {
                 var item = GameData.ShopItems[i];
                 var loadedItem = save.savUpgradeDatas[i];
-                if (item.ButtonNumber == loadedItem.ButtonNumber)
-                {
-                    item.UpgradeLevel = loadedItem.UpgradeLevel;
-                    item.MultiplierIncrement = loadedItem.MultiplierIncrement;
-                    item.UpgradeCosts = loadedItem.UpgradeCosts;
-                    item.CostIncrements = loadedItem.CostIncrements;
-                }
-                else
-                {
-                    Debug.LogError("Upgrade Data does not align!");
-                    throw new InvalidDataException("loaded upgrades do not align: itemNum: " + item.ButtonNumber +
-                                                   "; loadedItemNum: " + loadedItem.ButtonNumber);
-                }
+                // if (item.ButtonNumber == loadedItem.ButtonNumber)
+                // {
+                item.UpgradeLevel = loadedItem.UpgradeLevel;
+                item.MultiplierIncrement = loadedItem.MultiplierIncrement;
+                item.UpgradeCosts = loadedItem.UpgradeCosts;
+                item.CostIncrements = loadedItem.CostIncrements;
+                // }
+                // else
+                // {
+                //     Debug.LogError("Upgrade Data does not align!");
+                //     throw new InvalidDataException("loaded upgrades do not align: itemNum: " + item.ButtonNumber +
+                //                                    "; loadedItemNum: " + loadedItem.ButtonNumber);
+                // }
             }
 
             Debug.Log("Data Loaded");

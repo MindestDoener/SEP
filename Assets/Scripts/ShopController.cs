@@ -85,7 +85,7 @@ public class ShopController : MonoBehaviour
 
     private void UpdateUpgradeDisplay(ShopItemScriptableObject upgrade) // TODO: can be simplified
     {
-        _buttons[upgrade.ButtonNumber].GetComponentInChildren<Text>().text = string.Format(upgrade.ButtonText,
+        _buttons[shopItems.IndexOf(upgrade)].GetComponentInChildren<Text>().text = string.Format(upgrade.ButtonText,
             NumberShortener.ShortenNumber(upgrade.UpgradeCosts),
             upgrade.UpgradeLevel,
             upgrade.MultiplierIncrement);
@@ -109,7 +109,7 @@ public class ShopController : MonoBehaviour
     public static List<ShopItemScriptableObject> AssignItemsToArray()
     {
         var objectList = Resources.LoadAll<ShopItemScriptableObject>("ShopItems");
-        Array.Sort(objectList, (item1, item2) => item1.ButtonNumber.CompareTo(item2.ButtonNumber));
+        Array.Sort(objectList, (item1, item2) => item1.UpgradeCosts.CompareTo(item2.UpgradeCosts));
         return objectList.ToList().ConvertAll(Instantiate);
     }
 

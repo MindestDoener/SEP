@@ -24,7 +24,7 @@ public class UpgradeData
 
     public UpgradeData(ShopItemScriptableObject item)
     {
-        ButtonNumber = item.ButtonNumber;
+        // ButtonNumber = item.ButtonNumber;
         UpgradeLevel = item.UpgradeLevel;
         MultiplierIncrement = item.MultiplierIncrement;
         UpgradeCosts = item.UpgradeCosts;
