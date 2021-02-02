@@ -3,24 +3,30 @@ using UnityEngine.UI;
 
 internal class TabItemController : MonoBehaviour
 {
-    [SerializeField] private GameObject ItemPrefab;
-    [SerializeField] private WearableItem ItemType; //muss einem Ordner aus Resources/WearableItems gleichen
-    private GameObject _currentItem;
-
-    public void LoadItems(int navButtonInput)
+    public class TabItemController : MonoBehaviour
     {
-        var wearableItems = Resources.LoadAll<WearableItemScriptableObject>("WearableItems\\" + ItemType);
-        var itemContainer = GameObject.FindWithTag("ItemContainer");
+        [SerializeField] private GameObject ItemPrefab;
+        [SerializeField] private WearableItem ItemType; 
+        private GameObject _currentItem;
+        private WearableItemScriptableObject[] _WearableItems;
+
+        public void Start()
+        {
+            _WearableItems = Resources.LoadAll<WearableItemScriptableObject>("WearableItems\\" + ItemType);
+        }
+        public void LoadItems(int NavButtonInput)
+        {
+            var ItemContainer = GameObject.FindWithTag("ItemContainer");
 
         foreach (Transform child in itemContainer.transform) Destroy(child.gameObject);
 
-            for (var i = 0; i < WearableItems.Length; i++)
+            for (var i = 0; i < _WearableItems.Length; i++)
             {
                 _currentItem = Instantiate(ItemPrefab, ItemContainer.transform);
-                _currentItem.transform.GetChild(0).GetComponent<Image>().sprite = WearableItems[i].ItemImage;
-                if (!WearableItems[i].IsUnlocked)
+                _currentItem.transform.GetChild(0).GetComponent<Image>().sprite = _WearableItems[i].ItemImage;
+                if (!_WearableItems[i].IsUnlocked)
                 {
-                    _currentItem.transform.GetChild(1).GetComponent<Text>().text = WearableItems[i].Price.ToString();
+                    _currentItem.transform.GetChild(1).GetComponent<Text>().text = _WearableItems[i].Price.ToString();
                     _currentItem.GetComponent<Image>().color = new Color(0, 0, 0, 128);
                 }
                 else
@@ -28,6 +34,9 @@ internal class TabItemController : MonoBehaviour
                     _currentItem.transform.GetChild(1).GetComponent<Text>().text = "";
                 }
                 _currentItem.GetComponent<WearableItemController>().ItemType = ItemType;
+                _currentItem.GetComponent<WearableItemController>().Unlocked = _WearableItems[i].IsUnlocked;
+                _currentItem.GetComponent<WearableItemController>().Id = _WearableItems[i].id;
+                _currentItem.GetComponent<WearableItemController>().TIC = this;
             }
         }
     }
@@ -47,25 +56,10 @@ internal class TabItemController : MonoBehaviour
             case WearableItem.Faces:
                 return 1.2f;
         }
-
-        return 1f;
-    }
-
-    private GameObject CurrentTab()
-    {
-        try
+        
+        public void SetItem(WearableItemController WearableItem)
         {
-            var itemType = GameObject.FindWithTag("ItemContainer").transform.GetChild(0)
-                .GetComponent<WearableItemController>().ItemType;
-            var tabBar = GameObject.FindWithTag("TabBar").transform;
-
-            for (var i = 0; i < 5; i++)
-                if (tabBar.GetChild(i).GetComponent<TabItemController>().ItemType == itemType)
-                    return tabBar.GetChild(i).gameObject;
-        }
-        catch (UnityException)
-        {
-            return null;
+            _WearableItems[WearableItem.Id].IsUnlocked = WearableItem.Unlocked;
         }
 
         return null;

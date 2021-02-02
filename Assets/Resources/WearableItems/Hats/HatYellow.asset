@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4339286bae5bbb6438242f2e1a4906f5, type: 3}
   m_Name: HatYellow
   m_EditorClassIdentifier: 
-  Name: 
+  id: 9
+  Price: 0
   ItemImage: {fileID: 21300000, guid: 65fd3606c8fa16b44b6b6dad68b459cf, type: 3}
   IsUnlocked: 1
   ItemType: 3
