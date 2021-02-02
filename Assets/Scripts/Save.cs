@@ -7,6 +7,7 @@ public class Save
     public float savBalance;
     public float savClickMultiplier;
     public float savAutoMultiplier;
+    public float savAutoCollectRate;
     public Dictionary<Rarity, Dictionary<string, float>> savTrashCollectCount;
     public Dictionary<WearableItem, string> savCustomCharacter;
     public List<UpgradeData> savUpgradeDatas;

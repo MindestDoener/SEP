@@ -2,12 +2,11 @@
 
 public class AutoCollectController : MonoBehaviour
 {
-    [SerializeField] private float autoCollectRate = 4;
     private Canvas _mainCanvas;
 
     public void Start()
     {
-        InvokeRepeating(nameof(DestroyClosestTrashInRadius), 5, autoCollectRate);
+        InvokeRepeating(nameof(DestroyClosestTrashInRadius), 5, GameData.AutoCollectRate);
         _mainCanvas = GameObject.Find("UICanvas").GetComponent<Canvas>();
     }
 
