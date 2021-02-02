@@ -1,17 +1,18 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
 
-[System.Serializable]
+[Serializable]
 public class Save
 {
     public float savBalance;
-    public float savMultiplier;
+    public float savClickMultiplier;
+    public float savAutoMultiplier;
     public Dictionary<Rarity, Dictionary<string, float>> savTrashCollectCount;
     public Dictionary<WearableItem, string> savCustomCharacter;
     public List<UpgradeData> savUpgradeDatas;
 }
 
-[System.Serializable]
+[Serializable]
 public class UpgradeData
 {
     public int ButtonNumber;
