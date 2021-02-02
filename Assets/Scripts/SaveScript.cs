@@ -20,6 +20,7 @@ public class SaveScript : MonoBehaviour
             savBalance = GameData.Balance,
             savClickMultiplier = GameData.ClickMultiplier,
             savAutoMultiplier = GameData.AutoMultiplier,
+            savAutoCollectRate = GameData.AutoCollectRate,
             savTrashCollectCount = GameData.TrashCollectCount,
             savCustomCharacter = GameData.CustomCharacter,
             savUpgradeDatas = GameData.ShopItems.ConvertAll(item => new UpgradeData(item))
@@ -50,6 +51,7 @@ public class SaveScript : MonoBehaviour
             GameData.Balance = save.savBalance;
             GameData.ClickMultiplier = save.savClickMultiplier;
             GameData.AutoMultiplier = save.savAutoMultiplier;
+            GameData.AutoCollectRate = save.savAutoCollectRate;
             GameData.TrashCollectCount = save.savTrashCollectCount;
             GameData.CustomCharacter = save.savCustomCharacter;
             GameData.ShopItems = ShopController.AssignItemsToArray();

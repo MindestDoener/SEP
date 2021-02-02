@@ -41,12 +41,26 @@ public class ShopController : MonoBehaviour
                 case UpgradeType.AutocollectMultiplierUpgrade:
                     DoAutocollectUpgrade(upgrade);
                     break;
+                case UpgradeType.AutocollectRateUpgrade:
+                    DoAutocollectRateUpgrade(upgrade);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
+    }
+
+    private void DoAutocollectRateUpgrade(ShopItemScriptableObject upgrade)
+    {
+        upgrade.UpgradeLevel++;
+        _bc.AddBalance(-upgrade.UpgradeCosts);
+        ModifyUpgradeCost(upgrade);
+        GameData.AutoCollectRate *= 1 - upgrade.MultiplierIncrement;
+        UpdateUpgradeDisplay(upgrade);
     }
 
     private void DoClickUpgrade(ShopItemScriptableObject upgrade)
     {
-        upgrade.UpgradeLevel += 1;
+        upgrade.UpgradeLevel++;
         _bc.AddBalance(-upgrade.UpgradeCosts);
         ModifyUpgradeCost(upgrade);
         GameData.ClickMultiplier += upgrade.MultiplierIncrement;
@@ -56,7 +70,7 @@ public class ShopController : MonoBehaviour
 
     private void DoAutocollectUpgrade(ShopItemScriptableObject upgrade)
     {
-        upgrade.UpgradeLevel += 1;
+        upgrade.UpgradeLevel++;
         _bc.AddBalance(-upgrade.UpgradeCosts);
         ModifyUpgradeCost(upgrade);
         GameData.AutoMultiplier += upgrade.MultiplierIncrement;

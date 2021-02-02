@@ -19,7 +19,8 @@ public enum WearableItem
 public enum UpgradeType
 {
     ClickMultiplierUpgrade = 0,
-    AutocollectMultiplierUpgrade = 1
+    AutocollectMultiplierUpgrade = 1,
+    AutocollectRateUpgrade = 2
 }
 
 public enum DetailViewComponents
