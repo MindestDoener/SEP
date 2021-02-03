@@ -21,6 +21,7 @@ public class SaveScript : MonoBehaviour
             savClickMultiplier = GameData.ClickMultiplier,
             savAutoMultiplier = GameData.AutoMultiplier,
             savAutoCollectRate = GameData.AutoCollectRate,
+            savAutoCollectRange = GameData.AutoCollectRange,
             savTrashCollectCount = GameData.TrashCollectCount,
             savCustomCharacter = GameData.CustomCharacter,
             savUpgradeDatas = GameData.ShopItems.ConvertAll(item => new UpgradeData(item))
@@ -52,26 +53,18 @@ public class SaveScript : MonoBehaviour
             GameData.ClickMultiplier = save.savClickMultiplier;
             GameData.AutoMultiplier = save.savAutoMultiplier;
             GameData.AutoCollectRate = save.savAutoCollectRate;
+            GameData.AutoCollectRange = save.savAutoCollectRange;
             GameData.TrashCollectCount = save.savTrashCollectCount;
             GameData.CustomCharacter = save.savCustomCharacter;
             GameData.ShopItems = ShopController.AssignItemsToArray();
             for (var i = 0; i < GameData.ShopItems.Count; i++)
             {
                 var item = GameData.ShopItems[i];
-                var loadedItem = save.savUpgradeDatas[i];
-                // if (item.ButtonNumber == loadedItem.ButtonNumber)
-                // {
+                var loadedItem = save.savUpgradeDatas[i]; // TODO: (optional) verify loaded Data
                 item.UpgradeLevel = loadedItem.UpgradeLevel;
                 item.MultiplierIncrement = loadedItem.MultiplierIncrement;
                 item.UpgradeCosts = loadedItem.UpgradeCosts;
                 item.CostIncrements = loadedItem.CostIncrements;
-                // }
-                // else
-                // {
-                //     Debug.LogError("Upgrade Data does not align!");
-                //     throw new InvalidDataException("loaded upgrades do not align: itemNum: " + item.ButtonNumber +
-                //                                    "; loadedItemNum: " + loadedItem.ButtonNumber);
-                // }
             }
 
             Debug.Log("Data Loaded");

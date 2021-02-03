@@ -21,6 +21,7 @@ TagManager:
   - PlayerCustomizerModel
   - TabBar
   - RewardAd
+  - CircleRenderer
   layers:
   - Default
   - TransparentFX

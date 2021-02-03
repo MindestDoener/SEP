@@ -20,7 +20,8 @@ public enum UpgradeType
 {
     ClickMultiplierUpgrade = 0,
     AutocollectMultiplierUpgrade = 1,
-    AutocollectRateUpgrade = 2
+    AutocollectRateUpgrade = 2,
+    AutocollectRangeUpgrade = 3
 }
 
 public enum DetailViewComponents
