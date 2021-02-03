@@ -20,14 +20,14 @@ public class AutoCollectController : MonoBehaviour
         {
             var directionToTrash = trash.transform.position - transform.position;
             var trashDistance = directionToTrash.sqrMagnitude;
-            if (trashDistance < closestDirection)
+            if (trashDistance < closestDirection && !trash.GetComponent<TrashController>().IsBeeingDestroyed)
             {
                 closestDirection = trashDistance;
                 closestTrash = trash;
             }
         }
 
-        if (Mathf.Sqrt(closestDirection) < GameData.AutoCollectRange &&
+        if (Mathf.Sqrt(closestDirection) <= GameData.AutoCollectRange &&
             !closestTrash.GetComponent<TrashController>().IsBeeingDestroyed)
         {
             StartCoroutine(ObjectClickController.DestroyObject(closestTrash));

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,7 +8,7 @@ public class UpgradeController : MonoBehaviour
     private List<Button> _buttons;
     private ShopController _shop;
 
-    void Start()
+    private void Start()
     {
         _shop = GetComponent<ShopController>();
         _buttons = _shop.GetButtons();
@@ -18,22 +17,17 @@ public class UpgradeController : MonoBehaviour
 
     private void OnEnable()
     {
-        if (!(_shop is null))
-        {
-            StartCoroutine(UpdateButtons());
-        }
+        if (!(_shop is null)) StartCoroutine(UpdateButtons());
     }
 
     private IEnumerator UpdateButtons()
     {
         while (true)
         {
-            for (int i = 0; i < _buttons.Count; i++)
-            {
+            for (var i = 0; i < _buttons.Count; i++)
                 _buttons[i].interactable = _shop.GetBalance() >= _shop.GetUpgradeCosts()[i];
-            }
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.025f);
         }
     }
 }
