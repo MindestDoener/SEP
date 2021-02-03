@@ -9,6 +9,7 @@ public class GameData : MonoBehaviour
     public static float ClickMultiplier = 1;
     public static float AutoMultiplier = 1;
     public static float AutoCollectRate = 5;
+    public static float AutoCollectRange = 5;
 
     public static Dictionary<Rarity, Dictionary<string, float>> TrashCollectCount;
 

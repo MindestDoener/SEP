@@ -27,7 +27,7 @@ public class AutoCollectController : MonoBehaviour
             }
         }
 
-        if (Mathf.Sqrt(closestDirection) < GetComponent<PlayerController>().CollectionRadius &&
+        if (Mathf.Sqrt(closestDirection) < GameData.AutoCollectRange &&
             !closestTrash.GetComponent<TrashController>().IsBeeingDestroyed)
         {
             StartCoroutine(ObjectClickController.DestroyObject(closestTrash));

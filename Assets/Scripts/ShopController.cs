@@ -44,9 +44,22 @@ public class ShopController : MonoBehaviour
                 case UpgradeType.AutocollectRateUpgrade:
                     DoAutocollectRateUpgrade(upgrade);
                     break;
+                case UpgradeType.AutocollectRangeUpgrade:
+                    DoAutocollectRangeUpgrade(upgrade);
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+    }
+
+    private void DoAutocollectRangeUpgrade(ShopItemScriptableObject upgrade)
+    {
+        upgrade.UpgradeLevel++;
+        _bc.AddBalance(-upgrade.UpgradeCosts);
+        ModifyUpgradeCost(upgrade);
+        GameData.AutoCollectRange *= upgrade.MultiplierIncrement;
+        UpdateUpgradeDisplay(upgrade);
+        GameObject.FindWithTag("CircleRenderer").GetComponent<CircleRendererController>().UpdateCircle();
     }
 
     private void DoAutocollectRateUpgrade(ShopItemScriptableObject upgrade)
