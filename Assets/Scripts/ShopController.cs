@@ -69,6 +69,8 @@ public class ShopController : MonoBehaviour
         ModifyUpgradeCost(upgrade);
         GameData.AutoCollectRate *= 1 - upgrade.MultiplierIncrement;
         UpdateUpgradeDisplay(upgrade);
+        GameObject.FindWithTag("AutoCollectRateDisplay").GetComponent<Text>().text =
+            "Autocollect Rate: every " + Math.Round(GameData.AutoCollectRate, 1) + "s";
     }
 
     private void DoClickUpgrade(ShopItemScriptableObject upgrade)
