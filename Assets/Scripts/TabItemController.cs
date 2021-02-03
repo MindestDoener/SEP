@@ -24,6 +24,8 @@ internal class TabItemController : MonoBehaviour
             {
                 _currentItem = Instantiate(ItemPrefab, ItemContainer.transform);
                 _currentItem.transform.GetChild(0).GetComponent<Image>().sprite = _WearableItems[i].ItemImage;
+                _currentItem.transform.GetChild(0).localScale = new Vector3(GetScale(ItemType), GetScale(ItemType), 1);
+
                 if (!_WearableItems[i].IsUnlocked)
                 {
                     _currentItem.transform.GetChild(1).GetComponent<Text>().text = _WearableItems[i].Price.ToString();
@@ -32,11 +34,11 @@ internal class TabItemController : MonoBehaviour
                 else
                 {
                     _currentItem.transform.GetChild(1).GetComponent<Text>().text = "";
+                    _currentItem.GetComponent<WearableItemController>().ItemType = ItemType;
+                    _currentItem.GetComponent<WearableItemController>().Unlocked = _WearableItems[i].IsUnlocked;
+                    _currentItem.GetComponent<WearableItemController>().Id = _WearableItems[i].id;
+                    _currentItem.GetComponent<WearableItemController>().TIC = this;
                 }
-                _currentItem.GetComponent<WearableItemController>().ItemType = ItemType;
-                _currentItem.GetComponent<WearableItemController>().Unlocked = _WearableItems[i].IsUnlocked;
-                _currentItem.GetComponent<WearableItemController>().Id = _WearableItems[i].id;
-                _currentItem.GetComponent<WearableItemController>().TIC = this;
             }
         }
     }
@@ -45,21 +47,32 @@ internal class TabItemController : MonoBehaviour
     {
         switch (ItemType)
         {
-            case WearableItem.Bodys:
-                return 1f;
-            case WearableItem.Shoes:
-                return 2f;
-            case WearableItem.Pants:
-                return 1.5f;
-            case WearableItem.Hats:
-                return 1.2f;
-            case WearableItem.Faces:
-                return 1.2f;
+            switch (ItemType)
+            {
+                case WearableItem.Bodys:
+                    return 1f;
+                case WearableItem.Shoes:
+                    return 2f;
+                case WearableItem.Pants:
+                    return 1.5f;
+                case WearableItem.Hats:
+                    return 2f;
+                case WearableItem.Faces:
+                    return 1.2f;
+            }
+
+            return 1f;
         }
         
         public void SetItem(WearableItemController WearableItem)
         {
-            _WearableItems[WearableItem.Id].IsUnlocked = WearableItem.Unlocked;
+            for(int i = 0; i < _WearableItems.Length; i++)
+            {
+                if(_WearableItems[i].id == WearableItem.Id)
+                {
+                    _WearableItems[i].IsUnlocked = WearableItem.Unlocked;
+                }
+            }
         }
 
         return null;
