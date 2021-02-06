@@ -10,7 +10,7 @@ public enum Rarity
 
 public enum WearableItem
 {
-    Bodys= 0,
+    Bodys=5,
     Faces=4,
     Hats=3, 
     Pants=2,

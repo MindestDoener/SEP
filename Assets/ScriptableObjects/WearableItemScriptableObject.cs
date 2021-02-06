@@ -6,7 +6,7 @@ using UnityEngine;
 public class WearableItemScriptableObject : ScriptableObject
 {
     public int id;
-    public int Price;
+    public float Price;
     public Sprite ItemImage;
     public bool IsUnlocked = false;
     public WearableItem ItemType;

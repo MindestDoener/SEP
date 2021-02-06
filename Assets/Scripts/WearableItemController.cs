@@ -1,13 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Assets.Scripts;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class WearableItemController : MonoBehaviour
 {
     public WearableItem ItemType;
+    public float Price;
     public bool Unlocked;
     public int Id;
     public TabItemController TIC;
@@ -22,9 +19,9 @@ public class WearableItemController : MonoBehaviour
         }
         else
         {
-            if(GameData.Balance >= Convert.ToDecimal(ClickedItemPrice))
+            if (GameData.Balance >= Price)
             {
-                GameData.Balance  - Convert.ToDecimal(ClickedItemPrice);
+                GameData.Balance -= Price;
                 this.transform.GetChild(1).GetComponent<Text>().text = "";
                 this.transform.GetComponent<Image>().color = new Color(255,255,255,128);
                 this.Unlocked = true;

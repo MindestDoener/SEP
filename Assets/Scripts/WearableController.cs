@@ -25,14 +25,8 @@ public class WearableController : MonoBehaviour
             _playerCustomizerModel = GameObject.FindWithTag("PlayerCustomizerModel");
         }
 
-        if (type == WearableItem.Bodys)
-        {
-            _player.GetComponent<SpriteRenderer>().sprite = sprite;
-        }
-        else
-        {
-            _player.transform.GetChild((int) type).GetComponent<SpriteRenderer>().sprite = sprite;
-        }
+        _player.transform.GetChild((int) type).GetComponent<SpriteRenderer>().sprite = sprite;
+        
 
         if (!(_playerCustomizerModel is null))
         {
