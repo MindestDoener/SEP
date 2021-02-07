@@ -21,6 +21,7 @@ TagManager:
   - PlayerCustomizerModel
   - TabBar
   - PurchaseConfirmation
+  - PurchaseConfirmation
   - RewardAd
   layers:
   - Default
