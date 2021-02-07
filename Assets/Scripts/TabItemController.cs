@@ -49,15 +49,13 @@ public class TabItemController : MonoBehaviour
         switch (ItemType)
         {
             case WearableItem.Bodys:
-                return 2f;
+                return 1.5f;
             case WearableItem.Shoes:
-                return 3.5f;
+                return 1.5f;
             case WearableItem.Pants:
-                return 2.5f;
+                return 1.5f;
             case WearableItem.Hats:
-                return 2f;
-            case WearableItem.Faces:
-                return 2f;
+                return 1f;
         }
         return 1f;
     }
