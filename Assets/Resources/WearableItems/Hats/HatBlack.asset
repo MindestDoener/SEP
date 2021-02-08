@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4339286bae5bbb6438242f2e1a4906f5, type: 3}
   m_Name: HatBlack
   m_EditorClassIdentifier: 
-  id: 2
-  Price: 0
+  id: 0
+  Price: 500
   ItemImage: {fileID: 21300000, guid: 44d1b43a30e51924d95564904e7a19d6, type: 3}
-  IsUnlocked: 1
+  IsUnlocked: 0
   ItemType: 3

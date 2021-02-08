@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HatYellow
   m_EditorClassIdentifier: 
   id: 9
-  Price: 0
+  Price: 500
   ItemImage: {fileID: 21300000, guid: 65fd3606c8fa16b44b6b6dad68b459cf, type: 3}
-  IsUnlocked: 1
+  IsUnlocked: 0
   ItemType: 3

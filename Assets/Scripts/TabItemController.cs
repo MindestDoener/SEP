@@ -22,6 +22,8 @@ public class TabItemController : MonoBehaviour
 
         for (var i = 0; i < _WearableItems.Length; i++)
         {
+            _WearableItems[i].id = i;
+
             _currentItem = Instantiate(ItemPrefab, ItemContainer.transform);
             _currentItem.transform.GetChild(0).GetComponent<Image>().sprite = _WearableItems[i].ItemImage;
             _currentItem.transform.GetChild(0).localScale = new Vector3(GetScale(ItemType), GetScale(ItemType), 1);

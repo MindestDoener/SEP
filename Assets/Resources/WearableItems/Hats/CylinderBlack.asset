@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4339286bae5bbb6438242f2e1a4906f5, type: 3}
   m_Name: CylinderBlack
   m_EditorClassIdentifier: 
-  id: 1
-  Price: 1000
+  id: 0
+  Price: 500
   ItemImage: {fileID: 21300000, guid: ae16a43a53a60fc4287c6c2e4832f62c, type: 3}
   IsUnlocked: 0
   ItemType: 3

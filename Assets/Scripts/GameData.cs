@@ -15,15 +15,15 @@ public class GameData : MonoBehaviour
 
     public static Dictionary<WearableItem, string> CustomCharacter = new Dictionary<WearableItem, string>()
     {
-        {WearableItem.Skins, "Skin"},
-        {WearableItem.Rings, "Ring"},
-        {WearableItem.Pants, "Pant"},
+        //{WearableItem.Skins, "StandardSkin"},
+        //{WearableItem.Rings, "StandardRing"},
+        {WearableItem.Pants, "BluePants"},
         {WearableItem.Bodys, "Body"},
-        {WearableItem.Eyes, "Eye"},
-        {WearableItem.Hairs, "Hair"},
-        {WearableItem.Shoes, "Shoe"},
-        {WearableItem.Beards, "Beard"},
-        {WearableItem.Hats, "Hat"}
+        //{WearableItem.Eyes, "StandardEyes"},
+        {WearableItem.Hairs, "StandardHair"},
+        {WearableItem.Shoes, "Boots"},
+        {WearableItem.Beards, "StandardBeard"},
+        {WearableItem.Hats, "BlueHat"}
     };
 
     private SaveScript saveScript;
