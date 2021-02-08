@@ -12,7 +12,6 @@ public class TabItemController : MonoBehaviour
     public void Start()
     {
         _WearableItems = Resources.LoadAll<WearableItemScriptableObject>("WearableItems\\" + ItemType);
-        Debug.Log(_WearableItems[0]);
     }
     public void LoadItems(int NavButtonInput)
     {
