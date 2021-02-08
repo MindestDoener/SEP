@@ -8,10 +8,7 @@ public class ShopItemScriptableObject : ScriptableObject
     public float UpgradeCosts;
     public float CostIncrements;
     public string ButtonText;
-
     public UpgradeType Type;
-
-    // public int ButtonNumber;
     public Sprite ItemImage;
     public Color Color;
 }
