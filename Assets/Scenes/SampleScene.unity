@@ -1112,7 +1112,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1372,7 +1372,7 @@ GameObject:
   - component: {fileID: 407462842}
   - component: {fileID: 407462841}
   m_Layer: 5
-  m_Name: Ring
+  m_Name: Rings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1472,7 +1472,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -63.831, y: -9.6616}
+  m_AnchoredPosition: {x: -11.545, y: -39.564}
   m_SizeDelta: {x: 17.61676, y: 15.825611}
   m_Pivot: {x: 0.4999988, y: 0.5}
 --- !u!114 &429448863
@@ -1489,7 +1489,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemPrefab: {fileID: 4985020668211632203, guid: dc387a0ca3324f54983600dc4fa49183,
     type: 3}
-  ItemType: 5
+  ItemType: 4
 --- !u!114 &429448864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1601,7 +1601,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &431729102
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1687,7 +1687,7 @@ GameObject:
   - component: {fileID: 440740420}
   - component: {fileID: 440740419}
   m_Layer: 5
-  m_Name: Skin
+  m_Name: Skins
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7462,8 +7462,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -81.448, y: -9.6616}
-  m_SizeDelta: {x: 17.616966, y: 15.825611}
+  m_AnchoredPosition: {x: -11.545, y: -7.9128}
+  m_SizeDelta: {x: 17.228767, y: 15.825611}
   m_Pivot: {x: 0.4999988, y: 0.5}
 --- !u!114 &721165677
 MonoBehaviour:
@@ -7479,7 +7479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemPrefab: {fileID: 4985020668211632203, guid: dc387a0ca3324f54983600dc4fa49183,
     type: 3}
-  ItemType: 3
+  ItemType: 9
 --- !u!114 &721165678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12353,7 +12353,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -46.214, y: -9.6616}
+  m_AnchoredPosition: {x: -11.545, y: -55.39}
   m_SizeDelta: {x: 17.61676, y: 15.825611}
   m_Pivot: {x: 0.4999988, y: 0.5}
 --- !u!114 &985578069
@@ -12370,7 +12370,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemPrefab: {fileID: 4985020668211632203, guid: dc387a0ca3324f54983600dc4fa49183,
     type: 3}
-  ItemType: 2
+  ItemType: 3
 --- !u!114 &985578070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12633,7 +12633,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -28.597, y: -9.6616}
+  m_AnchoredPosition: {x: -11.545, y: -71.216}
   m_SizeDelta: {x: 17.61676, y: 15.825611}
   m_Pivot: {x: 0.4999988, y: 0.5}
 --- !u!114 &1018927287
@@ -12650,7 +12650,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemPrefab: {fileID: 4985020668211632203, guid: dc387a0ca3324f54983600dc4fa49183,
     type: 3}
-  ItemType: 1
+  ItemType: 7
 --- !u!114 &1018927288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13331,7 +13331,7 @@ GameObject:
   - component: {fileID: 1151758082}
   - component: {fileID: 1151758081}
   m_Layer: 5
-  m_Name: Beard
+  m_Name: Beards
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13346,14 +13346,14 @@ RectTransform:
   m_GameObject: {fileID: 1151758079}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children: []
   m_Father: {fileID: 1802004427}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -110.4, y: -7.4}
+  m_AnchoredPosition: {x: 7.5, y: 6.47}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1151758081
@@ -13686,7 +13686,7 @@ GameObject:
   - component: {fileID: 1196258760}
   - component: {fileID: 1196258759}
   m_Layer: 5
-  m_Name: Body
+  m_Name: Bodys
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14145,14 +14145,14 @@ RectTransform:
   m_GameObject: {fileID: 1290306993}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children: []
   m_Father: {fileID: 1802004427}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -108.5, y: -15.4}
+  m_AnchoredPosition: {x: 0.0000021458, y: -40.9}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1290306995
@@ -14205,7 +14205,7 @@ GameObject:
   - component: {fileID: 1324231968}
   - component: {fileID: 1324231967}
   m_Layer: 5
-  m_Name: Hair
+  m_Name: Hairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14513,7 +14513,7 @@ GameObject:
   - component: {fileID: 1401291684}
   - component: {fileID: 1401291683}
   m_Layer: 5
-  m_Name: Hat
+  m_Name: Hats
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14613,7 +14613,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -10.98, y: -9.6616}
+  m_AnchoredPosition: {x: -11.351, y: -23.738}
   m_SizeDelta: {x: 17.61676, y: 15.825611}
   m_Pivot: {x: 0.4999988, y: 0.5}
 --- !u!114 &1410411787
@@ -14630,7 +14630,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemPrefab: {fileID: 4985020668211632203, guid: dc387a0ca3324f54983600dc4fa49183,
     type: 3}
-  ItemType: 4
+  ItemType: 8
 --- !u!114 &1410411788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15132,8 +15132,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 26.8, y: -12.115}
-  m_SizeDelta: {x: 80.71652, y: 93.75043}
+  m_AnchoredPosition: {x: 8.883207, y: -7.88}
+  m_SizeDelta: {x: 78.674805, y: 102.21573}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1476543390
 MonoBehaviour:
@@ -16346,7 +16346,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -44.6, y: -9.8446}
+  m_AnchoredPosition: {x: -52.285, y: -0.00000095367}
   m_SizeDelta: {x: 104.57051, y: 98.93884}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1802004428
@@ -16483,8 +16483,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 26.378, y: 43.671}
-  m_SizeDelta: {x: 89.86827, y: 17.820751}
+  m_AnchoredPosition: {x: 59.766, y: -15.534}
+  m_SizeDelta: {x: 23.09079, y: 117.52313}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1809960450
 CanvasRenderer:
@@ -16844,7 +16844,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1900615109
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21449,7 +21449,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.000034332275, y: 0}
-  m_SizeDelta: {x: 80.716736, y: 5}
+  m_SizeDelta: {x: 80.716736, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2084264389
 CanvasRenderer:
@@ -21744,6 +21744,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 412693157503846778, guid: e9e27f15c31f9c749a992de97d70426e,
+        type: 3}
+      propertyPath: m_Name
+      value: Bodys
+      objectReference: {fileID: 0}
     - target: {fileID: 2399672350152586148, guid: e9e27f15c31f9c749a992de97d70426e,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -21768,6 +21773,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.x
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3348186448657919981, guid: e9e27f15c31f9c749a992de97d70426e,
+        type: 3}
+      propertyPath: m_Name
+      value: Beards
       objectReference: {fileID: 0}
     - target: {fileID: 4824175952093361929, guid: e9e27f15c31f9c749a992de97d70426e,
         type: 3}
@@ -21840,6 +21850,11 @@ PrefabInstance:
       propertyPath: m_Offset.x
       value: 0.0668847
       objectReference: {fileID: 0}
+    - target: {fileID: 5773375652446947683, guid: e9e27f15c31f9c749a992de97d70426e,
+        type: 3}
+      propertyPath: m_Name
+      value: Hats
+      objectReference: {fileID: 0}
     - target: {fileID: 5773375652446947693, guid: e9e27f15c31f9c749a992de97d70426e,
         type: 3}
       propertyPath: m_Sprite
@@ -21864,6 +21879,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Person
+      objectReference: {fileID: 0}
+    - target: {fileID: 6655652057385754266, guid: e9e27f15c31f9c749a992de97d70426e,
+        type: 3}
+      propertyPath: m_Name
+      value: Hairs
+      objectReference: {fileID: 0}
+    - target: {fileID: 7458003596702073744, guid: e9e27f15c31f9c749a992de97d70426e,
+        type: 3}
+      propertyPath: m_Name
+      value: Skins
       objectReference: {fileID: 0}
     - target: {fileID: 7793568042675039495, guid: e9e27f15c31f9c749a992de97d70426e,
         type: 3}
@@ -21934,6 +21959,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9180296769336541607, guid: e9e27f15c31f9c749a992de97d70426e,
+        type: 3}
+      propertyPath: m_Name
+      value: Rings
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1743486064594746663, guid: e9e27f15c31f9c749a992de97d70426e, type: 3}

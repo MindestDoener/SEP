@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 6458238667096097177}
   - component: {fileID: 7992652646011634690}
   m_Layer: 0
-  m_Name: Body
+  m_Name: Bodys
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 3141852135725162419}
   - component: {fileID: 4824175952093361929}
   m_Layer: 0
-  m_Name: Beard
+  m_Name: Beards
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -339,7 +339,7 @@ GameObject:
   - component: {fileID: 5773375652446947682}
   - component: {fileID: 5773375652446947693}
   m_Layer: 0
-  m_Name: Hat
+  m_Name: Hats
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 8902953756291797375}
   - component: {fileID: 4796867685794131921}
   m_Layer: 0
-  m_Name: Hair
+  m_Name: Hairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -585,7 +585,7 @@ GameObject:
   - component: {fileID: 5461442373244664464}
   - component: {fileID: 5672281769120508696}
   m_Layer: 0
-  m_Name: Skin
+  m_Name: Skins
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -940,7 +940,7 @@ GameObject:
   - component: {fileID: 6835354844855623530}
   - component: {fileID: 8746366140760313996}
   m_Layer: 0
-  m_Name: Ring
+  m_Name: Rings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
