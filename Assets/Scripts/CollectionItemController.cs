@@ -30,7 +30,7 @@ public class CollectionItemController : MonoBehaviour
         _detailView.transform.GetChild((int) DetailViewComponents.ItemImage).GetComponent<Image>().sprite = _trashObject.Sprite;
         _detailView.transform.GetChild((int) DetailViewComponents.RarityText).GetComponent<Text>().text = _trashObject.Rarity.ToString();
         _detailView.transform.GetChild((int) DetailViewComponents.RarityText).GetComponent<Text>().color = TrashManager.GetRarityColor(_trashObject.Rarity);
-        _detailView.transform.GetChild((int) DetailViewComponents.DescriptionText).GetComponent<Text>().text = _trashObject.Description;
+        _detailView.transform.GetChild((int) DetailViewComponents.DescriptionText).GetComponentInChildren<Text>().text = _trashObject.Description;
         _detailView.transform.GetChild((int) DetailViewComponents.CountNumberText).GetComponent<Text>().text = NumberShortener.ShortenNumber(_trashObject.Count);
         _detailView.transform.GetChild((int) DetailViewComponents.BaseValueNumberText).GetComponent<Text>().text =
             NumberShortener.ShortenNumber(_trashObject.Value);
