@@ -11,7 +11,7 @@ public class ShopController : MonoBehaviour
     private readonly List<Button> _buttons = new List<Button>();
     private BalanceController _bc;
     private Transform _buttonParent;
-    private MultiplierDisplayController _mdc;
+    private StatDisplayController _mdc;
     private GameObject _statContainer;
     private GameObject _player;
     private List<ShopItemScriptableObject> shopItems;
@@ -22,7 +22,7 @@ public class ShopController : MonoBehaviour
         _player = GameObject.FindWithTag("Player");
         _statContainer = GameObject.FindWithTag("StatContainer");
         _bc = _player.GetComponent<BalanceController>();
-        _mdc = _statContainer.GetComponent<MultiplierDisplayController>();
+        _mdc = _statContainer.GetComponent<StatDisplayController>();
         if (GameData.ShopItems is null) GameData.ShopItems = AssignItemsToArray();
 
         shopItems = GameData.ShopItems;

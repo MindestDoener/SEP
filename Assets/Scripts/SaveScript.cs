@@ -35,6 +35,7 @@ public class SaveScript : MonoBehaviour
                 binaryFormatter.Serialize(fileStream, save);
             }
         }
+        Debug.Log("Data Saved");
     }
 
     public bool LoadData()
