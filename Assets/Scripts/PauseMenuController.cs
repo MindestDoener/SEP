@@ -16,7 +16,7 @@ public class PauseMenuController : MonoBehaviour
         _pauseMenu = GameObject.FindWithTag("PauseMenu");
         _pauseMenu.SetActive(false);
         _otherUI[0] = GameObject.FindWithTag("RightUI");
-        _otherUI[1] = GameObject.FindWithTag("BalanceObject");
+        _otherUI[1] = GameObject.FindWithTag("StatContainer");
     }
 
     public void Pause()
