@@ -79,11 +79,13 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
     IEnumerator cooldown()
     {
         rewardAdButton.interactable = false;
+        rewardAdButton.transform.GetChild(2).gameObject.SetActive(true);
         Advertisement.RemoveListener(this);
         yield return new WaitForSeconds(5);
         _rewardText.SetActive(false);
         yield return new WaitForSeconds(85);
         Advertisement.AddListener(this);
         rewardAdButton.interactable = true;
+        rewardAdButton.transform.GetChild(2).gameObject.SetActive(false);
     }
 }
