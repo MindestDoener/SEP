@@ -1,20 +1,22 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
 
-[System.Serializable]
+[Serializable]
 public class Save
 {
     public float savBalance;
-    public float savMultiplier;
+    public float savClickMultiplier;
+    public float savAutoMultiplier;
+    public float savAutoCollectRate;
+    public float savAutoCollectRange;
     public Dictionary<Rarity, Dictionary<string, float>> savTrashCollectCount;
     public Dictionary<WearableItem, string> savCustomCharacter;
     public List<UpgradeData> savUpgradeDatas;
 }
 
-[System.Serializable]
+[Serializable]
 public class UpgradeData
 {
-    public int ButtonNumber;
     public int UpgradeLevel;
     public float MultiplierIncrement;
     public float UpgradeCosts;
@@ -22,7 +24,6 @@ public class UpgradeData
 
     public UpgradeData(ShopItemScriptableObject item)
     {
-        ButtonNumber = item.ButtonNumber;
         UpgradeLevel = item.UpgradeLevel;
         MultiplierIncrement = item.MultiplierIncrement;
         UpgradeCosts = item.UpgradeCosts;
