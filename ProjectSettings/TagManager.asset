@@ -23,8 +23,6 @@ TagManager:
   - PurchaseConfirmation
   - PurchaseConfirmation
   - RewardAd
-  - CircleRenderer
-  - AutoCollectRateDisplay
   layers:
   - Default
   - TransparentFX

@@ -5,8 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(GameData))]
 public class SaveScript : MonoBehaviour
 {
-    private Save latestSave;
     private string savePath;
+    private Save latestSave;
 
     private void Start()
     {
@@ -15,13 +15,10 @@ public class SaveScript : MonoBehaviour
 
     public void SaveData()
     {
-        var save = new Save
+        var save = new Save()
         {
             savBalance = GameData.Balance,
-            savClickMultiplier = GameData.ClickMultiplier,
-            savAutoMultiplier = GameData.AutoMultiplier,
-            savAutoCollectRate = GameData.AutoCollectRate,
-            savAutoCollectRange = GameData.AutoCollectRange,
+            savMultiplier = GameData.Multiplier,
             savTrashCollectCount = GameData.TrashCollectCount,
             savCustomCharacter = GameData.CustomCharacter,
             savUpgradeDatas = GameData.ShopItems.ConvertAll(item => new UpgradeData(item))
@@ -50,28 +47,36 @@ public class SaveScript : MonoBehaviour
             }
 
             GameData.Balance = save.savBalance;
-            GameData.ClickMultiplier = save.savClickMultiplier;
-            GameData.AutoMultiplier = save.savAutoMultiplier;
-            GameData.AutoCollectRate = save.savAutoCollectRate;
-            GameData.AutoCollectRange = save.savAutoCollectRange;
+            GameData.Multiplier = save.savMultiplier;
             GameData.TrashCollectCount = save.savTrashCollectCount;
             GameData.CustomCharacter = save.savCustomCharacter;
             GameData.ShopItems = ShopController.AssignItemsToArray();
             for (var i = 0; i < GameData.ShopItems.Count; i++)
             {
                 var item = GameData.ShopItems[i];
-                var loadedItem = save.savUpgradeDatas[i]; // TODO: (optional) verify loaded Data
-                item.UpgradeLevel = loadedItem.UpgradeLevel;
-                item.MultiplierIncrement = loadedItem.MultiplierIncrement;
-                item.UpgradeCosts = loadedItem.UpgradeCosts;
-                item.CostIncrements = loadedItem.CostIncrements;
+                var loadedItem = save.savUpgradeDatas[i];
+                if (item.ButtonNumber == loadedItem.ButtonNumber)
+                {
+                    item.UpgradeLevel = loadedItem.UpgradeLevel;
+                    item.MultiplierIncrement = loadedItem.MultiplierIncrement;
+                    item.UpgradeCosts = loadedItem.UpgradeCosts;
+                    item.CostIncrements = loadedItem.CostIncrements;
+                }
+                else
+                {
+                    Debug.LogError("Upgrade Data does not align!");
+                    throw new InvalidDataException("loaded upgrades do not align: itemNum: " + item.ButtonNumber +
+                                                   "; loadedItemNum: " + loadedItem.ButtonNumber);
+                }
             }
 
             Debug.Log("Data Loaded");
             return true;
         }
-
-        Debug.LogWarning("Save file doesn't exist.");
-        return false;
+        else
+        {
+            Debug.LogWarning("Save file doesn't exist.");
+            return false;
+        }
     }
 }

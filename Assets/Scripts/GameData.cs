@@ -6,16 +6,14 @@ using UnityEngine;
 public class GameData : MonoBehaviour
 {
     public static float Balance = 0;
-    public static float ClickMultiplier = 1;
-    public static float AutoMultiplier = 1;
-    public static float AutoCollectRate = 5;
-    public static float AutoCollectRange = 5;
+    public static float Multiplier = 1;
+    public float autoSaveCycleTime = 10f;
 
     public static Dictionary<Rarity, Dictionary<string, float>> TrashCollectCount;
-
+    
     public static List<ShopItemScriptableObject> ShopItems;
 
-    public static Dictionary<WearableItem, string> CustomCharacter = new Dictionary<WearableItem, string>
+    public static Dictionary<WearableItem, string> CustomCharacter = new Dictionary<WearableItem, string>()
     {
         //{WearableItem.Skins, "StandardSkin"},
         //{WearableItem.Rings, "StandardRing"},
@@ -28,8 +26,6 @@ public class GameData : MonoBehaviour
         {WearableItem.Hats, "BlueHat"}
     };
 
-    public float autoSaveCycleTime = 5f;
-
     private SaveScript saveScript;
 
     private void Start()
@@ -40,7 +36,9 @@ public class GameData : MonoBehaviour
             GameObject.FindWithTag("Balance").GetComponent<BalanceDisplayController>().DisplayBalance(Balance);
             TrashManager.UpdateTrashItems(TrashCollectCount);
             foreach (var pair in CustomCharacter)
+            {
                 WearableController.SetWearable(WearableController.GetSpriteByName(pair.Value, pair.Key), pair.Key);
+            }
         }
 
         StartCoroutine(AutoSave());
@@ -50,9 +48,12 @@ public class GameData : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(autoSaveCycleTime);
+            yield return new WaitForSeconds(5f);//autoSaveCycleTime);
             UpdateTrashCollectCount();
-            if (ShopItems is null) ShopItems = ShopController.AssignItemsToArray();
+            if (ShopItems is null)
+            {
+                ShopItems = ShopController.AssignItemsToArray();
+            }
             saveScript.SaveData();
         }
     }

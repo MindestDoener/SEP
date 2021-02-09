@@ -1,5 +1,7 @@
-﻿using UnityEngine;
-
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 [CreateAssetMenu]
 public class ShopItemScriptableObject : ScriptableObject
 {
@@ -7,8 +9,9 @@ public class ShopItemScriptableObject : ScriptableObject
     public float MultiplierIncrement;
     public float UpgradeCosts;
     public float CostIncrements;
-    public string ButtonText;
+    public String ButtonText;
     public UpgradeType Type;
+    public int ButtonNumber;
     public Sprite ItemImage;
     public Color Color;
 }

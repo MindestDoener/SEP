@@ -1,13 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class ObjectClickController : MonoBehaviour
 {
+    private GameObject _player;
+    private Canvas _mainCanvas;
     private BalanceController _balance;
     private RaycastHit2D _hit;
     private GameObject _hitObject;
-    private Canvas _mainCanvas;
-    private GameObject _player;
     private TrashController _trash;
 
     private void Start()
@@ -20,7 +21,10 @@ public class ObjectClickController : MonoBehaviour
 
     private void Update()
     {
-        if (!PauseMenuController.GetGameIsPaused() && !ShopController.IsPointerOverUI()) GetClickedObject();
+        if (!PauseMenuController.GetGameIsPaused() && !ShopController.IsPointerOverUI())
+        {
+            GetClickedObject();
+        }
     }
 
     private void GetClickedObject()
@@ -39,7 +43,7 @@ public class ObjectClickController : MonoBehaviour
                 {
                     if (_hitObject.GetComponent<TrashController>().IsBeeingDestroyed) return;
                     _trash = _hitObject.GetComponent<TrashController>();
-                    AddValue(_trash.GetCurrencyValue() * GameData.ClickMultiplier);
+                    AddValue(_trash.GetCurrencyValue() * GameData.Multiplier);
                     AddValueText(_trash);
                     StartCoroutine(DestroyObject(_hitObject));
                 }
@@ -64,6 +68,16 @@ public class ObjectClickController : MonoBehaviour
 
     private void AddValueText(TrashController trash)
     {
-        _mainCanvas.GetComponent<ValueDisplayer>().CreateText(trash, true);
+        _mainCanvas.GetComponent<ValueDisplayer>().CreateText(trash);
+    }
+
+    public static void IncreaseMultiplier(float value)
+    {
+        GameData.Multiplier = value;
+    }
+
+    public static float GetMultiplier()
+    {
+        return GameData.Multiplier;
     }
 }

@@ -7,29 +7,16 @@ public class CircleRendererController : MonoBehaviour
     [SerializeField] private int pointCount = 36;
     [SerializeField] private int orderInLayer = 2;
     [SerializeField] private Material material;
-    private bool _rendered;
+    private float _radius;
 
-    public bool Rendered
+    public float Radius
     {
-        get => _rendered;
+        get => _radius;
         set
         {
-            _rendered = value;
-            if (value)
-                RenderCircle();
-            else
-                Hide();
+            _radius = value;
+            RenderCircle();
         }
-    }
-
-    public void UpdateCircle()
-    {
-        if (_rendered) RenderCircle();
-    }
-
-    private void Hide()
-    {
-        GetComponent<MeshFilter>().mesh = new Mesh();
     }
 
     private void RenderCircle()
@@ -41,8 +28,8 @@ public class CircleRendererController : MonoBehaviour
 
         for (var i = 0; i < pointCount; i++)
         {
-            var x = Math.Cos(DegToArc(angle * i)) * GameData.AutoCollectRange;
-            var y = Math.Sin(DegToArc(angle * i)) * GameData.AutoCollectRange;
+            var x = Math.Cos(DegToArc(angle * i)) * _radius;
+            var y = Math.Sin(DegToArc(angle * i)) * _radius;
             vertices[i] = new Vector3((float) x, (float) y);
         }
 

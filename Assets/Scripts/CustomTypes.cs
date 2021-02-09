@@ -1,4 +1,5 @@
-﻿public enum Rarity
+﻿
+public enum Rarity
 {
     Common = 100,
     Uncommon = 50,
@@ -22,10 +23,8 @@ public enum WearableItem
 
 public enum UpgradeType
 {
-    ClickMultiplierUpgrade = 0,
-    AutocollectMultiplierUpgrade = 1,
-    AutocollectRateUpgrade = 2,
-    AutocollectRangeUpgrade = 3
+    ClickUpgrade = 0,
+    AutocollectUpgrade = 1
 }
 
 public enum DetailViewComponents
