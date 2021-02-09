@@ -1,14 +1,12 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AutoCollectController : MonoBehaviour
 {
-    [SerializeField] private float autoCollectRate = 4;
     private Canvas _mainCanvas;
 
     public void Start()
     {
-        InvokeRepeating(nameof(DestroyClosestTrashInRadius), 5, autoCollectRate);
+        InvokeRepeating(nameof(DestroyClosestTrashInRadius), 5, GameData.AutoCollectRate);
         _mainCanvas = GameObject.Find("UICanvas").GetComponent<Canvas>();
     }
 
@@ -21,15 +19,16 @@ public class AutoCollectController : MonoBehaviour
         foreach (var trash in trashList)
         {
             var directionToTrash = trash.transform.position - transform.position;
-            var trashdistance = directionToTrash.sqrMagnitude;
-            if (trashdistance < closestDirection)
+            var trashDistance = directionToTrash.sqrMagnitude;
+            if (trashDistance < closestDirection && !trash.GetComponent<TrashController>().IsBeeingDestroyed)
             {
-                closestDirection = trashdistance;
+                closestDirection = trashDistance;
                 closestTrash = trash;
             }
         }
 
-        if (Mathf.Sqrt(closestDirection) < GetComponent<PlayerController>().CollectionRadius && !closestTrash.GetComponent<TrashController>().IsBeeingDestroyed)
+        if (Mathf.Sqrt(closestDirection) <= GameData.AutoCollectRange &&
+            !closestTrash.GetComponent<TrashController>().IsBeeingDestroyed)
         {
             StartCoroutine(ObjectClickController.DestroyObject(closestTrash));
             AddValue(closestTrash.GetComponent<TrashController>().GetCurrencyValue());
@@ -40,11 +39,11 @@ public class AutoCollectController : MonoBehaviour
     private void AddValue(float value)
     {
         var balance = (BalanceController) GetComponent(typeof(BalanceController));
-        balance.AddBalance(value);
+        balance.AddBalance(value * GameData.AutoMultiplier);
     }
 
-    public void AddValueText(TrashController trash)
+    private void AddValueText(TrashController trash)
     {
-        _mainCanvas.GetComponent<ValueDisplayer>().CreateText(trash);
+        _mainCanvas.GetComponent<ValueDisplayer>().CreateText(trash, false);
     }
 }
