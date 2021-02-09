@@ -23,13 +23,13 @@ public class StatDisplayController : MonoBehaviour
     public void UpdateDisplay()
     {
         _clickMultiplierDisplay.GetComponent<Text>().text =
-            GameData.ClickMultiplier + "x";
+            NumberShortener.ShortenNumber(GameData.ClickMultiplier, false) + "x";
         _autoCollectMultiplierDisplay.GetComponent<Text>().text =
-            GameData.AutoMultiplier + "x";
+            NumberShortener.ShortenNumber(GameData.AutoMultiplier, false) + "x";
         _autoCollectRateDisplay.GetComponent<Text>().text =
-            GameData.AutoCollectRate + "s";
+            NumberShortener.ShortenNumber(GameData.AutoCollectRate, false) + "s";
         _autoCollectRangeDisplay.GetComponent<Text>().text =
-            GameData.AutoCollectRange + "x";
+            NumberShortener.ShortenNumber(GameData.AutoCollectRange, false) + "x";
         _balanceDisplay.GetComponent<Text>().text = NumberShortener.ShortenNumber(GameData.Balance);
     }
 }

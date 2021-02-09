@@ -2,7 +2,7 @@
 
 public static class NumberShortener
 {
-    public static string ShortenNumber(float number)
+    public static string ShortenNumber(float number, bool roundFull = true)
     {
         string suffix;
         int exp;
@@ -37,10 +37,15 @@ public static class NumberShortener
 
         if (exp == 0)
         {
-            return Convert.ToString(Math.Truncate(number / divisor));
+            if (roundFull)
+            {
+                return Convert.ToString(Math.Truncate(number / divisor));  
+            }
+            return Math.Round(number / divisor, 2) + "" + suffix;
+
         }
         
-        return Math.Round(number / divisor, 2) + " " + suffix;
+        return Math.Round(number / divisor, 2) + "" + suffix;
     }
 
     private static float GetPower(int a, int b)
