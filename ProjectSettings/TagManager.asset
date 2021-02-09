@@ -20,6 +20,8 @@ TagManager:
   - ItemContainer
   - PlayerCustomizerModel
   - TabBar
+  - PurchaseConfirmation
+  - PurchaseConfirmation
   - RewardAd
   - CircleRenderer
   - AutoCollectRateDisplay
@@ -59,4 +61,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 3470262831
     locked: 0

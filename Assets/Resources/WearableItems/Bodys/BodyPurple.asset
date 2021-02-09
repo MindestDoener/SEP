@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4339286bae5bbb6438242f2e1a4906f5, type: 3}
   m_Name: BodyPurple
   m_EditorClassIdentifier: 
-  Name: 
+  id: 0
+  Price: 500
   ItemImage: {fileID: 21300000, guid: a1c35328ca1be104793114189e979d17, type: 3}
-  IsUnlocked: 1
+  IsUnlocked: 0
   ItemType: 0

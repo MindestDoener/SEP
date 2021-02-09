@@ -5,7 +5,8 @@ using UnityEngine;
 [CreateAssetMenu]
 public class WearableItemScriptableObject : ScriptableObject
 {
-    public String Name;
+    public int id;
+    public float Price;
     public Sprite ItemImage;
     public bool IsUnlocked = false;
     public WearableItem ItemType;

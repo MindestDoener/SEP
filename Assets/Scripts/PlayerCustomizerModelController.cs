@@ -12,9 +12,16 @@ public class PlayerCustomizerModelController : MonoBehaviour
         var playerParts = player.GetComponentsInChildren(typeof(SpriteRenderer));
         var playerPreviewParts = transform.GetComponentsInChildren(typeof(Image));
         
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 9; i++)
         {
-            ((Image)playerPreviewParts[i]).sprite = ((SpriteRenderer)playerParts[i]).sprite;
+            if(((SpriteRenderer)playerParts[i + 1]).sprite == null)
+            {
+                ((Image)playerPreviewParts[i]).color = new Color(0, 0, 0, 0);
+            }
+            else
+            {
+                ((Image)playerPreviewParts[i]).sprite = ((SpriteRenderer)playerParts[i + 1]).sprite;
+            }
         }
     }
 }

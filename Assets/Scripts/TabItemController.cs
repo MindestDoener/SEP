@@ -1,64 +1,77 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-internal class TabItemController : MonoBehaviour
+
+public class TabItemController : MonoBehaviour
 {
     [SerializeField] private GameObject ItemPrefab;
-    [SerializeField] private WearableItem ItemType; //muss einem Ordner aus Resources/WearableItems gleichen
+    [SerializeField] private WearableItem ItemType; 
     private GameObject _currentItem;
+    private WearableItemScriptableObject[] _WearableItems;
 
-    public void LoadItems(int navButtonInput)
+    public void Start()
     {
-        var wearableItems = Resources.LoadAll<WearableItemScriptableObject>("WearableItems\\" + ItemType);
-        var itemContainer = GameObject.FindWithTag("ItemContainer");
+        _WearableItems = Resources.LoadAll<WearableItemScriptableObject>("WearableItems\\" + ItemType);
+    }
+    public void LoadItems(int NavButtonInput)
+    {
+        var ItemContainer = GameObject.FindWithTag("ItemContainer");
 
-        foreach (Transform child in itemContainer.transform) Destroy(child.gameObject);
+        foreach (Transform child in ItemContainer.transform) Destroy(child.gameObject);
 
-        foreach (var item in wearableItems)
+        for (var i = 0; i < _WearableItems.Length; i++)
         {
-            _currentItem = Instantiate(ItemPrefab, itemContainer.transform);
-            _currentItem.transform.GetChild(0).GetComponent<Image>().sprite = item.ItemImage;
-            _currentItem.transform.GetChild(1).GetComponent<Text>().text = item.Name;
+            _WearableItems[i].id = i;
+
+            _currentItem = Instantiate(ItemPrefab, ItemContainer.transform);
+            _currentItem.transform.GetChild(0).GetComponent<Image>().sprite = _WearableItems[i].ItemImage;
+            _currentItem.transform.GetChild(0).localScale = new Vector3(GetScale(ItemType), GetScale(ItemType), 1);
+
             _currentItem.GetComponent<WearableItemController>().ItemType = ItemType;
+            _currentItem.GetComponent<WearableItemController>().Price = _WearableItems[i].Price;
+            _currentItem.GetComponent<WearableItemController>().Unlocked = _WearableItems[i].IsUnlocked;
+            _currentItem.GetComponent<WearableItemController>().Id = _WearableItems[i].id;
+            _currentItem.GetComponent<WearableItemController>().TIC = this;
+
+            if (!_WearableItems[i].IsUnlocked)
+            {
+                _currentItem.transform.GetChild(1).GetComponent<Text>().text = _WearableItems[i].Price.ToString();
+                _currentItem.GetComponent<Image>().color = new Color(0, 0, 0, 128);
+            }
+            else
+            {
+                _currentItem.transform.GetChild(1).GetComponent<Text>().text = "";
+            }
         }
     }
+
 
     public float GetScale(WearableItem ItemType)
     {
         switch (ItemType)
         {
             case WearableItem.Bodys:
-                return 1f;
+                return 1.5f;
             case WearableItem.Shoes:
-                return 2f;
+                return 1.5f;
             case WearableItem.Pants:
                 return 1.5f;
             case WearableItem.Hats:
-                return 1.2f;
-            case WearableItem.Faces:
-                return 1.2f;
+                return 1f;
         }
-
         return 1f;
     }
-
-    private GameObject CurrentTab()
-    {
-        try
+        
+        public void SetItem(WearableItemController WearableItem)
         {
-            var itemType = GameObject.FindWithTag("ItemContainer").transform.GetChild(0)
-                .GetComponent<WearableItemController>().ItemType;
-            var tabBar = GameObject.FindWithTag("TabBar").transform;
-
-            for (var i = 0; i < 5; i++)
-                if (tabBar.GetChild(i).GetComponent<TabItemController>().ItemType == itemType)
-                    return tabBar.GetChild(i).gameObject;
+            for(int i = 0; i < _WearableItems.Length; i++)
+            {
+                if(_WearableItems[i].id == WearableItem.Id)
+                {
+                    _WearableItems[i].IsUnlocked = WearableItem.Unlocked;
+                }
+            }
         }
-        catch (UnityException)
-        {
-            return null;
-        }
-
-        return null;
-    }
 }
+
+

@@ -9,11 +9,15 @@
 
 public enum WearableItem
 {
-    Bodys = 0,
-    Faces = 4,
-    Hats = 3,
-    Pants = 2,
-    Shoes = 1
+    Hats = 9,
+    Beards = 8,
+    Shoes = 7,
+    Hairs = 6,
+    Eyes = 5,
+    Bodys = 4,
+    Pants = 3, 
+    Rings = 2,
+    Skins = 1
 }
 
 public enum UpgradeType
