@@ -14,7 +14,7 @@ public class MultiplierDisplayController : MonoBehaviour
 
     public void UpdateDisplay()
     {
-        _multiplierDisplay.text = "Click: " + NumberShortener.ShortenNumber(GameData.ClickMultiplier) + "x\n"
-                                  + "Autocollect: " + NumberShortener.ShortenNumber(GameData.AutoMultiplier) + "x";
+        _multiplierDisplay.text = "Click: " + NumberShortener.ShortenNumber(GameData.ClickMultiplier, false) + "x\n"
+                                  + "Autocollect: " + NumberShortener.ShortenNumber(GameData.AutoMultiplier, false) + "x";
     }
 }
