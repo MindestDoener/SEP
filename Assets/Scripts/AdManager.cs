@@ -72,7 +72,7 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
 
         GameData.Balance += reward;
         _rewardText.SetActive(true);
-        _rewardText.GetComponent<Text>().text = "+" + NumberShortener.ShortenNumber(reward) + " c";
+        _rewardText.GetComponent<Text>().text = "+" + NumberShortener.ShortenNumber(reward);
         StartCoroutine(cooldown());
     }
 
