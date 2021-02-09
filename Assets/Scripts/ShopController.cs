@@ -12,7 +12,7 @@ public class ShopController : MonoBehaviour
     private BalanceController _bc;
     private Transform _buttonParent;
     private MultiplierDisplayController _mdc;
-    private GameObject _mpDispay;
+    private GameObject _statContainer;
     private GameObject _player;
     private List<ShopItemScriptableObject> shopItems;
 
@@ -20,9 +20,9 @@ public class ShopController : MonoBehaviour
     {
         _buttonParent = GameObject.FindWithTag("ButtonContainer").transform;
         _player = GameObject.FindWithTag("Player");
-        _mpDispay = GameObject.FindWithTag("MultiplierText");
+        _statContainer = GameObject.FindWithTag("StatContainer");
         _bc = _player.GetComponent<BalanceController>();
-        _mdc = _mpDispay.GetComponent<MultiplierDisplayController>();
+        _mdc = _statContainer.GetComponent<MultiplierDisplayController>();
         if (GameData.ShopItems is null) GameData.ShopItems = AssignItemsToArray();
 
         shopItems = GameData.ShopItems;
@@ -50,6 +50,7 @@ public class ShopController : MonoBehaviour
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+        _mdc.UpdateDisplay();
     }
 
     private void DoAutocollectRangeUpgrade(ShopItemScriptableObject upgrade)
@@ -69,8 +70,6 @@ public class ShopController : MonoBehaviour
         ModifyUpgradeCost(upgrade);
         GameData.AutoCollectRate *= 1 - upgrade.MultiplierIncrement;
         UpdateUpgradeDisplay(upgrade);
-        GameObject.FindWithTag("AutoCollectRateDisplay").GetComponent<Text>().text =
-            "Autocollect Rate: every " + Math.Round(GameData.AutoCollectRate, 1) + "s";
     }
 
     private void DoClickUpgrade(ShopItemScriptableObject upgrade)
@@ -80,7 +79,6 @@ public class ShopController : MonoBehaviour
         ModifyUpgradeCost(upgrade);
         GameData.ClickMultiplier += upgrade.MultiplierIncrement;
         UpdateUpgradeDisplay(upgrade);
-        _mdc.UpdateDisplay();
     }
 
     private void DoAutocollectUpgrade(ShopItemScriptableObject upgrade)
@@ -90,7 +88,6 @@ public class ShopController : MonoBehaviour
         ModifyUpgradeCost(upgrade);
         GameData.AutoMultiplier += upgrade.MultiplierIncrement;
         UpdateUpgradeDisplay(upgrade);
-        _mdc.UpdateDisplay();
     }
 
     private void ModifyUpgradeCost(ShopItemScriptableObject upgrade)
