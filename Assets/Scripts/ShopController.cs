@@ -97,10 +97,10 @@ public class ShopController : MonoBehaviour
 
     private void UpdateUpgradeDisplay(ShopItemScriptableObject upgrade) // TODO: can be simplified
     {
-        _buttons[shopItems.IndexOf(upgrade)].GetComponentInChildren<Text>().text = string.Format(upgrade.ButtonText,
-            NumberShortener.ShortenNumber(upgrade.UpgradeCosts),
-            upgrade.UpgradeLevel,
-            upgrade.MultiplierIncrement);
+        _buttons[shopItems.IndexOf(upgrade)].transform.GetChild(0).GetChild(0).GetComponent<Text>().text =
+            NumberShortener.ShortenNumber(upgrade.UpgradeCosts);
+        _buttons[shopItems.IndexOf(upgrade)].transform.GetChild(4).GetComponent<Text>().text =
+            upgrade.UpgradeLevel + "";
     }
 
     public List<float> GetUpgradeCosts()
@@ -134,10 +134,15 @@ public class ShopController : MonoBehaviour
             var instanceDirections = instantiatedObject.GetComponent<RectTransform>();
             _buttons.Add(instantiatedObject.GetComponent<Button>());
             instanceDirections.localScale = new Vector3(1f, 1f, 1f);
-            _buttons[index].GetComponentInChildren<Text>().text = string.Format(item.ButtonText,
-                NumberShortener.ShortenNumber(item.UpgradeCosts),
-                item.UpgradeLevel,
-                item.MultiplierIncrement);
+            _buttons[index].transform.GetChild(0).GetChild(0).GetComponent<Text>().text =
+                NumberShortener.ShortenNumber(item.UpgradeCosts);
+            _buttons[index].transform.GetChild(1).GetComponent<Text>().text =
+                item.ButtonText;
+            _buttons[index].transform.GetChild(2).GetComponent<Text>().text =
+                item.MultiplierIncrement + "";
+            _buttons[index].transform.GetChild(4).GetComponent<Text>().text =
+                item.UpgradeLevel + "";
+           
             SetButtonsItemImage(item, _buttons[index]);
             index++;
         }
@@ -156,7 +161,7 @@ public class ShopController : MonoBehaviour
 
     private void SetButtonsItemImage(ShopItemScriptableObject item, Button button)
     {
-        var itemImage = button.transform.GetChild(1).gameObject;
+        var itemImage = button.transform.GetChild(3).gameObject;
         itemImage.GetComponent<Image>().sprite = item.ItemImage;
         itemImage.GetComponent<Image>().color = item.Color;
     }
