@@ -36,7 +36,7 @@ public class TabItemController : MonoBehaviour
             if (!_WearableItems[i].IsUnlocked)
             {
                 _currentItem.transform.GetChild(1).GetComponent<Text>().text = _WearableItems[i].Price.ToString();
-                _currentItem.GetComponent<Image>().color = new Color(0, 0, 0, 128);
+                _currentItem.transform.GetChild(2).gameObject.SetActive(true);
             }
             else
             {

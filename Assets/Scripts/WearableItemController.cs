@@ -22,8 +22,9 @@ public class WearableItemController : MonoBehaviour
             if (GameData.Balance >= Price)
             {
                 GameData.Balance -= Price;
+                this.transform.GetChild(2).gameObject.SetActive(false);
                 this.transform.GetChild(1).GetComponent<Text>().text = "";
-                this.transform.GetComponent<Image>().color = new Color(255,255,255,128);
+                this.transform.GetComponent<Image>().color = new Color(125,125,125,128);
                 this.Unlocked = true;
                 TIC.SetItem(this);
             }
