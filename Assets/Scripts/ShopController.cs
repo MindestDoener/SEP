@@ -8,21 +8,13 @@ using UnityEngine.UI;
 public class ShopController : MonoBehaviour
 {
     [SerializeField] private GameObject buttonPrefab;
-
-    private List<ShopItemScriptableObject> shopItems;
-
     private readonly List<Button> _buttons = new List<Button>();
-
-    private float _activeMultiplier;
     private BalanceController _bc;
-
     private Transform _buttonParent;
     private MultiplierDisplayController _mdc;
-
     private GameObject _mpDispay;
-
     private GameObject _player;
-
+    private List<ShopItemScriptableObject> shopItems;
 
     private void Start()
     {
@@ -31,11 +23,8 @@ public class ShopController : MonoBehaviour
         _mpDispay = GameObject.FindWithTag("MultiplierText");
         _bc = _player.GetComponent<BalanceController>();
         _mdc = _mpDispay.GetComponent<MultiplierDisplayController>();
-        _activeMultiplier = ObjectClickController.GetMultiplier();
-        if (GameData.ShopItems is null)
-        {
-            GameData.ShopItems = AssignItemsToArray();
-        }
+        if (GameData.ShopItems is null) GameData.ShopItems = AssignItemsToArray();
+
         shopItems = GameData.ShopItems;
         InstantiateButtons();
     }
@@ -43,25 +32,65 @@ public class ShopController : MonoBehaviour
     private void Upgrade(int value)
     {
         var upgrade = shopItems[value];
-        if (GetBalance() >= upgrade.UpgradeCosts && upgrade.Type == UpgradeType.ClickUpgrade)
-            DoClickUpgrade(upgrade);
+        if (GetBalance() >= upgrade.UpgradeCosts)
+            switch (upgrade.Type)
+            {
+                case UpgradeType.ClickMultiplierUpgrade:
+                    DoClickUpgrade(upgrade);
+                    break;
+                case UpgradeType.AutocollectMultiplierUpgrade:
+                    DoAutocollectUpgrade(upgrade);
+                    break;
+                case UpgradeType.AutocollectRateUpgrade:
+                    DoAutocollectRateUpgrade(upgrade);
+                    break;
+                case UpgradeType.AutocollectRangeUpgrade:
+                    DoAutocollectRangeUpgrade(upgrade);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+    }
+
+    private void DoAutocollectRangeUpgrade(ShopItemScriptableObject upgrade)
+    {
+        upgrade.UpgradeLevel++;
+        _bc.AddBalance(-upgrade.UpgradeCosts);
+        ModifyUpgradeCost(upgrade);
+        GameData.AutoCollectRange *= upgrade.MultiplierIncrement;
+        UpdateUpgradeDisplay(upgrade);
+        GameObject.FindWithTag("CircleRenderer").GetComponent<CircleRendererController>().UpdateCircle();
+    }
+
+    private void DoAutocollectRateUpgrade(ShopItemScriptableObject upgrade)
+    {
+        upgrade.UpgradeLevel++;
+        _bc.AddBalance(-upgrade.UpgradeCosts);
+        ModifyUpgradeCost(upgrade);
+        GameData.AutoCollectRate *= 1 - upgrade.MultiplierIncrement;
+        UpdateUpgradeDisplay(upgrade);
+        GameObject.FindWithTag("AutoCollectRateDisplay").GetComponent<Text>().text =
+            "Autocollect Rate: every " + Math.Round(GameData.AutoCollectRate, 1) + "s";
     }
 
     private void DoClickUpgrade(ShopItemScriptableObject upgrade)
     {
-        upgrade.UpgradeLevel += 1;
+        upgrade.UpgradeLevel++;
         _bc.AddBalance(-upgrade.UpgradeCosts);
         ModifyUpgradeCost(upgrade);
-        ModifyCurrentMultiplier(upgrade);
+        GameData.ClickMultiplier += upgrade.MultiplierIncrement;
         UpdateUpgradeDisplay(upgrade);
         _mdc.UpdateDisplay();
     }
 
-    private void ModifyCurrentMultiplier(ShopItemScriptableObject upgrade)
+    private void DoAutocollectUpgrade(ShopItemScriptableObject upgrade)
     {
-        var newMultiplier = _activeMultiplier + upgrade.MultiplierIncrement;
-        ObjectClickController.IncreaseMultiplier(newMultiplier);
-        _activeMultiplier = newMultiplier;
+        upgrade.UpgradeLevel++;
+        _bc.AddBalance(-upgrade.UpgradeCosts);
+        ModifyUpgradeCost(upgrade);
+        GameData.AutoMultiplier += upgrade.MultiplierIncrement;
+        UpdateUpgradeDisplay(upgrade);
+        _mdc.UpdateDisplay();
     }
 
     private void ModifyUpgradeCost(ShopItemScriptableObject upgrade)
@@ -69,9 +98,9 @@ public class ShopController : MonoBehaviour
         upgrade.UpgradeCosts = (float) Math.Round(upgrade.UpgradeCosts * upgrade.CostIncrements);
     }
 
-    private void UpdateUpgradeDisplay(ShopItemScriptableObject upgrade)
+    private void UpdateUpgradeDisplay(ShopItemScriptableObject upgrade) // TODO: can be simplified
     {
-        _buttons[upgrade.ButtonNumber].GetComponentInChildren<Text>().text = string.Format(upgrade.ButtonText,
+        _buttons[shopItems.IndexOf(upgrade)].GetComponentInChildren<Text>().text = string.Format(upgrade.ButtonText,
             NumberShortener.ShortenNumber(upgrade.UpgradeCosts),
             upgrade.UpgradeLevel,
             upgrade.MultiplierIncrement);
@@ -95,7 +124,7 @@ public class ShopController : MonoBehaviour
     public static List<ShopItemScriptableObject> AssignItemsToArray()
     {
         var objectList = Resources.LoadAll<ShopItemScriptableObject>("ShopItems");
-        Array.Sort(objectList, (item1, item2) => item1.ButtonNumber.CompareTo(item2.ButtonNumber));
+        Array.Sort(objectList, (item1, item2) => item1.UpgradeCosts.CompareTo(item2.UpgradeCosts));
         return objectList.ToList().ConvertAll(Instantiate);
     }
 
@@ -137,9 +166,9 @@ public class ShopController : MonoBehaviour
 
     public static bool IsPointerOverUI()
     {
-        PointerEventData curPos = new PointerEventData(EventSystem.current);
+        var curPos = new PointerEventData(EventSystem.current);
         curPos.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-        List<RaycastResult> results = new List<RaycastResult>();
+        var results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(curPos, results);
         return results.Count > 0;
     }

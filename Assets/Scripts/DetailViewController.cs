@@ -6,7 +6,7 @@ public class DetailViewController : MonoBehaviour
 
     private void Start()
     {
-        _collectionContainer = transform.parent.GetChild(1).gameObject;
+        _collectionContainer = transform.parent.GetChild(0).gameObject;
     }
 
     public void Close()
