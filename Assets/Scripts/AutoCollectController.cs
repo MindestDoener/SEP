@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class AutoCollectController : MonoBehaviour
 {
@@ -6,33 +7,37 @@ public class AutoCollectController : MonoBehaviour
 
     public void Start()
     {
-        InvokeRepeating(nameof(DestroyClosestTrashInRadius), 5, GameData.AutoCollectRate);
+        StartCoroutine(DestroyClosestTrashInRadius());
         _mainCanvas = GameObject.Find("UICanvas").GetComponent<Canvas>();
     }
 
-    public void DestroyClosestTrashInRadius()
+    public IEnumerator DestroyClosestTrashInRadius()
     {
-        var trashList = GameObject.FindGameObjectsWithTag("Trash");
-        var closestDirection = Mathf.Infinity;
-        GameObject closestTrash = null;
-
-        foreach (var trash in trashList)
+        while (true)
         {
-            var directionToTrash = trash.transform.position - transform.position;
-            var trashDistance = directionToTrash.sqrMagnitude;
-            if (trashDistance < closestDirection && !trash.GetComponent<TrashController>().IsBeeingDestroyed)
+            yield return new WaitForSeconds(GameData.AutoCollectRate);
+            var trashList = GameObject.FindGameObjectsWithTag("Trash");
+            var closestDirection = Mathf.Infinity;
+            GameObject closestTrash = null;
+
+            foreach (var trash in trashList)
             {
-                closestDirection = trashDistance;
-                closestTrash = trash;
+                var directionToTrash = trash.transform.position - transform.position;
+                var trashDistance = directionToTrash.sqrMagnitude;
+                if (trashDistance < closestDirection && !trash.GetComponent<TrashController>().IsBeeingDestroyed)
+                {
+                    closestDirection = trashDistance;
+                    closestTrash = trash;
+                }
             }
-        }
 
-        if (Mathf.Sqrt(closestDirection) <= GameData.AutoCollectRange &&
-            !closestTrash.GetComponent<TrashController>().IsBeeingDestroyed)
-        {
-            StartCoroutine(ObjectClickController.DestroyObject(closestTrash));
-            AddValue(closestTrash.GetComponent<TrashController>().GetCurrencyValue());
-            AddValueText(closestTrash.GetComponent<TrashController>());
+            if (Mathf.Sqrt(closestDirection) <= GameData.AutoCollectRange &&
+                !closestTrash.GetComponent<TrashController>().IsBeeingDestroyed)
+            {
+                StartCoroutine(ObjectClickController.DestroyObject(closestTrash));
+                AddValue(closestTrash.GetComponent<TrashController>().GetCurrencyValue());
+                AddValueText(closestTrash.GetComponent<TrashController>());
+            }
         }
     }
 
