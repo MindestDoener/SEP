@@ -167,7 +167,7 @@ public class ShopController : MonoBehaviour
         for (var i = 0; i < _buttons.Count; i++)
         {
             var tempInt = i;
-            _buttons[i].onClick.AddListener(delegate { Upgrade(tempInt); });
+            _buttons[i].transform.GetChild(0).GetComponent<Button>().onClick.AddListener(delegate { Upgrade(tempInt); });
         }
     }
 
