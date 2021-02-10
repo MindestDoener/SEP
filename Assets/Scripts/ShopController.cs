@@ -138,11 +138,23 @@ public class ShopController : MonoBehaviour
                 NumberShortener.ShortenNumber(item.UpgradeCosts);
             _buttons[index].transform.GetChild(1).GetComponent<Text>().text =
                 item.ButtonText;
-            _buttons[index].transform.GetChild(2).GetComponent<Text>().text =
-                item.MultiplierIncrement + "";
-            _buttons[index].transform.GetChild(4).GetComponent<Text>().text =
+            _buttons[index].transform.GetChild(4).GetComponent<Text>().text = 
                 item.UpgradeLevel + "";
-           
+
+            switch (item.Type)
+            {
+                case UpgradeType.ClickMultiplierUpgrade:
+                case UpgradeType.AutocollectMultiplierUpgrade:
+                    _buttons[index].transform.GetChild(2).GetComponent<Text>().text = "+" + item.MultiplierIncrement + "x";
+                    break;
+                case UpgradeType.AutocollectRangeUpgrade:
+                    _buttons[index].transform.GetChild(2).GetComponent<Text>().text = "x" + item.MultiplierIncrement;
+                    break;
+                case UpgradeType.AutocollectRateUpgrade:
+                    _buttons[index].transform.GetChild(2).GetComponent<Text>().text = "x" + item.MultiplierIncrement;
+                    break;
+            }
+            
             SetButtonsItemImage(item, _buttons[index]);
             index++;
         }
