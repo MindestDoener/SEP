@@ -25,11 +25,11 @@ public class CollectionItemController : MonoBehaviour
     public void ShowDetails()
     {
         _detailView.SetActive(true);
-        _detailView.transform.GetChild((int) DetailViewComponents.NameText).GetComponent<Text>().text = _trashObject.Name;
-        _detailView.transform.GetChild((int) DetailViewComponents.ItemImage).GetComponent<Image>().sprite = _trashObject.Sprite;
+        _detailView.transform.GetChild((int) DetailViewComponents.NameText).GetChild(0).GetComponent<Text>().text = _trashObject.Name;
+        _detailView.transform.GetChild((int) DetailViewComponents.ItemImage).GetChild(0).GetComponent<Image>().sprite = _trashObject.Sprite;
         _detailView.transform.GetChild((int) DetailViewComponents.RarityText).GetComponent<Text>().text = _trashObject.Rarity.ToString();
         _detailView.transform.GetChild((int) DetailViewComponents.RarityText).GetComponent<Text>().color = TrashManager.GetRarityColor(_trashObject.Rarity);
-        _detailView.transform.GetChild((int) DetailViewComponents.DescriptionText).GetComponentInChildren<Text>().text = _trashObject.Description;
+        _detailView.transform.GetChild((int) DetailViewComponents.ItemImage).GetChild(1).GetComponentInChildren<Text>().text = _trashObject.Description;
         _detailView.transform.GetChild((int) DetailViewComponents.CountNumberText).GetComponent<Text>().text = NumberShortener.ShortenNumber(_trashObject.Count);
         _detailView.transform.GetChild((int) DetailViewComponents.BaseValueNumberText).GetComponent<Text>().text =
             NumberShortener.ShortenNumber(_trashObject.Value);
