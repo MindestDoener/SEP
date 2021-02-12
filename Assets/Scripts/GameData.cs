@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -37,13 +38,19 @@ public class GameData : MonoBehaviour
         saveScript = GetComponent<SaveScript>();
         if (saveScript.LoadData())
         {
-            GameObject.FindWithTag("Balance").GetComponent<BalanceDisplayController>().DisplayBalance(Balance);
             TrashManager.UpdateTrashItems(TrashCollectCount);
             foreach (var pair in CustomCharacter)
                 WearableController.SetWearable(WearableController.GetSpriteByName(pair.Value, pair.Key), pair.Key);
         }
 
         StartCoroutine(AutoSave());
+    }
+
+    private void OnApplicationQuit()
+    {
+        UpdateTrashCollectCount();
+        if (ShopItems is null) ShopItems = ShopController.AssignItemsToArray();
+        saveScript.SaveData();
     }
 
     private IEnumerator AutoSave()

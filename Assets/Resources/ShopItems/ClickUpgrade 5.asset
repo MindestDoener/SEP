@@ -16,9 +16,8 @@ MonoBehaviour:
   MultiplierIncrement: 2
   UpgradeCosts: 10000
   CostIncrements: 1.5
-  ButtonText: 'Epic Click Upgrade: {0} TC (lvl. {1}) [{2}x]'
+  ButtonText: Epic
   Type: 0
-  ButtonNumber: 2
-  ItemImage: {fileID: -403645065039037920, guid: 95305c12a6bcd5247bce39eaafc8bf14,
+  ItemImage: {fileID: 5831421743138070727, guid: de9c65d7c4f25544aa23f17fe03e3930,
     type: 3}
   Color: {r: 1, g: 0.07075471, b: 0.8706967, a: 1}

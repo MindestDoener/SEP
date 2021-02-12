@@ -16,7 +16,8 @@ MonoBehaviour:
   MultiplierIncrement: 1.1
   UpgradeCosts: 10000
   CostIncrements: 1.5
-  ButtonText: 'Auto Collect Range Upgrade: {0} TC (lvl. {1}) [{2}x]'
+  ButtonText: Range
   Type: 3
-  ItemImage: {fileID: 21300000, guid: 5c8f1deefaa04384b88e3a6f5c88313d, type: 3}
+  ItemImage: {fileID: 2466273254812479149, guid: de9c65d7c4f25544aa23f17fe03e3930,
+    type: 3}
   Color: {r: 1, g: 1, b: 1, a: 1}

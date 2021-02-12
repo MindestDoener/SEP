@@ -34,7 +34,7 @@ public enum DetailViewComponents
     ItemImage = 1,
     RarityText = 2,
     DescriptionText = 3,
-    CountNumberText = 5,
-    BaseValueNumberText = 7,
-    CurrentValueNumberText = 9
+    CountNumberText = 4,
+    BaseValueNumberText = 6,
+    CurrentValueNumberText = 8
 }

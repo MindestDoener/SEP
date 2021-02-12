@@ -41,11 +41,11 @@ public static class NumberShortener
             {
                 return Convert.ToString(Math.Truncate(number / divisor));  
             }
-            return Math.Round(number / divisor, 2) + " " + suffix;
+            return Math.Round(number / divisor, 2) + "" + suffix;
 
         }
         
-        return Math.Round(number / divisor, 2) + " " + suffix;
+        return Math.Round(number / divisor, 2) + "" + suffix;
     }
 
     private static float GetPower(int a, int b)

@@ -72,18 +72,20 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
 
         GameData.Balance += reward;
         _rewardText.SetActive(true);
-        _rewardText.GetComponent<Text>().text = "+" + NumberShortener.ShortenNumber(reward) + " c";
+        _rewardText.GetComponent<Text>().text = "+" + NumberShortener.ShortenNumber(reward);
         StartCoroutine(cooldown());
     }
 
     IEnumerator cooldown()
     {
         rewardAdButton.interactable = false;
+        rewardAdButton.transform.GetChild(2).gameObject.SetActive(true);
         Advertisement.RemoveListener(this);
         yield return new WaitForSeconds(5);
         _rewardText.SetActive(false);
         yield return new WaitForSeconds(85);
         Advertisement.AddListener(this);
         rewardAdButton.interactable = true;
+        rewardAdButton.transform.GetChild(2).gameObject.SetActive(false);
     }
 }

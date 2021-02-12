@@ -25,7 +25,12 @@ public class UpgradeController : MonoBehaviour
         while (true)
         {
             for (var i = 0; i < _buttons.Count; i++)
-                _buttons[i].interactable = _shop.GetBalance() >= _shop.GetUpgradeCosts()[i];
+            {
+                
+                var interactable = (_shop.GetBalance() >= _shop.GetUpgradeCosts()[i]);
+                _buttons[i].transform.GetChild(0).GetComponent<Button>().interactable = interactable;
+                _buttons[i].transform.GetChild(5).gameObject.SetActive(!interactable);
+            }
 
             yield return new WaitForSeconds(0.025f);
         }

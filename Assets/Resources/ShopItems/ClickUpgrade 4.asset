@@ -16,9 +16,8 @@ MonoBehaviour:
   MultiplierIncrement: 5
   UpgradeCosts: 50000
   CostIncrements: 1.5
-  ButtonText: 'Red Hot Click Upgrade: {0} TC (lvl. {1}) [{2}x]'
+  ButtonText: Red Hot
   Type: 0
-  ButtonNumber: 3
-  ItemImage: {fileID: -403645065039037920, guid: 95305c12a6bcd5247bce39eaafc8bf14,
+  ItemImage: {fileID: 5831421743138070727, guid: de9c65d7c4f25544aa23f17fe03e3930,
     type: 3}
   Color: {r: 1, g: 0.37869933, b: 0.10849059, a: 1}

@@ -11,8 +11,8 @@ public class ShopController : MonoBehaviour
     private readonly List<Button> _buttons = new List<Button>();
     private BalanceController _bc;
     private Transform _buttonParent;
-    private MultiplierDisplayController _mdc;
-    private GameObject _mpDispay;
+    private StatDisplayController _mdc;
+    private GameObject _statContainer;
     private GameObject _player;
     private List<ShopItemScriptableObject> shopItems;
 
@@ -20,9 +20,9 @@ public class ShopController : MonoBehaviour
     {
         _buttonParent = GameObject.FindWithTag("ButtonContainer").transform;
         _player = GameObject.FindWithTag("Player");
-        _mpDispay = GameObject.FindWithTag("MultiplierText");
+        _statContainer = GameObject.FindWithTag("StatContainer");
         _bc = _player.GetComponent<BalanceController>();
-        _mdc = _mpDispay.GetComponent<MultiplierDisplayController>();
+        _mdc = _statContainer.GetComponent<StatDisplayController>();
         if (GameData.ShopItems is null) GameData.ShopItems = AssignItemsToArray();
 
         shopItems = GameData.ShopItems;
@@ -50,6 +50,7 @@ public class ShopController : MonoBehaviour
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+        _mdc.UpdateDisplay();
     }
 
     private void DoAutocollectRangeUpgrade(ShopItemScriptableObject upgrade)
@@ -69,8 +70,6 @@ public class ShopController : MonoBehaviour
         ModifyUpgradeCost(upgrade);
         GameData.AutoCollectRate *= 1 - upgrade.MultiplierIncrement;
         UpdateUpgradeDisplay(upgrade);
-        GameObject.FindWithTag("AutoCollectRateDisplay").GetComponent<Text>().text =
-            "Autocollect Rate: every " + Math.Round(GameData.AutoCollectRate, 1) + "s";
     }
 
     private void DoClickUpgrade(ShopItemScriptableObject upgrade)
@@ -80,7 +79,6 @@ public class ShopController : MonoBehaviour
         ModifyUpgradeCost(upgrade);
         GameData.ClickMultiplier += upgrade.MultiplierIncrement;
         UpdateUpgradeDisplay(upgrade);
-        _mdc.UpdateDisplay();
     }
 
     private void DoAutocollectUpgrade(ShopItemScriptableObject upgrade)
@@ -90,7 +88,6 @@ public class ShopController : MonoBehaviour
         ModifyUpgradeCost(upgrade);
         GameData.AutoMultiplier += upgrade.MultiplierIncrement;
         UpdateUpgradeDisplay(upgrade);
-        _mdc.UpdateDisplay();
     }
 
     private void ModifyUpgradeCost(ShopItemScriptableObject upgrade)
@@ -100,10 +97,10 @@ public class ShopController : MonoBehaviour
 
     private void UpdateUpgradeDisplay(ShopItemScriptableObject upgrade) // TODO: can be simplified
     {
-        _buttons[shopItems.IndexOf(upgrade)].GetComponentInChildren<Text>().text = string.Format(upgrade.ButtonText,
-            NumberShortener.ShortenNumber(upgrade.UpgradeCosts),
-            upgrade.UpgradeLevel,
-            upgrade.MultiplierIncrement);
+        _buttons[shopItems.IndexOf(upgrade)].transform.GetChild(0).GetChild(0).GetComponent<Text>().text =
+            NumberShortener.ShortenNumber(upgrade.UpgradeCosts);
+        _buttons[shopItems.IndexOf(upgrade)].transform.GetChild(4).GetComponent<Text>().text =
+            upgrade.UpgradeLevel + "";
     }
 
     public List<float> GetUpgradeCosts()
@@ -137,10 +134,27 @@ public class ShopController : MonoBehaviour
             var instanceDirections = instantiatedObject.GetComponent<RectTransform>();
             _buttons.Add(instantiatedObject.GetComponent<Button>());
             instanceDirections.localScale = new Vector3(1f, 1f, 1f);
-            _buttons[index].GetComponentInChildren<Text>().text = string.Format(item.ButtonText,
-                NumberShortener.ShortenNumber(item.UpgradeCosts),
-                item.UpgradeLevel,
-                item.MultiplierIncrement);
+            _buttons[index].transform.GetChild(0).GetChild(0).GetComponent<Text>().text =
+                NumberShortener.ShortenNumber(item.UpgradeCosts);
+            _buttons[index].transform.GetChild(1).GetComponent<Text>().text =
+                item.ButtonText;
+            _buttons[index].transform.GetChild(4).GetComponent<Text>().text = 
+                item.UpgradeLevel + "";
+
+            switch (item.Type)
+            {
+                case UpgradeType.ClickMultiplierUpgrade:
+                case UpgradeType.AutocollectMultiplierUpgrade:
+                    _buttons[index].transform.GetChild(2).GetComponent<Text>().text = "+" + item.MultiplierIncrement + "x";
+                    break;
+                case UpgradeType.AutocollectRangeUpgrade:
+                    _buttons[index].transform.GetChild(2).GetComponent<Text>().text = "x" + item.MultiplierIncrement;
+                    break;
+                case UpgradeType.AutocollectRateUpgrade:
+                    _buttons[index].transform.GetChild(2).GetComponent<Text>().text = "x" + item.MultiplierIncrement;
+                    break;
+            }
+            
             SetButtonsItemImage(item, _buttons[index]);
             index++;
         }
@@ -153,13 +167,13 @@ public class ShopController : MonoBehaviour
         for (var i = 0; i < _buttons.Count; i++)
         {
             var tempInt = i;
-            _buttons[i].onClick.AddListener(delegate { Upgrade(tempInt); });
+            _buttons[i].transform.GetChild(0).GetComponent<Button>().onClick.AddListener(delegate { Upgrade(tempInt); });
         }
     }
 
     private void SetButtonsItemImage(ShopItemScriptableObject item, Button button)
     {
-        var itemImage = button.transform.GetChild(1).gameObject;
+        var itemImage = button.transform.GetChild(3).gameObject;
         itemImage.GetComponent<Image>().sprite = item.ItemImage;
         itemImage.GetComponent<Image>().color = item.Color;
     }

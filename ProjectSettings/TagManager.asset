@@ -8,7 +8,6 @@ TagManager:
   - Trash
   - ShopPanel
   - BalancePanel
-  - MultiplierText
   - ButtonContainer
   - RightUI
   - PauseMenu
@@ -25,6 +24,10 @@ TagManager:
   - RewardAd
   - CircleRenderer
   - AutoCollectRateDisplay
+  - AutoCollectRangeDisplay
+  - AutoCollectMultiplierDisplay
+  - MultiplierDisplay
+  - StatContainer
   layers:
   - Default
   - TransparentFX
