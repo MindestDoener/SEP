@@ -7,15 +7,15 @@ public class WearableItemController : MonoBehaviour
     public float Price;
     public bool Unlocked;
     public int Id;
+    public Sprite Image;
     public TabItemController TIC;
 
     public void ChangeLook()
     {
         if (Unlocked)
         {
-            var clickedItem = transform.GetChild(0).GetComponent<Image>().sprite;
-            GameData.CustomCharacter[ItemType] = clickedItem.name;
-            WearableController.SetWearable(clickedItem, ItemType); 
+            GameData.CustomCharacter[ItemType] = Image.name;
+            WearableController.SetWearable(Image, ItemType); 
         }
         else
         {

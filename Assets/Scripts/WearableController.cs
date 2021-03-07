@@ -29,7 +29,7 @@ public class WearableController : MonoBehaviour
 
         if (!(_playerCustomizerModel is null))
         {
-            _playerCustomizerModel.transform.GetChild((int) type).GetComponent<Image>().sprite = sprite;
+            _playerCustomizerModel.transform.GetChild((int)type).GetComponent<Image>().sprite = sprite;
             _playerCustomizerModel.transform.GetChild((int)type).GetComponent<Image>().color = new Color(255, 255, 255, 255);
         }
     }

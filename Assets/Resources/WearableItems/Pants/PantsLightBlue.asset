@@ -15,5 +15,6 @@ MonoBehaviour:
   id: 0
   Price: 500
   ItemImage: {fileID: 21300000, guid: 3d5899dc485c87842b3384000db2ce4e, type: 3}
+  ShopImage: {fileID: 21300000, guid: 3d5899dc485c87842b3384000db2ce4e, type: 3}
   IsUnlocked: 0
   ItemType: 3

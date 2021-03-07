@@ -8,6 +8,7 @@ public class WearableItemScriptableObject : ScriptableObject
     public int id;
     public float Price;
     public Sprite ItemImage;
+    public Sprite ShopImage;
     public bool IsUnlocked = false;
     public WearableItem ItemType;
 }

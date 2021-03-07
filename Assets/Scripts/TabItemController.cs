@@ -24,7 +24,7 @@ public class TabItemController : MonoBehaviour
             _WearableItems[i].id = i;
 
             _currentItem = Instantiate(ItemPrefab, ItemContainer.transform);
-            _currentItem.transform.GetChild(0).GetComponent<Image>().sprite = _WearableItems[i].ItemImage;
+            _currentItem.transform.GetChild(0).GetComponent<Image>().sprite = _WearableItems[i].ShopImage;
             _currentItem.transform.GetChild(0).localScale = new Vector3(GetScale(ItemType), GetScale(ItemType), 1);
 
             _currentItem.GetComponent<WearableItemController>().ItemType = ItemType;
@@ -32,6 +32,8 @@ public class TabItemController : MonoBehaviour
             _currentItem.GetComponent<WearableItemController>().Unlocked = _WearableItems[i].IsUnlocked;
             _currentItem.GetComponent<WearableItemController>().Id = _WearableItems[i].id;
             _currentItem.GetComponent<WearableItemController>().TIC = this;
+            _currentItem.GetComponent<WearableItemController>().Image = _WearableItems[i].ItemImage;
+
 
             if (!_WearableItems[i].IsUnlocked)
             {
