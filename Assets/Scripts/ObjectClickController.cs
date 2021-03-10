@@ -9,6 +9,7 @@ public class ObjectClickController : MonoBehaviour
     private Canvas _mainCanvas;
     private GameObject _player;
     private TrashController _trash;
+    public PlayfabManager playfabManager;
 
     private void Start()
     {
@@ -50,6 +51,7 @@ public class ObjectClickController : MonoBehaviour
     private void AddValue(float value)
     {
         _balance.AddBalance(value);
+        playfabManager.SendLeaderboard(System.Convert.ToInt32(GameData.Balance));
     }
 
     public static IEnumerator DestroyObject(GameObject objectToDestroy)

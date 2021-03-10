@@ -2,6 +2,7 @@
 
 public class PauseMenuController : MonoBehaviour
 {
+    public PlayfabManager playfabManager;
     private readonly GameObject[] _otherUI = new GameObject[2];
     private GameObject _pauseMenu;
     private static bool _gameIsPaused;
