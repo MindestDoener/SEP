@@ -8,10 +8,13 @@ using UnityEngine.UI;
 public class LeaderboardTableController : MonoBehaviour
 {
     [SerializeField] private GameObject ItemPrefab;
+    [SerializeField] private Sprite CurrentPlayerBackground;
     private GameObject row;
-
+    string PlayfabID;
     void Start()
     {
+
+        PlayfabID = GameObject.FindWithTag("MainCamera").GetComponent<PlayfabManager>().GetPlayfabID();
         GetLeaderboard();
     }
 
@@ -49,6 +52,11 @@ public class LeaderboardTableController : MonoBehaviour
             row.transform.GetChild(0).GetComponent<Text>().text = (item.Position + 1).ToString();
             row.transform.GetChild(1).GetComponent<Text>().text = item.PlayFabId.ToString();
             row.transform.GetChild(2).GetComponent<Text>().text = item.StatValue.ToString();
+            if (PlayfabID == item.PlayFabId)
+            {
+                row.GetComponent<Image>().sprite = CurrentPlayerBackground;
+            }
         }
     }
+ 
 }

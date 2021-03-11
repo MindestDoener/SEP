@@ -7,8 +7,8 @@ using System;
 using UnityEngine.UI;
 
 public class PlayfabManager : MonoBehaviour
-{ 
-    // Start is called before the first frame update
+{
+    private string MyPlayfabID;
     void Start()
     {
         Login();
@@ -27,6 +27,7 @@ public class PlayfabManager : MonoBehaviour
 
     void OnSuccess(LoginResult result) {
         Debug.Log("Successful login/account create!");
+        GetAccountInfo();
     }
 
     void OnError(PlayFabError error) {
@@ -67,4 +68,22 @@ public class PlayfabManager : MonoBehaviour
         }
         return sum;
     }
+    public string GetPlayfabID()
+    {
+        return MyPlayfabID;
+    }
+
+    void GetAccountInfo()
+    {
+        GetAccountInfoRequest request = new GetAccountInfoRequest();
+        PlayFabClientAPI.GetAccountInfo(request, Success, Fail);
+    }
+
+    void Success(GetAccountInfoResult result)
+    {
+        MyPlayfabID = result.AccountInfo.PlayFabId;
+        Debug.Log(MyPlayfabID);
+    }
+
+    void Fail(PlayFabError error) { Debug.LogError(error.GenerateErrorReport()); }
 }

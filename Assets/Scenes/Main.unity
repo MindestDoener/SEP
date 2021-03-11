@@ -24198,6 +24198,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemPrefab: {fileID: 443806584402548262, guid: 3ee19e3e656d561458084a8378160b38,
     type: 3}
+  CurrentPlayerBackground: {fileID: -4201077892562421220, guid: de9c65d7c4f25544aa23f17fe03e3930,
+    type: 3}
 --- !u!1 &1940016836
 GameObject:
   m_ObjectHideFlags: 0
