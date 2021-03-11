@@ -18,18 +18,13 @@ public class LeaderboardTableController : MonoBehaviour
         GetLeaderboard();
     }
 
-    void onEnable()
-    {
-        GetLeaderboard();
-        Debug.Log("Enables");
-    }
     public void GetLeaderboard()
     {
         var request = new GetLeaderboardRequest
         {
             StatisticName = "TrashScore",
             StartPosition = 0,
-            MaxResultsCount = 10
+            MaxResultsCount = 20
         };
         PlayFabClientAPI.GetLeaderboard(request, OnLeaderboardGet, OnError);
     }
@@ -41,14 +36,14 @@ public class LeaderboardTableController : MonoBehaviour
 
     void OnLeaderboardGet(GetLeaderboardResult result)
     {
-        foreach (Transform child in this.transform.GetChild(4))
+        foreach (Transform child in this.transform.GetChild(4).GetChild(0))
         {
             GameObject.Destroy(child.gameObject);
         }
 
         foreach (var item in result.Leaderboard)
         {
-            row = Instantiate(ItemPrefab, this.transform.GetChild(4));
+            row = Instantiate(ItemPrefab, this.transform.GetChild(4).GetChild(0));
             row.transform.GetChild(0).GetComponent<Text>().text = (item.Position + 1).ToString();
             row.transform.GetChild(1).GetComponent<Text>().text = item.PlayFabId.ToString();
             row.transform.GetChild(2).GetComponent<Text>().text = item.StatValue.ToString();
