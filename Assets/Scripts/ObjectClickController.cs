@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class ObjectClickController : MonoBehaviour
@@ -51,7 +52,7 @@ public class ObjectClickController : MonoBehaviour
     private void AddValue(float value)
     {
         _balance.AddBalance(value);
-        playfabManager.SendLeaderboard(System.Convert.ToInt32(GameData.Balance));
+        playfabManager.SendLeaderboard();
     }
 
     public static IEnumerator DestroyObject(GameObject objectToDestroy)
@@ -68,4 +69,6 @@ public class ObjectClickController : MonoBehaviour
     {
         _mainCanvas.GetComponent<ValueDisplayer>().CreateText(trash, true);
     }
+
+    
 }

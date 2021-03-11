@@ -18,5 +18,9 @@ public class TabController : MonoBehaviour
     public void Toggle()
     {
         menuToToggle.SetActive(_tab.isOn);
+        if(menuToToggle.gameObject.name == "Leaderboard")
+        {
+            menuToToggle.transform.GetComponent<LeaderboardTableController>().GetLeaderboard();
+        }
     }
 }

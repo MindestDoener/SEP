@@ -4,9 +4,10 @@ using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
 using System;
+using UnityEngine.UI;
 
 public class PlayfabManager : MonoBehaviour
-{
+{ 
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +34,7 @@ public class PlayfabManager : MonoBehaviour
         Debug.Log(error.GenerateErrorReport());
     }
 
-    public void SendLeaderboard(int score)
+    public void SendLeaderboard()
     {
         var request = new UpdatePlayerStatisticsRequest
         {
@@ -41,8 +42,8 @@ public class PlayfabManager : MonoBehaviour
             {
                 new StatisticUpdate
                 {
-                    StatisticName = "CoinScore",
-                    Value = score
+                    StatisticName = "TrashScore",
+                    Value = GetTrashItemCount()
                 }
             }
         };
@@ -54,22 +55,16 @@ public class PlayfabManager : MonoBehaviour
         Debug.Log("Successfull leaderboard sent");
     }
 
-    public void GetLeaderboard()
+    private int GetTrashItemCount()
     {
-        var request = new GetLeaderboardRequest
+        int sum = 0;
+        foreach (var list in TrashManager.GetAllTrashItems().Values)
         {
-            StatisticName = "CoinScore",
-            StartPosition = 0,
-            MaxResultsCount = 10
-        };
-        PlayFabClientAPI.GetLeaderboard(request, OnLeaderboardGet, OnError);
-    }
-
-    void OnLeaderboardGet(GetLeaderboardResult result)
-    {
-        foreach(var item in result.Leaderboard)
-        {
-            Debug.Log(item.Position + " " + item.PlayFabId + " " + item.StatValue);
+            foreach (var trash in list)
+            {
+                sum += Convert.ToInt32(trash.Count);
+            }
         }
+        return sum;
     }
 }

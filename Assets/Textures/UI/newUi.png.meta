@@ -34,10 +34,10 @@ TextureImporter:
     second: autoClickTimeUpgrade
   - first:
       213: -1182221338668639156
-    second: newUi_10
+    second: leaderboard
   - first:
       213: -373178888359192291
-    second: newUi_11
+    second: reload
   - first:
       213: 8122895625800265038
     second: newUi_12
@@ -573,6 +573,48 @@ TextureImporter:
       bones: []
       spriteID: d76cd10a92b7085d0800000000000000
       internalID: -3062312327901755779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: leaderboard
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4cd4c6c4f7e79fe0800000000000000
+      internalID: -1182221338668639156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reload
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d19dca937c332daf0800000000000000
+      internalID: -373178888359192291
       vertices: []
       indices: 
       edges: []
