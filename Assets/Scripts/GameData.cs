@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -20,7 +19,7 @@ public class GameData : MonoBehaviour
     {
         //{WearableItem.Skins, "StandardSkin"},
         //{WearableItem.Rings, "StandardRing"},
-        {WearableItem.Pants, "BluePants"},
+        {WearableItem.Pants, "PantsBlue"},
         {WearableItem.Bodys, "Body"},
         //{WearableItem.Eyes, "StandardEyes"},
         {WearableItem.Hairs, "StandardHair"},
