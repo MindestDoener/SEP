@@ -20,12 +20,12 @@ public class GameData : MonoBehaviour
         //{WearableItem.Skins, "StandardSkin"},
         //{WearableItem.Rings, "StandardRing"},
         {WearableItem.Pants, "PantsBlue"},
-        {WearableItem.Bodys, "Body"},
+        {WearableItem.Bodys, ""},
         //{WearableItem.Eyes, "StandardEyes"},
         {WearableItem.Hairs, "StandardHair"},
-        {WearableItem.Shoes, "Boots"},
-        {WearableItem.Beards, "StandardBeard"},
-        {WearableItem.Hats, "BlueHat"}
+        {WearableItem.Shoes, ""},
+        {WearableItem.Beards, ""},
+        {WearableItem.Hats, ""}
     };
 
     public float autoSaveCycleTime = 5f;
