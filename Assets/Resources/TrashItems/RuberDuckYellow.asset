@@ -16,7 +16,7 @@ MonoBehaviour:
   Sprite: {fileID: 2215236852186030051, guid: baab9705556a9ca46976528cf074dd4e, type: 3}
   Value: 20
   MoveSpeed: 2.5
-  Rarity: 100
+  Rarity: 1000
   Count: 0
   IsUnlocked: 0
   CollectionObject: {fileID: 0}

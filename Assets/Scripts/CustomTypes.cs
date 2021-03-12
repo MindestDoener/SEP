@@ -1,10 +1,10 @@
 ﻿public enum Rarity
 {
-    Common = 100,
-    Uncommon = 50,
-    Rare = 20,
-    SuperRare = 6,
-    Legendary = 1
+    Common = 1000,
+    Uncommon = 400,
+    Rare = 150,
+    SuperRare = 50,
+    Legendary = 5
 }
 
 public enum WearableItem
@@ -15,7 +15,7 @@ public enum WearableItem
     Hairs = 6,
     Eyes = 5,
     Bodys = 4,
-    Pants = 3, 
+    Pants = 3,
     Rings = 2,
     Skins = 1
 }
