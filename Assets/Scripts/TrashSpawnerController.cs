@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class TrashSpawnerController : MonoBehaviour
 {
@@ -14,11 +11,11 @@ public class TrashSpawnerController : MonoBehaviour
     [SerializeField] private float xSpawnOffset;
     [SerializeField] private float minSpawnTime;
     [SerializeField] private float maxSpawnTime;
-
-    private Dictionary<Rarity, List<TrashScriptableObject>> _trashItems;
     private Camera _cam;
     private Vector3 _rightCorner;
     private Rarity _selectedRarity;
+
+    private Dictionary<Rarity, List<TrashScriptableObject>> _trashItems;
 
     // Start is called before the first frame update
     private void Start()
@@ -36,7 +33,7 @@ public class TrashSpawnerController : MonoBehaviour
         while (true)
         {
             _selectedRarity = GetRandomRarity();
-            List<TrashScriptableObject> type = _trashItems[_selectedRarity];
+            var type = _trashItems[_selectedRarity];
             InstantiateRandomObjectFromList(type);
             yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawnTime));
         }
@@ -46,9 +43,11 @@ public class TrashSpawnerController : MonoBehaviour
     {
         var random = Random.Range(0, items.Count);
         var item = items.ElementAt(random);
-        var randomRotation = Quaternion.Euler(new Vector3(transform.rotation.x, transform.rotation.y, Random.Range(0, 360)));
-        var instantiatedObject = Instantiate(trashPrefab, 
-            new Vector3(_rightCorner.x + xSpawnOffset, -(_rightCorner.y / 2) + Random.Range(-ySpawnOffset, ySpawnOffset), 0), randomRotation);
+        var randomRotation =
+            Quaternion.Euler(new Vector3(transform.rotation.x, transform.rotation.y, Random.Range(0, 360)));
+        var instantiatedObject = Instantiate(trashPrefab,
+            new Vector3(_rightCorner.x + xSpawnOffset,
+                -(_rightCorner.y / 2) + Random.Range(-ySpawnOffset, ySpawnOffset), 0), randomRotation);
         var trashController = instantiatedObject.GetComponent<TrashController>();
         trashController.SetSprite(item.Sprite);
         trashController.SetCurrencyValue(item.Value);
@@ -59,12 +58,11 @@ public class TrashSpawnerController : MonoBehaviour
 
     private Rarity GetRandomRarity()
     {
-        var rand = Random.Range(0, 100 + 1);
+        var rand = Random.Range(0, 1000 + 1);
         if (rand <= (int) Rarity.Legendary) return Rarity.Legendary;
         if (rand <= (int) Rarity.SuperRare) return Rarity.SuperRare;
         if (rand <= (int) Rarity.Rare) return Rarity.Rare;
         if (rand <= (int) Rarity.Uncommon) return Rarity.Uncommon;
         return Rarity.Common;
     }
-
 }

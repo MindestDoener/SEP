@@ -4,6 +4,7 @@ using UnityEngine;
 public class AutoCollectController : MonoBehaviour
 {
     private Canvas _mainCanvas;
+    public PlayfabManager playfabManager;
 
     public void Start()
     {
@@ -45,6 +46,7 @@ public class AutoCollectController : MonoBehaviour
     {
         var balance = (BalanceController) GetComponent(typeof(BalanceController));
         balance.AddBalance(value * GameData.AutoMultiplier);
+        playfabManager.SendLeaderboard();
     }
 
     private void AddValueText(TrashController trash)

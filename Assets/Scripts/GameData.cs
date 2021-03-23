@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -20,13 +19,13 @@ public class GameData : MonoBehaviour
     {
         //{WearableItem.Skins, "StandardSkin"},
         //{WearableItem.Rings, "StandardRing"},
-        {WearableItem.Pants, "BluePants"},
-        {WearableItem.Bodys, "Body"},
+        {WearableItem.Pants, "PantsBlue"},
+        {WearableItem.Bodys, ""},
         //{WearableItem.Eyes, "StandardEyes"},
         {WearableItem.Hairs, "StandardHair"},
-        {WearableItem.Shoes, "Boots"},
-        {WearableItem.Beards, "StandardBeard"},
-        {WearableItem.Hats, "BlueHat"}
+        {WearableItem.Shoes, ""},
+        {WearableItem.Beards, ""},
+        {WearableItem.Hats, ""}
     };
 
     public float autoSaveCycleTime = 5f;
