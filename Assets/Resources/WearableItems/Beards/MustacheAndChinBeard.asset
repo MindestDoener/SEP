@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4339286bae5bbb6438242f2e1a4906f5, type: 3}
-  m_Name: MustacheAndChin
+  m_Name: MustacheAndChinBeard
   m_EditorClassIdentifier: 
-  id: 2
+  id: 5
   Price: 500
   ItemImage: {fileID: 21300000, guid: 970b884ec9c11ee4f8982d036bb6d56b, type: 3}
   ShopImage: {fileID: 21300000, guid: 970b884ec9c11ee4f8982d036bb6d56b, type: 3}

@@ -12,7 +12,7 @@ public class WearableItemController : MonoBehaviour
 
     public void ChangeLook()
     {
-        if (Unlocked)
+        if (GameData.WearablesUnlocked[this.Image.name])
         {
             GameData.CustomCharacter[ItemType] = Image.name;
             WearableController.SetWearable(Image, ItemType); 
@@ -25,7 +25,7 @@ public class WearableItemController : MonoBehaviour
                 this.transform.GetChild(2).gameObject.SetActive(false);
                 this.transform.GetChild(1).GetComponent<Text>().text = "";
                 this.transform.GetComponent<Image>().color = new Color(125,125,125,128);
-                this.Unlocked = true;
+                GameData.WearablesUnlocked[this.Image.name] = true;
                 TIC.SetItem(this);
             }
         }

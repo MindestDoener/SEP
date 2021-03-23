@@ -11,6 +11,7 @@ public class Save
     public float savAutoCollectRange;
     public Dictionary<Rarity, Dictionary<string, float>> savTrashCollectCount;
     public Dictionary<WearableItem, string> savCustomCharacter;
+    public Dictionary<string, bool> savWearablesUnlocked;
     public List<UpgradeData> savUpgradeDatas;
 }
 

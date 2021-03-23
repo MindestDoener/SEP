@@ -24,6 +24,8 @@ public class TabItemController : MonoBehaviour
         {
             _WearableItems[i].id = i;
 
+            var unlocked = GameData.WearablesUnlocked[_WearableItems[i].ItemImage.name];
+
             _currentItem = Instantiate(ItemPrefab, ItemContainer.transform);
             _currentItem.transform.GetChild(0).GetComponent<Image>().sprite = _WearableItems[i].ShopImage;
 
@@ -40,13 +42,13 @@ public class TabItemController : MonoBehaviour
 
             _currentItem.GetComponent<WearableItemController>().ItemType = ItemType;
             _currentItem.GetComponent<WearableItemController>().Price = _WearableItems[i].Price;
-            _currentItem.GetComponent<WearableItemController>().Unlocked = _WearableItems[i].IsUnlocked;
+            _currentItem.GetComponent<WearableItemController>().Unlocked = unlocked;
             _currentItem.GetComponent<WearableItemController>().Id = _WearableItems[i].id;
             _currentItem.GetComponent<WearableItemController>().TIC = this;
             _currentItem.GetComponent<WearableItemController>().Image = _WearableItems[i].ItemImage;
 
 
-            if (!_WearableItems[i].IsUnlocked)
+            if (!unlocked)
             {
                 _currentItem.transform.GetChild(1).GetComponent<Text>().text = _WearableItems[i].Price.ToString();
                 _currentItem.transform.GetChild(2).gameObject.SetActive(true);
@@ -81,7 +83,7 @@ public class TabItemController : MonoBehaviour
         {
             if(_WearableItems[i].id == WearableItem.Id)
             {
-                _WearableItems[i].IsUnlocked = WearableItem.Unlocked;
+                _WearableItems[i].IsUnlocked = GameData.WearablesUnlocked[WearableItem.Image.name];
             }
         }
     }
