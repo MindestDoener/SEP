@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AutoRateDiamant
   m_EditorClassIdentifier: 
   UpgradeLevel: 0
-  MultiplierIncrement: 0
+  MultiplierIncrement: 0.05
   UpgradeCosts: 1e+14
   CostIncrements: 1.5
   ButtonText: Diamond Autorate
