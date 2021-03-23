@@ -122,6 +122,7 @@ public class ShopController : MonoBehaviour
     {
         var objectList = Resources.LoadAll<ShopItemScriptableObject>("ShopItems");
         Array.Sort(objectList, (item1, item2) => item1.UpgradeCosts.CompareTo(item2.UpgradeCosts));
+        Array.Sort(objectList, (item1, item2) => item1.Type.CompareTo(item2.Type));
         return objectList.ToList().ConvertAll(Instantiate);
     }
 

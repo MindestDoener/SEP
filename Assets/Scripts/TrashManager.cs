@@ -21,6 +21,12 @@ public class TrashManager : MonoBehaviour
     [SerializeField] private Color rareColor;
     [SerializeField] private Color superRareColor;
     [SerializeField] private Color legendaryColor;
+    
+    [SerializeField] private Color holzColor;
+    [SerializeField] private Color steinColor; 
+    [SerializeField] private Color eisenColor;
+    [SerializeField] private Color goldColor;
+    [SerializeField] private Color diamantColor;
 
     private void Start()
     {

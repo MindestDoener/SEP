@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2227d58b5b6c076419a5aa99e574964d, type: 3}
-  m_Name: ClickUpgrade2
+  m_Name: ClickMultiplierDiamant
   m_EditorClassIdentifier: 
   UpgradeLevel: 0
-  MultiplierIncrement: 1
-  UpgradeCosts: 5000
+  MultiplierIncrement: 13
+  UpgradeCosts: 1e+14
   CostIncrements: 1.5
-  ButtonText: Cooler
+  ButtonText: 'Diamond Click '
   Type: 0
   ItemImage: {fileID: 5831421743138070727, guid: de9c65d7c4f25544aa23f17fe03e3930,
     type: 3}
-  Color: {r: 0.41037738, g: 0.6893915, b: 1, a: 1}
+  Color: {r: 0.20392159, g: 0.9215687, b: 0.78823537, a: 1}
