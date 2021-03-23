@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameData : MonoBehaviour
 {
+    public static string Username;
     public static float Balance = 0;
     public static float ClickMultiplier = 1;
     public static float AutoMultiplier = 1;
@@ -47,6 +48,8 @@ public class GameData : MonoBehaviour
         else
         {
             CreateWearableDictionary();
+            Time.timeScale = 0;
+            SceneManager.LoadScene("Intro", LoadSceneMode.Additive);
         }
 
         StartCoroutine(AutoSave());
@@ -84,7 +87,7 @@ public class GameData : MonoBehaviour
     private void CreateWearableDictionary()
     {
         var list = Resources.LoadAll<WearableItemScriptableObject>("WearableItems");
-        WearablesUnlocked = list.ToDictionary((item) => item.name, (item) => item.IsUnlocked);
+        WearablesUnlocked = list.ToDictionary(item => item.name, item => item.IsUnlocked);
         WearablesUnlocked.Add("Nothing", true);
     }
 }

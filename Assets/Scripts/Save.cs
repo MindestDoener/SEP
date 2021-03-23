@@ -4,6 +4,7 @@ using System.Collections.Generic;
 [Serializable]
 public class Save
 {
+    public string savUsername;
     public float savBalance;
     public float savClickMultiplier;
     public float savAutoMultiplier;

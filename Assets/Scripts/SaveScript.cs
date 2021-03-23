@@ -17,6 +17,7 @@ public class SaveScript : MonoBehaviour
     {
         var save = new Save
         {
+            savUsername = GameData.Username,
             savBalance = GameData.Balance,
             savClickMultiplier = GameData.ClickMultiplier,
             savAutoMultiplier = GameData.AutoMultiplier,
@@ -35,6 +36,7 @@ public class SaveScript : MonoBehaviour
             {
                 binaryFormatter.Serialize(fileStream, save);
             }
+
             Debug.Log("Data Saved");
         }
     }
@@ -51,6 +53,7 @@ public class SaveScript : MonoBehaviour
                 save = (Save) binaryFormatter.Deserialize(fileStream);
             }
 
+            GameData.Username = save.savUsername;
             GameData.Balance = save.savBalance;
             GameData.ClickMultiplier = save.savClickMultiplier;
             GameData.AutoMultiplier = save.savAutoMultiplier;
