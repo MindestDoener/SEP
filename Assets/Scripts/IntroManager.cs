@@ -1,4 +1,6 @@
 ﻿using System.Collections;
+using PlayFab;
+using PlayFab.ClientModels;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -16,6 +18,29 @@ public class IntroManager : MonoBehaviour
         transform.GetChild(1).gameObject.SetActive(true);
         transform.GetChild(3).gameObject.SetActive(true);
         StartCoroutine(MoeweTalk());
+
+        CreatePlayfabUsername(text.text);
+    }
+
+    public void CreatePlayfabUsername(string name)
+    {
+        Debug.Log("Username" + name);
+        var request = new UpdateUserTitleDisplayNameRequest
+        {
+            DisplayName = name
+        };
+        PlayFabClientAPI.UpdateUserTitleDisplayName(request, OnDisplayNameUpdate, OnError);
+    }
+
+    void OnDisplayNameUpdate(UpdateUserTitleDisplayNameResult result)
+    {
+        Debug.Log("Updated display name!");
+    }
+
+    void OnError(PlayFabError error)
+    {
+        Debug.Log("Error while updating Username!");
+        Debug.Log(error.GenerateErrorReport());
     }
 
     public void OnSureBro()
