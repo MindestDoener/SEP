@@ -17,6 +17,7 @@ public class SaveScript : MonoBehaviour
     {
         var save = new Save
         {
+            savUsername = GameData.Username,
             savBalance = GameData.Balance,
             savClickMultiplier = GameData.ClickMultiplier,
             savAutoMultiplier = GameData.AutoMultiplier,
@@ -24,6 +25,7 @@ public class SaveScript : MonoBehaviour
             savAutoCollectRange = GameData.AutoCollectRange,
             savTrashCollectCount = GameData.TrashCollectCount,
             savCustomCharacter = GameData.CustomCharacter,
+            savWearablesUnlocked = GameData.WearablesUnlocked,
             savUpgradeDatas = GameData.ShopItems.ConvertAll(item => new UpgradeData(item))
         };
         if (!save.Equals(latestSave))
@@ -34,8 +36,9 @@ public class SaveScript : MonoBehaviour
             {
                 binaryFormatter.Serialize(fileStream, save);
             }
+
+            Debug.Log("Data Saved");
         }
-        Debug.Log("Data Saved");
     }
 
     public bool LoadData()
@@ -50,6 +53,7 @@ public class SaveScript : MonoBehaviour
                 save = (Save) binaryFormatter.Deserialize(fileStream);
             }
 
+            GameData.Username = save.savUsername;
             GameData.Balance = save.savBalance;
             GameData.ClickMultiplier = save.savClickMultiplier;
             GameData.AutoMultiplier = save.savAutoMultiplier;
@@ -57,6 +61,7 @@ public class SaveScript : MonoBehaviour
             GameData.AutoCollectRange = save.savAutoCollectRange;
             GameData.TrashCollectCount = save.savTrashCollectCount;
             GameData.CustomCharacter = save.savCustomCharacter;
+            GameData.WearablesUnlocked = save.savWearablesUnlocked;
             GameData.ShopItems = ShopController.AssignItemsToArray();
             for (var i = 0; i < GameData.ShopItems.Count; i++)
             {

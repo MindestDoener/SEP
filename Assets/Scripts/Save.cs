@@ -4,6 +4,7 @@ using System.Collections.Generic;
 [Serializable]
 public class Save
 {
+    public string savUsername;
     public float savBalance;
     public float savClickMultiplier;
     public float savAutoMultiplier;
@@ -11,6 +12,7 @@ public class Save
     public float savAutoCollectRange;
     public Dictionary<Rarity, Dictionary<string, float>> savTrashCollectCount;
     public Dictionary<WearableItem, string> savCustomCharacter;
+    public Dictionary<string, bool> savWearablesUnlocked;
     public List<UpgradeData> savUpgradeDatas;
 }
 

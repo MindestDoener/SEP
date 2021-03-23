@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameData : MonoBehaviour
 {
+    public static string Username;
     public static float Balance = 0;
     public static float ClickMultiplier = 1;
     public static float AutoMultiplier = 1;
@@ -28,6 +30,8 @@ public class GameData : MonoBehaviour
         {WearableItem.Hats, ""}
     };
 
+    public static Dictionary<string, bool> WearablesUnlocked;
+
     public float autoSaveCycleTime = 5f;
 
     private SaveScript saveScript;
@@ -40,6 +44,12 @@ public class GameData : MonoBehaviour
             TrashManager.UpdateTrashItems(TrashCollectCount);
             foreach (var pair in CustomCharacter)
                 WearableController.SetWearable(WearableController.GetSpriteByName(pair.Value, pair.Key), pair.Key);
+        }
+        else
+        {
+            CreateWearableDictionary();
+            Time.timeScale = 0;
+            SceneManager.LoadScene("Intro", LoadSceneMode.Additive);
         }
 
         StartCoroutine(AutoSave());
@@ -72,5 +82,12 @@ public class GameData : MonoBehaviour
                 trashItem => trashItem.Count
             )
         );
+    }
+
+    private void CreateWearableDictionary()
+    {
+        var list = Resources.LoadAll<WearableItemScriptableObject>("WearableItems");
+        WearablesUnlocked = list.ToDictionary(item => item.name, item => item.IsUnlocked);
+        WearablesUnlocked.Add("Nothing", true);
     }
 }
