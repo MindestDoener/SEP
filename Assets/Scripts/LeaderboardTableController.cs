@@ -45,7 +45,14 @@ public class LeaderboardTableController : MonoBehaviour
         {
             row = Instantiate(ItemPrefab, this.transform.GetChild(4).GetChild(0));
             row.transform.GetChild(0).GetComponent<Text>().text = (item.Position + 1).ToString();
-            row.transform.GetChild(1).GetComponent<Text>().text = item.DisplayName.ToString();
+            try
+            {
+                row.transform.GetChild(1).GetComponent<Text>().text = item.DisplayName;
+            }
+            catch
+            {
+                row.transform.GetChild(1).GetComponent<Text>().text = "KeinName";
+            }
             row.transform.GetChild(2).GetComponent<Text>().text = item.StatValue.ToString();
             if (PlayfabID == item.PlayFabId)
             {
